@@ -54,10 +54,10 @@ const TRAVEL_STYLES = [
 const GALLERY_TEASERS = [
   { src: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=800&q=80", title: "Victoria Golf Resort Kandy", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Victoria Golf Resort Kandy" },
   { src: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80", title: "Ayurveda Spa Deck", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Certified Ayurveda Spa Deck" },
-  { src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80", title: "Bentota Sunset Beach", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Bentota Sunset Beach" },
-  { src: "https://images.unsplash.com/photo-1588598198321-9735fd52455b?auto=format&fit=crop&w=800&q=80", title: "Sigiriya Lion Rock Fortress", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Sigiriya Lion Rock Fortress" },
-  { src: "https://images.unsplash.com/photo-1566296537600-247ba48b9212?auto=format&fit=crop&w=800&q=80", title: "Nine Arch Bridge Ella", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Nine Arch Bridge Ella Tea Country" },
-  { src: "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=800&q=80", title: "Nuwara Eliya Tea Hills", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Nuwara Eliya Tea Estate Hills" },
+  { src: "/images/destinations/bentota.jpg", title: "Bentota Sunset Beach", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Bentota Sunset Beach" },
+  { src: "/images/destinations/sigiriya.jpg", title: "Sigiriya Lion Rock Fortress", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Sigiriya Lion Rock Fortress" },
+  { src: "/images/destinations/ella.jpg", title: "Nine Arch Bridge Ella", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Nine Arch Bridge Ella Tea Country" },
+  { src: "/images/destinations/nuwara-eliya.jpg", title: "Nuwara Eliya Tea Hills", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Nuwara Eliya Tea Estate Hills" },
 ];
 
 export default function HomePage() {

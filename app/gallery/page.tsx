@@ -12,11 +12,11 @@ const GALLERY_ITEMS = [
   { id: "5", src: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Sunrise Yoga Session Overlooking Jungle", category: "Wellness" },
   { id: "6", src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Bentota Oceanfront Sunset Wedding Arch", category: "Weddings" },
   { id: "7", src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Colonial Tea Garden Wedding Ceremony", category: "Weddings" },
-  { id: "8", src: "https://images.unsplash.com/photo-1588598198321-9735fd52455b?auto=format&fit=crop&w=1200&q=80", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Sigiriya Lion Rock Fortress Ancient Palace Grounds", category: "Destinations" },
-  { id: "9", src: "https://images.unsplash.com/photo-1566296537600-247ba48b9212?auto=format&fit=crop&w=1200&q=80", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Nine Arch Bridge Ella Scenic Train Journey", category: "Destinations" },
-  { id: "10", src: "https://images.unsplash.com/photo-1627885721868-80979bf33fb7?auto=format&fit=crop&w=1200&q=80", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Galle Fort Colonial Dutch Ramparts & Lighthouse", category: "Destinations" },
+  { id: "8", src: "/images/destinations/sigiriya.jpg", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Sigiriya Lion Rock Fortress Ancient Palace Grounds", category: "Destinations" },
+  { id: "9", src: "/images/destinations/ella.jpg", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Nine Arch Bridge Ella Scenic Train Journey", category: "Destinations" },
+  { id: "10", src: "/images/destinations/galle.jpg", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Galle Fort Colonial Dutch Ramparts & Lighthouse", category: "Destinations" },
   { id: "11", src: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Executive MICE Corporate Conference Setup", category: "Corporate" },
-  { id: "12", src: "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=1200&q=80", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Family Wildlife Safari in Yala National Park", category: "Leisure" },
+  { id: "12", src: "/images/destinations/yala.jpg", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Family Wildlife Safari in Yala National Park", category: "Leisure" },
 ];
 
 const CATEGORIES = ["All", "Golf", "Wellness", "Weddings", "Destinations", "Corporate", "Leisure"];
@@ -40,7 +40,7 @@ export default function GalleryPage() {
       {/* Hero */}
       <section style={{ position: "relative", height: "420px", backgroundColor: "var(--forest-deep)", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <Image
-          src="https://images.unsplash.com/photo-1627885721868-80979bf33fb7?auto=format&fit=crop&w=1920&q=80"
+          src="/images/destinations/galle.jpg"
           alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Galle Fort Lighthouse Hero"
           fill
           style={{ objectFit: "cover", opacity: 0.3 }}
