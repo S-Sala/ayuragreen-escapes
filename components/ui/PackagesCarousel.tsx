@@ -12,7 +12,7 @@ export default function PackagesCarousel() {
 
   const scroll = (direction: "left" | "right") => {
     if (rowRef.current) {
-      const scrollAmount = direction === "left" ? -380 : 380;
+      const scrollAmount = direction === "left" ? -340 : 340;
       rowRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
@@ -20,7 +20,7 @@ export default function PackagesCarousel() {
   const handleScroll = () => {
     if (rowRef.current) {
       const scrollLeft = rowRef.current.scrollLeft;
-      const cardWidth = 380;
+      const cardWidth = 340;
       const index = Math.round(scrollLeft / cardWidth);
       setActiveIndex(Math.min(index, PACKAGES.length - 1));
     }
@@ -36,7 +36,7 @@ export default function PackagesCarousel() {
 
   const scrollToCard = (index: number) => {
     if (rowRef.current) {
-      rowRef.current.scrollTo({ left: index * 380, behavior: "smooth" });
+      rowRef.current.scrollTo({ left: index * 340, behavior: "smooth" });
       setActiveIndex(index);
     }
   };
@@ -45,7 +45,7 @@ export default function PackagesCarousel() {
     <section className="section-padding bg-off-white">
       <div className="container-custom">
         {/* Header */}
-        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "3rem", gap: "1rem" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "2rem", gap: "1rem" }}>
           <div>
             <span className="eyebrow">CURATED JOURNEYS</span>
             <h2 style={{ fontSize: "clamp(2rem, 3.5vw, 2.8rem)" }}>Signature Packages</h2>
@@ -56,10 +56,10 @@ export default function PackagesCarousel() {
               onClick={() => scroll("left")}
               aria-label="Previous package"
               style={{
-                width: "44px",
-                height: "44px",
-                minWidth: "44px",
-                minHeight: "44px",
+                width: "40px",
+                height: "40px",
+                minWidth: "40px",
+                minHeight: "40px",
                 borderRadius: "50%",
                 border: "1px solid var(--line)",
                 backgroundColor: "var(--white)",
@@ -67,7 +67,7 @@ export default function PackagesCarousel() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: "1.4rem",
+                fontSize: "1.3rem",
                 cursor: "pointer",
                 transition: "all 0.3s ease",
               }}
@@ -78,10 +78,10 @@ export default function PackagesCarousel() {
               onClick={() => scroll("right")}
               aria-label="Next package"
               style={{
-                width: "44px",
-                height: "44px",
-                minWidth: "44px",
-                minHeight: "44px",
+                width: "40px",
+                height: "40px",
+                minWidth: "40px",
+                minHeight: "40px",
                 borderRadius: "50%",
                 border: "1px solid var(--line)",
                 backgroundColor: "var(--white)",
@@ -89,7 +89,7 @@ export default function PackagesCarousel() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: "1.4rem",
+                fontSize: "1.3rem",
                 cursor: "pointer",
                 transition: "all 0.3s ease",
               }}
@@ -105,10 +105,10 @@ export default function PackagesCarousel() {
           className="no-scrollbar"
           style={{
             display: "flex",
-            gap: "2rem",
+            gap: "1.5rem",
             overflowX: "auto",
             scrollSnapType: "x mandatory",
-            paddingBottom: "1.5rem",
+            paddingBottom: "1.2rem",
             paddingRight: "1rem",
           }}
         >
@@ -117,7 +117,7 @@ export default function PackagesCarousel() {
               key={pkg.slug}
               className="card-clean"
               style={{
-                flex: "0 0 360px",
+                flex: "0 0 340px",
                 scrollSnapAlign: "start",
                 display: "flex",
                 flexDirection: "column",
@@ -130,13 +130,13 @@ export default function PackagesCarousel() {
                 <div
                   style={{
                     position: "absolute",
-                    top: "1rem",
-                    right: "1rem",
+                    top: "0.75rem",
+                    right: "0.75rem",
                     backgroundColor: "var(--gold)",
                     color: "var(--white)",
-                    padding: "0.3rem 0.8rem",
+                    padding: "0.25rem 0.65rem",
                     borderRadius: "4px",
-                    fontSize: "0.75rem",
+                    fontSize: "0.7rem",
                     fontWeight: 700,
                     textTransform: "uppercase",
                     letterSpacing: "0.1em",
@@ -148,38 +148,38 @@ export default function PackagesCarousel() {
                 </div>
               )}
 
-              {/* Card Image */}
-              <div style={{ position: "relative", width: "100%", height: "220px" }}>
+              {/* Card Image Wrapper */}
+              <div className="package-card-img-wrap" style={{ position: "relative", width: "100%", height: "180px" }}>
                 <Image
                   src={pkg.image}
                   alt={`Ayuragreen Escapes Luxury Tour Package Sri Lanka - ${pkg.name}`}
                   fill
                   loading="lazy"
                   style={{ objectFit: "cover" }}
-                  sizes="360px"
+                  sizes="340px"
                 />
-                <div style={{ position: "absolute", bottom: "1rem", left: "1rem", backgroundColor: "rgba(10,33,22,0.85)", color: "var(--white)", padding: "0.3rem 0.7rem", borderRadius: "4px", fontSize: "0.8rem", fontWeight: 600 }}>
+                <div style={{ position: "absolute", bottom: "0.75rem", left: "0.75rem", backgroundColor: "rgba(10,33,22,0.85)", color: "var(--white)", padding: "0.25rem 0.6rem", borderRadius: "4px", fontSize: "0.75rem", fontWeight: 600 }}>
                   {pkg.duration}
                 </div>
               </div>
 
               {/* Card Body */}
-              <div style={{ padding: "1.8rem", display: "flex", flexDirection: "column", flex: 1 }}>
-                <h3 style={{ fontSize: "1.4rem", fontFamily: "var(--font-playfair)", marginBottom: "0.4rem" }}>
+              <div className="package-card-body" style={{ padding: "1.2rem", display: "flex", flexDirection: "column", flex: 1 }}>
+                <h3 className="package-card-title" style={{ fontSize: "1.25rem", fontFamily: "var(--font-playfair)", marginBottom: "0.3rem" }}>
                   {pkg.name}
                 </h3>
-                <p style={{ fontSize: "0.88rem", color: "var(--ink-soft)", marginBottom: "1.2rem", lineHeight: "1.4" }}>
+                <p className="package-card-tagline" style={{ fontSize: "0.82rem", color: "var(--ink-soft)", marginBottom: "0.8rem", lineHeight: "1.35" }}>
                   {pkg.tagline}
                 </p>
 
-                <div style={{ borderTop: "1px solid var(--line)", paddingTop: "1rem", marginBottom: "1.5rem" }}>
-                  <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "var(--gold)", textTransform: "uppercase", letterSpacing: "0.1em", display: "block", marginBottom: "0.6rem" }}>
+                <div className="package-card-highlights" style={{ borderTop: "1px solid var(--line)", paddingTop: "0.75rem", marginBottom: "1rem" }}>
+                  <span style={{ fontSize: "0.72rem", fontWeight: 700, color: "var(--gold)", textTransform: "uppercase", letterSpacing: "0.1em", display: "block", marginBottom: "0.4rem" }}>
                     Included Highlights:
                   </span>
-                  <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                  <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.35rem" }}>
                     {pkg.inclusions.slice(0, 3).map((inc, idx) => (
-                      <li key={idx} style={{ fontSize: "0.84rem", color: "var(--ink)", display: "flex", alignItems: "flex-start", gap: "0.5rem" }}>
-                        <BiCheck style={{ color: "var(--gold)", fontSize: "1.1rem", flexShrink: 0, marginTop: "2px" }} />
+                      <li key={idx} style={{ fontSize: "0.8rem", color: "var(--ink)", display: "flex", alignItems: "flex-start", gap: "0.4rem" }}>
+                        <BiCheck style={{ color: "var(--gold)", fontSize: "1rem", flexShrink: 0, marginTop: "2px" }} />
                         <span>{inc}</span>
                       </li>
                     ))}
@@ -187,8 +187,8 @@ export default function PackagesCarousel() {
                 </div>
 
                 <div style={{ marginTop: "auto" }}>
-                  <Link href={`/packages#${pkg.slug}`} className="btn-outline-gold" style={{ width: "100%", justifyContent: "center", minHeight: "44px" }}>
-                    View Package Details <BiRightArrowAlt style={{ fontSize: "1.2rem" }} />
+                  <Link href={`/packages#${pkg.slug}`} className="btn-outline-gold" style={{ width: "100%", justifyContent: "center", minHeight: "38px", padding: "0.5rem 1rem", fontSize: "0.82rem" }}>
+                    View Package Details <BiRightArrowAlt style={{ fontSize: "1.1rem" }} />
                   </Link>
                 </div>
               </div>
@@ -197,7 +197,7 @@ export default function PackagesCarousel() {
         </div>
 
         {/* Visible Pagination Dots for Touch Devices */}
-        <div style={{ display: "flex", justifyContent: "center", gap: "0.5rem", marginTop: "1rem" }}>
+        <div style={{ display: "flex", justifyContent: "center", gap: "0.5rem", marginTop: "0.8rem" }}>
           {PACKAGES.map((_, idx) => (
             <button
               key={idx}

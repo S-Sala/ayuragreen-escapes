@@ -51,21 +51,32 @@ export default function Counter({ target, label, suffix = "+" }: CounterProps) {
   }, [target]);
 
   return (
-    <div ref={ref} style={{ textAlign: "center", padding: "0.5rem 1rem" }}>
+    <div ref={ref} className="counter-item" style={{ textAlign: "center", padding: "0.2rem 0.5rem" }}>
       <div
+        className="counter-number"
         style={{
           fontFamily: "var(--font-playfair)",
           fontSize: "2.6rem",
           fontWeight: 800,
           color: "var(--gold)",
           lineHeight: 1,
-          marginBottom: "0.4rem",
+          marginBottom: "0.3rem",
         }}
       >
         {count}
         {suffix}
       </div>
-      <div style={{ fontFamily: "var(--font-poppins)", fontSize: "0.82rem", fontWeight: 500, color: "var(--white)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+      <div
+        className="counter-label"
+        style={{
+          fontFamily: "var(--font-poppins)",
+          fontSize: "0.8rem",
+          fontWeight: 500,
+          color: "var(--white)",
+          textTransform: "uppercase",
+          letterSpacing: "0.1em",
+        }}
+      >
         {label}
       </div>
     </div>

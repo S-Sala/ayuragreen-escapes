@@ -35,8 +35,8 @@ export default function Navbar() {
           boxShadow: isScrolled ? "0 4px 20px rgba(18, 53, 36, 0.08)" : "none",
           borderBottom: isScrolled ? "1px solid var(--line)" : "1px solid rgba(231, 227, 216, 0.4)",
           backdropFilter: "blur(12px)",
-          paddingLeft: "clamp(1rem, 4vw, 2.5rem)",
-          paddingRight: "clamp(1rem, 4vw, 2.5rem)",
+          paddingLeft: "clamp(0.75rem, 3vw, 2.5rem)",
+          paddingRight: "clamp(0.75rem, 3vw, 2.5rem)",
         }}
       >
         <div
@@ -48,14 +48,16 @@ export default function Navbar() {
             height: "84px",
             paddingLeft: 0,
             paddingRight: 0,
+            gap: "8px",
+            width: "100%",
           }}
         >
           {/* Logo & Brand */}
-          <Link href="/" style={{ display: "flex", flexDirection: "column", minHeight: "44px", justifyContent: "center" }}>
-            <span style={{ fontFamily: "var(--font-playfair)", fontSize: "1.5rem", fontWeight: 800, color: "var(--forest)", letterSpacing: "-0.02em", lineHeight: 1 }}>
+          <Link href="/" className="brand-logo" style={{ display: "flex", flexDirection: "column", minHeight: "44px", justifyContent: "center", flexShrink: 0 }}>
+            <span className="brand-logo-text" style={{ fontFamily: "var(--font-playfair)", fontSize: "1.5rem", fontWeight: 800, color: "var(--forest)", letterSpacing: "-0.02em", lineHeight: 1 }}>
               AYURAGREEN
             </span>
-            <span style={{ fontFamily: "var(--font-poppins)", fontSize: "0.65rem", fontWeight: 600, color: "var(--gold)", letterSpacing: "0.22em", marginTop: "2px" }}>
+            <span className="brand-logo-sub" style={{ fontFamily: "var(--font-poppins)", fontSize: "0.65rem", fontWeight: 600, color: "var(--gold)", letterSpacing: "0.22em", marginTop: "2px" }}>
               ESCAPES • SRI LANKA
             </span>
           </Link>
@@ -162,7 +164,7 @@ export default function Navbar() {
           </nav>
 
           {/* Right Action CTA */}
-          <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }} className="nav-actions">
             <a
               href={`tel:${COMPANY_FACTS.phone.replace(/\s+/g, '')}`}
               style={{ display: "none", alignItems: "center", gap: "0.5rem", fontSize: "0.88rem", fontWeight: 600, color: "var(--forest)", minHeight: "44px" }}
@@ -172,7 +174,7 @@ export default function Navbar() {
               {COMPANY_FACTS.phone}
             </a>
 
-            <Link href="/contact" className="btn-gold" style={{ padding: "0.65rem 1.4rem", fontSize: "0.85rem", minHeight: "44px" }}>
+            <Link href="/contact" className="btn-gold nav-cta-btn" style={{ padding: "0.65rem 1.4rem", fontSize: "0.85rem", minHeight: "44px", flexShrink: 0 }}>
               Plan My Journey
             </Link>
 
@@ -191,6 +193,7 @@ export default function Navbar() {
                 justifyContent: "center",
                 minWidth: "44px",
                 minHeight: "44px",
+                flexShrink: 0,
               }}
               aria-label="Toggle navigation drawer"
               className="mobile-toggle"

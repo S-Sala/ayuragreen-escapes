@@ -189,6 +189,7 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
 
       {/* Glassmorphism Counter Panel Overlapping Bottom */}
       <div
+        className="hero-counter-panel"
         style={{
           position: "absolute",
           bottom: "2rem",
@@ -202,9 +203,6 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
           borderRadius: "12px",
           border: "1px solid rgba(217, 194, 133, 0.25)",
           padding: "1.2rem 1.5rem",
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-          gap: "1.5rem",
           boxShadow: "0 20px 50px rgba(0,0,0,0.3)",
         }}
       >

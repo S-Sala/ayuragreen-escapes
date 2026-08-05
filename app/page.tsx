@@ -69,9 +69,9 @@ export default function HomePage() {
       {/* 2. TRAVEL STYLES GRID */}
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <div style={{ textAlign: "center", maxWidth: "700px", margin: "0 auto 3.5rem auto" }}>
+          <div style={{ textAlign: "center", maxWidth: "700px", margin: "0 auto 3rem auto" }}>
             <span className="eyebrow">TAILORED EXPERIENCES</span>
-            <h2 style={{ fontSize: "clamp(2rem, 3.5vw, 2.8rem)", marginBottom: "1rem" }}>
+            <h2 style={{ fontSize: "clamp(2rem, 3.5vw, 2.8rem)", marginBottom: "0.8rem" }}>
               Explore Our Signature Travel Styles
             </h2>
             <p style={{ color: "var(--ink-soft)", fontSize: "1rem" }}>
@@ -79,36 +79,22 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.8rem" }}>
+          <div className="tailored-experiences-grid">
             {TRAVEL_STYLES.map((style, idx) => {
               const IconComp = style.icon;
               return (
-                <RevealOnScroll key={style.title} delay={idx * 60}>
-                  <Link href={style.link} className="card-clean" style={{ padding: "2rem", display: "flex", flexDirection: "column", height: "100%", minHeight: "220px" }}>
-                    <div
-                      style={{
-                        width: "56px",
-                        height: "56px",
-                        borderRadius: "12px",
-                        backgroundColor: "var(--off-white)",
-                        color: "var(--gold)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        fontSize: "1.8rem",
-                        marginBottom: "1.2rem",
-                        border: "1px solid var(--line)",
-                      }}
-                    >
+                <RevealOnScroll key={style.title} delay={idx * 40}>
+                  <Link href={style.link} className="card-clean tailored-card">
+                    <div className="tailored-card-icon">
                       <IconComp />
                     </div>
-                    <h3 style={{ fontSize: "1.25rem", fontFamily: "var(--font-playfair)", marginBottom: "0.5rem" }}>
+                    <h3 className="tailored-card-title">
                       {style.title}
                     </h3>
-                    <p style={{ fontSize: "0.88rem", color: "var(--ink-soft)", lineHeight: "1.5", marginBottom: "1.2rem" }}>
+                    <p className="tailored-card-desc">
                       {style.desc}
                     </p>
-                    <span style={{ marginTop: "auto", fontSize: "0.85rem", fontWeight: 600, color: "var(--gold)", display: "flex", alignItems: "center", gap: "0.3rem" }}>
+                    <span className="tailored-card-link">
                       Explore <BiRightArrowAlt style={{ fontSize: "1.1rem" }} />
                     </span>
                   </Link>
@@ -126,16 +112,16 @@ export default function HomePage() {
       <WhyUsSlider />
 
       {/* 5. EXPERIENCE SPLIT BANNER */}
-      <section className="bg-forest" style={{ padding: "6rem 0" }}>
+      <section className="bg-forest" style={{ padding: "5rem 0" }}>
         <div className="container-custom">
-          <div style={{ textAlign: "center", maxWidth: "650px", margin: "0 auto 3rem auto" }}>
+          <div style={{ textAlign: "center", maxWidth: "650px", margin: "0 auto 2.5rem auto" }}>
             <span className="eyebrow" style={{ color: "var(--gold-light)" }}>CURATED PILLARS</span>
             <h2 style={{ fontSize: "clamp(2rem, 3.5vw, 2.8rem)", color: "var(--white)" }}>Four Pillars of Luxury Travel</h2>
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.8rem" }}>
             {/* Tile 1: Golf */}
-            <article style={{ position: "relative", height: "380px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
+            <article style={{ position: "relative", height: "340px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
               <Image
                 src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=800&q=80"
                 alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Golf Tourism Championship Fairway"
@@ -144,17 +130,17 @@ export default function HomePage() {
                 style={{ objectFit: "cover" }}
                 sizes="300px"
               />
-              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(10,33,22,0.95) 100%)", padding: "1.8rem", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(10,33,22,0.95) 100%)", padding: "1.5rem", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
                 <span style={{ color: "var(--gold-light)", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.15em", fontWeight: 700 }}>Tee Off In Paradise</span>
-                <h3 style={{ color: "var(--white)", fontFamily: "var(--font-playfair)", fontSize: "1.6rem", margin: "0.3rem 0 0.8rem 0" }}>Golf Tourism</h3>
-                <Link href="/golf" className="btn-gold" style={{ padding: "0.6rem 1.2rem", fontSize: "0.85rem", width: "fit-content", minHeight: "44px" }}>
+                <h3 style={{ color: "var(--white)", fontFamily: "var(--font-playfair)", fontSize: "1.5rem", margin: "0.3rem 0 0.8rem 0" }}>Golf Tourism</h3>
+                <Link href="/golf" className="btn-gold" style={{ padding: "0.5rem 1.1rem", fontSize: "0.85rem", width: "fit-content", minHeight: "38px" }}>
                   Explore Courses →
                 </Link>
               </div>
             </article>
 
             {/* Tile 2: Wellness */}
-            <article style={{ position: "relative", height: "380px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
+            <article style={{ position: "relative", height: "340px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
               <Image
                 src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80"
                 alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Ayurveda Wellness Retreat"
@@ -163,17 +149,17 @@ export default function HomePage() {
                 style={{ objectFit: "cover" }}
                 sizes="300px"
               />
-              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(10,33,22,0.95) 100%)", padding: "1.8rem", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(10,33,22,0.95) 100%)", padding: "1.5rem", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
                 <span style={{ color: "var(--gold-light)", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.15em", fontWeight: 700 }}>Mind & Body Harmony</span>
-                <h3 style={{ color: "var(--white)", fontFamily: "var(--font-playfair)", fontSize: "1.6rem", margin: "0.3rem 0 0.8rem 0" }}>Wellness & Ayurveda</h3>
-                <Link href="/wellness" className="btn-gold" style={{ padding: "0.6rem 1.2rem", fontSize: "0.85rem", width: "fit-content", minHeight: "44px" }}>
+                <h3 style={{ color: "var(--white)", fontFamily: "var(--font-playfair)", fontSize: "1.5rem", margin: "0.3rem 0 0.8rem 0" }}>Wellness & Ayurveda</h3>
+                <Link href="/wellness" className="btn-gold" style={{ padding: "0.5rem 1.1rem", fontSize: "0.85rem", width: "fit-content", minHeight: "38px" }}>
                   View Retreats →
                 </Link>
               </div>
             </article>
 
             {/* Tile 3: Weddings */}
-            <article style={{ position: "relative", height: "380px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
+            <article style={{ position: "relative", height: "340px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
               <Image
                 src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
                 alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Destination Wedding Ceremony Bentota"
@@ -182,17 +168,17 @@ export default function HomePage() {
                 style={{ objectFit: "cover" }}
                 sizes="300px"
               />
-              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(10,33,22,0.95) 100%)", padding: "1.8rem", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(10,33,22,0.95) 100%)", padding: "1.5rem", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
                 <span style={{ color: "var(--gold-light)", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.15em", fontWeight: 700 }}>Where Love Meets Paradise</span>
-                <h3 style={{ color: "var(--white)", fontFamily: "var(--font-playfair)", fontSize: "1.6rem", margin: "0.3rem 0 0.8rem 0" }}>Destination Weddings</h3>
-                <Link href="/destination-weddings" className="btn-gold" style={{ padding: "0.6rem 1.2rem", fontSize: "0.85rem", width: "fit-content", minHeight: "44px" }}>
+                <h3 style={{ color: "var(--white)", fontFamily: "var(--font-playfair)", fontSize: "1.5rem", margin: "0.3rem 0 0.8rem 0" }}>Destination Weddings</h3>
+                <Link href="/destination-weddings" className="btn-gold" style={{ padding: "0.5rem 1.1rem", fontSize: "0.85rem", width: "fit-content", minHeight: "38px" }}>
                   Plan Ceremony →
                 </Link>
               </div>
             </article>
 
             {/* Tile 4: Corporate */}
-            <article style={{ position: "relative", height: "380px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
+            <article style={{ position: "relative", height: "340px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
               <Image
                 src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80"
                 alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Corporate Travel MICE Conference"
@@ -201,10 +187,10 @@ export default function HomePage() {
                 style={{ objectFit: "cover" }}
                 sizes="300px"
               />
-              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(10,33,22,0.95) 100%)", padding: "1.8rem", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
+              <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(10,33,22,0.95) 100%)", padding: "1.5rem", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
                 <span style={{ color: "var(--gold-light)", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.15em", fontWeight: 700 }}>Executive Events & MICE</span>
-                <h3 style={{ color: "var(--white)", fontFamily: "var(--font-playfair)", fontSize: "1.6rem", margin: "0.3rem 0 0.8rem 0" }}>Corporate Travel</h3>
-                <Link href="/services#corporate" className="btn-gold" style={{ padding: "0.6rem 1.2rem", fontSize: "0.85rem", width: "fit-content", minHeight: "44px" }}>
+                <h3 style={{ color: "var(--white)", fontFamily: "var(--font-playfair)", fontSize: "1.5rem", margin: "0.3rem 0 0.8rem 0" }}>Corporate Travel</h3>
+                <Link href="/services#corporate" className="btn-gold" style={{ padding: "0.5rem 1.1rem", fontSize: "0.85rem", width: "fit-content", minHeight: "38px" }}>
                   MICE Services →
                 </Link>
               </div>
@@ -222,26 +208,26 @@ export default function HomePage() {
       {/* 8. MASONRY GALLERY PREVIEW */}
       <section className="section-padding bg-off-white">
         <div className="container-custom">
-          <div style={{ textAlign: "center", maxWidth: "600px", margin: "0 auto 3rem auto" }}>
+          <div style={{ textAlign: "center", maxWidth: "600px", margin: "0 auto 2.5rem auto" }}>
             <span className="eyebrow">VISUAL JOURNEYS</span>
             <h2 style={{ fontSize: "clamp(2rem, 3.5vw, 2.8rem)", marginBottom: "0.8rem" }}>Captured Moments</h2>
             <p style={{ color: "var(--ink-soft)", fontSize: "0.95rem" }}>A glimpse into guest experiences across championship fairways, tranquil spas, and coastal sanctuaries.</p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "1.5rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.2rem" }}>
             {GALLERY_TEASERS.map((g, idx) => (
-              <RevealOnScroll key={idx} delay={idx * 70}>
-                <article style={{ position: "relative", height: "260px", borderRadius: "10px", overflow: "hidden", boxShadow: "0 8px 25px rgba(18,53,36,0.06)" }}>
+              <RevealOnScroll key={idx} delay={idx * 60}>
+                <article style={{ position: "relative", height: "240px", borderRadius: "10px", overflow: "hidden", boxShadow: "0 8px 25px rgba(18,53,36,0.06)" }}>
                   <Image src={g.src} alt={g.alt} fill loading="lazy" style={{ objectFit: "cover" }} sizes="400px" />
                   <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(10,33,22,0.85) 100%)", padding: "1.2rem", display: "flex", alignItems: "flex-end" }}>
-                    <span style={{ color: "var(--white)", fontFamily: "var(--font-playfair)", fontSize: "1.1rem" }}>{g.title}</span>
+                    <span style={{ color: "var(--white)", fontFamily: "var(--font-playfair)", fontSize: "1.05rem" }}>{g.title}</span>
                   </div>
                 </article>
               </RevealOnScroll>
             ))}
           </div>
 
-          <div style={{ textAlign: "center", marginTop: "2.5rem" }}>
+          <div style={{ textAlign: "center", marginTop: "2rem" }}>
             <Link href="/gallery" className="btn-forest" style={{ minHeight: "44px" }}>
               View Full Photo Gallery <BiRightArrowAlt style={{ fontSize: "1.3rem" }} />
             </Link>
@@ -252,7 +238,7 @@ export default function HomePage() {
       {/* 9. FAQ ACCORDION */}
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <div style={{ textAlign: "center", maxWidth: "650px", margin: "0 auto 3rem auto" }}>
+          <div style={{ textAlign: "center", maxWidth: "650px", margin: "0 auto 2.5rem auto" }}>
             <span className="eyebrow">FREQUENTLY ASKED QUESTIONS</span>
             <h2 style={{ fontSize: "clamp(2rem, 3.5vw, 2.8rem)" }}>Plan Your Trip With Ease</h2>
           </div>
@@ -263,26 +249,26 @@ export default function HomePage() {
       {/* 10. CONTACT CTA BAND */}
       <section className="bg-forest section-padding">
         <div className="container-custom">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "4rem", alignItems: "center" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "3.5rem", alignItems: "center" }}>
             
             <div>
               <span className="eyebrow" style={{ color: "var(--gold-light)" }}>LET'S PLAN YOUR SRI LANKA ESCAPE</span>
-              <h2 style={{ fontSize: "clamp(2.2rem, 4vw, 3.2rem)", color: "var(--white)", marginBottom: "1.5rem" }}>
+              <h2 style={{ fontSize: "clamp(2.2rem, 4vw, 3.2rem)", color: "var(--white)", marginBottom: "1.2rem" }}>
                 Ready to Experience Authentic Luxury?
               </h2>
-              <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1.05rem", lineHeight: "1.7", marginBottom: "2rem" }}>
+              <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1rem", lineHeight: "1.6", marginBottom: "1.8rem" }}>
                 Connect with our expert travel designers for custom golf itineraries, certified Ayurveda retreats, luxury private villa stays, or MICE logistics.
               </p>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: "1rem", color: "var(--gold-light)", fontSize: "1rem" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem", color: "var(--gold-light)", fontSize: "0.95rem" }}>
                 <p><strong>Direct Desk:</strong> {COMPANY_FACTS.phone}</p>
                 <p><strong>Direct Email:</strong> {COMPANY_FACTS.email}</p>
                 <p><strong>Response Time:</strong> Guaranteed within 12 hours</p>
               </div>
             </div>
 
-            <div style={{ backgroundColor: "var(--white)", borderRadius: "16px", padding: "2.5rem", color: "var(--ink)", boxShadow: "0 20px 50px rgba(0,0,0,0.3)" }}>
-              <h3 style={{ fontSize: "1.5rem", fontFamily: "var(--font-playfair)", marginBottom: "1rem" }}>Quick Travel Inquiry</h3>
+            <div style={{ backgroundColor: "var(--white)", borderRadius: "16px", padding: "2rem", color: "var(--ink)", boxShadow: "0 20px 50px rgba(0,0,0,0.3)" }}>
+              <h3 style={{ fontSize: "1.4rem", fontFamily: "var(--font-playfair)", marginBottom: "1rem" }}>Quick Travel Inquiry</h3>
               <ContactForm />
             </div>
 
