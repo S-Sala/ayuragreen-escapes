@@ -91,164 +91,171 @@ export const DESTINATIONS: Destination[] = [
     name: "Sigiriya Rock Fortress",
     tagline: "The 8th Wonder of the Ancient World",
     description: "Ascend the iconic 5th-century lion rock fortress surrounded by royal water gardens and ancient frescoes.",
-    image: "https://images.unsplash.com/photo-1588598198321-9735fd52455b?auto=format&fit=crop&w=1200&q=80"
+    image: "/images/destinations/sigiriya.jpg"
   },
   {
     slug: "ella",
     name: "Ella & Nine Arch Bridge",
     tagline: "Mountain Paradise & Misty Peaks",
     description: "Marvel at the world-famous Nine Arch Railway Bridge in Ella and hike through serene tea plantations and waterfalls.",
-    image: "https://images.unsplash.com/photo-1566296537600-247ba48b9212?auto=format&fit=crop&w=1200&q=80"
+    image: "/images/destinations/ella.jpg"
   },
   {
     slug: "kandy",
     name: "Temple of the Tooth (Kandy)",
     tagline: "Cultural Heartland of Sri Lanka",
     description: "Visit the sacred Temple of the Tooth Relic (Sri Dalada Maligawa) nestled by the tranquil Kandy Lake in the central highlands.",
-    image: "https://images.unsplash.com/photo-1625736338592-f70d62db94ea?auto=format&fit=crop&w=1200&q=80"
+    image: "/images/destinations/kandy.jpg"
   },
   {
     slug: "galle-fort",
     name: "Galle Fort",
     tagline: "Colonial Charm & Coastal Sophistication",
     description: "Stroll along 17th-century Dutch ramparts, iconic lighthouse, chic boutiques, and cobblestone seaside alleys.",
-    image: "https://images.unsplash.com/photo-1627885721868-80979bf33fb7?auto=format&fit=crop&w=1200&q=80"
+    image: "/images/destinations/galle.jpg"
   },
   {
     slug: "nuwara-eliya",
     name: "Nuwara Eliya",
     tagline: "Little England in Tea Country",
     description: "Experience cool highland breezes, manicured golf links, and historic British colonial tea estates.",
-    image: "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=1200&q=80"
+    image: "/images/destinations/nuwara-eliya.jpg"
   },
   {
     slug: "bentota",
     name: "Bentota",
     tagline: "Golden Sands & Luxury River Safari",
     description: "Unwind on golden beaches, private mangrove lagoons, and world-class luxury water sports resorts.",
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80"
+    image: "/images/destinations/bentota.jpg"
   },
   {
     slug: "mirissa",
     name: "Mirissa",
     tagline: "Whale Watching & Sunset Escapes",
     description: "Cruise blue waters for majestic blue whale sightings and coconut tree hill ocean views.",
-    image: "https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=1200&q=80"
+    image: "/images/destinations/mirissa.jpg"
   },
   {
     slug: "yala",
     name: "Yala National Park",
     tagline: "Wild Leopard Safaris",
     description: "Embark on exciting wildlife safaris home to the world's highest density of wild leopards.",
-    image: "https://images.unsplash.com/photo-1534567153574-2b12153a87f0?auto=format&fit=crop&w=1200&q=80"
-  },
-  {
-    slug: "trincomalee",
-    name: "Trincomalee",
-    tagline: "Pristine Eastern Beaches & Links Golf",
-    description: "Explore natural deep-water harbors, Koneswaram Temple cliffs, and coastal golf greens.",
-    image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80"
+    image: "/images/destinations/yala.jpg"
   }
 ];
 
 export const PACKAGES: PackageItem[] = [
   {
     slug: "family-holiday",
-    name: "Family Holiday",
-    tagline: "Fun-filled adventures for families.",
-    duration: "7 - 10 Days",
+    name: "Exclusive Family Tour Package",
+    duration: "10 Days / 9 Nights",
+    tagline: "Child-friendly, safe, and engaging island adventures for all ages",
+    featured: true,
     inclusions: [
-      "Family-friendly luxury accommodation",
-      "Child-safe wildlife safaris in Yala",
-      "Cultural & village interactive experiences",
-      "Dedicated family travel designer",
-      "Private air-conditioned transportation"
+      "Colombo City Tour & Gangaramaya Temple",
+      "Pinnawala Elephant Orphanage & Sigiriya Rock Fortress",
+      "Kandy Temple of the Tooth & Cultural Dance Show",
+      "Scenic Ella Train Journey & Nine Arch Bridge",
+      "Yala National Park Wildlife Safari",
+      "Mirissa Beach Relaxation & Whale Watching",
+      "Private Air-Conditioned Vehicle with Dedicated Chauffeur Guide",
+      "Daily Breakfast & Selected Dinners"
     ],
     image: "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=1200&q=80"
   },
   {
     slug: "luxury-escape",
-    name: "Luxury Escape",
-    tagline: "Premium accommodation and personalized experiences.",
-    duration: "8 - 12 Days",
+    name: "Luxury Escapes Tour Package",
+    duration: "12 Days / 11 Nights",
+    tagline: "Uncompromising 5-star elegance, private pool villas, and VIP concierge",
     featured: true,
     inclusions: [
-      "Private luxury villa & personal butler service",
-      "Chauffeured luxury vehicle touring",
-      "Fine-dining & sunset cruise reservations",
-      "Helicopter transfer option",
-      "VIP airport meet & greet fast track"
+      "5-Star Resort Stays (Ceylon Tea Trails, Cape Weligama, Amangalla)",
+      "Helicopter Transfer Options & Private Catamaran Cruise",
+      "Private Butler Service & Gourmet Dining Experiences",
+      "Exclusive Wildlife Safari with Expert Naturalist",
+      "Private Golf Round at Victoria Golf Resort Kandy",
+      "24/7 Dedicated Concierge Support"
     ],
     image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80"
   },
   {
     slug: "wellness-retreat",
-    name: "Wellness Retreat",
-    tagline: "Ayurveda, yoga, meditation, and relaxation.",
-    duration: "7 - 14 Days",
+    name: "Sri Lanka Wellness Retreat Package",
+    duration: "7 Days / 6 Nights",
+    tagline: "Certified Ayurveda doctor consultations, daily yoga, and organic detox",
+    featured: false,
     inclusions: [
-      "Doctor-led Ayurveda health consultation",
-      "Daily guided yoga & meditation sessions",
-      "Organic customized wellness cuisine",
-      "Herbal baths & traditional stress management",
-      "Tranquil jungle & ocean resort stay"
+      "Ayurveda Doctor Consultation & Daily Panchakarma Treatments",
+      "Daily Morning & Evening Yoga & Mindfulness Meditation",
+      "Herbal Bath, Steam, and Organic Detox Diet Plan",
+      "Nature Walk & Botanical Forest Therapy",
+      "Eco-Wellness Resort Accommodation",
+      "Herbal Elixirs & Personal Wellness Plan"
     ],
     image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80"
   },
   {
     slug: "golf-holiday",
-    name: "Golf Holiday",
-    tagline: "Luxury golf holidays with championship courses.",
-    duration: "7 - 10 Days",
+    name: "Championship Golf Holiday Package",
+    duration: "8 Days / 7 Nights",
+    tagline: "Guaranteed tee times across Kandy, Nuwara Eliya, and Colombo",
     featured: true,
     inclusions: [
-      "Guaranteed tee times at Victoria, Nuwara Eliya & Royal Colombo",
-      "Private caddie & golf cart arrangements",
-      "5-star golf resort accommodations",
-      "Golf equipment handling & transportation",
-      "Post-round spa & wellness relaxation"
+      "Round of Golf at Victoria Golf Resort Kandy",
+      "Round of Golf at Nuwara Eliya Golf Club",
+      "Round of Golf at Royal Colombo Golf Club",
+      "Private Buggies & Caddie Services Included",
+      "Luxury Golf Resort Accommodation",
+      "Golf Club Storage & Transport Logistics"
     ],
     image: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1200&q=80"
   },
   {
     slug: "corporate-retreat",
-    name: "Corporate Retreat",
-    tagline: "Executive meetings, incentives, and networking.",
-    duration: "3 - 5 Days",
+    name: "Corporate Travel & MICE Retreat Package",
+    duration: "5 Days / 4 Nights",
+    tagline: "Executive MICE conferences, leadership workshops, and team building",
+    featured: false,
     inclusions: [
-      "5-star conference venues & technical setup",
-      "Executive team building & leadership workshops",
-      "Corporate golf networking day",
-      "Dedicated event manager & VIP transfers",
-      "Gala award dinner arrangements"
+      "5-Star Conference Venue & AV Technology Setup",
+      "Experiential Outdoor Team Building & Leadership Workshops",
+      "Gala Dinner & Cultural Entertainment Show",
+      "Corporate Golf Tournament at Victoria Golf Resort",
+      "VIP Airport Transfers & Luxury Coach Logistics",
+      "Dedicated Event Manager Desk"
     ],
     image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80"
   },
   {
     slug: "beach-escape",
-    name: "Beach Escape",
-    tagline: "Relax on Sri Lanka's pristine tropical beaches.",
-    duration: "5 - 8 Days",
+    name: "Tropical Beach & Lagoon Escape",
+    duration: "6 Days / 5 Nights",
+    tagline: "Golden sands, sunset ocean cruises, whale watching, and beach relaxation",
+    featured: false,
     inclusions: [
-      "Oceanfront luxury suite accommodations",
-      "Private whale watching catamaran cruise",
-      "Romantic beachfront candlelit dinner",
-      "Surfing & water sports assistance",
-      "Coastal spa treatments"
+      "Oceanfront Resort Stays in Bentota & Mirissa",
+      "Private Bentota River Safari & Water Sports",
+      "Sunset Catamaran Cruise & Beach Firepit Dinner",
+      "Mirissa Whale Watching Boat Excursion",
+      "Galle Dutch Fort Heritage Walking Tour",
+      "Luxury Chauffeured Airport Transfers"
     ],
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80"
   },
   {
     slug: "tailor-made-tours",
-    name: "Tailor-Made Tours",
-    tagline: "Customized itineraries designed according to your interests, travel style, and budget.",
-    duration: "Flexible Pacing",
+    name: "Tailor-Made Sri Lanka Tour",
+    duration: "Flexible (5 to 21 Days)",
+    tagline: "Fully customized itinerary built around your exact schedule and interests",
+    featured: false,
     inclusions: [
-      "Personalized itinerary with 1-on-1 travel consultant",
-      "Combination of Golf, Wellness, Culture & Safaris",
-      "Choice of luxury villas, boutique, or heritage hotels",
-      "Flexible schedule and dedicated chauffeur guide",
-      "24/7 concierge assistance"
+      "Personalized 1-on-1 Consultation with Travel Designer",
+      "Choice of Accommodation (Boutique, Villa, 5-Star)",
+      "Flexible Daily Schedule & Custom Activity Selection",
+      "Dedicated Chauffeur Guide & Private Vehicle",
+      "Special Requests (Dietary, Accessibility, Private Charters)",
+      "24/7 Guest Assistance Desk"
     ],
     image: "https://images.unsplash.com/photo-1588598198321-9735fd52455b?auto=format&fit=crop&w=1200&q=80"
   }
@@ -257,74 +264,53 @@ export const PACKAGES: PackageItem[] = [
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: "1",
-    name: "Richard & Clara Vance",
-    location: "London, United Kingdom",
-    role: "Golf & Luxury Travelers",
-    quote: "AyuraGreen Escapes arranged an immaculate 10-day golf tour across Victoria Kandy and Nuwara Eliya. The tee-time coordination, chauffeured transfers, and hotel selections were flawless. Playing golf in Sri Lanka's tea hills was an unforgettable experience!",
-    avatar: "RV",
-    rating: 5
+    name: "David & Sarah Jenkins",
+    location: "United Kingdom",
+    role: "Golf & Wellness Guests",
+    quote: "Our 10-day tour with AyuraGreen Escapes was pure perfection. Playing Victoria Golf Resort in the morning and relaxing with authentic Ayurveda treatments in the evening was a dream come true. Flawless DMC service!",
+    rating: 5,
+    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80"
   },
   {
     id: "2",
-    name: "Elena & David Sterling",
-    location: "Sydney, Australia",
-    role: "Destination Wedding Couple",
-    quote: "We chose Bentota for our oceanfront wedding. The AyuraGreen team transformed our dream into reality — every floral arch, sunset dining table, and guest transfer was handled with extraordinary care and true Sri Lankan warmth.",
-    avatar: "ES",
-    rating: 5
+    name: "Dr. Michael Chen",
+    location: "Singapore",
+    role: "Executive Corporate Retreat",
+    quote: "We hosted our Asia-Pacific leadership summit with AyuraGreen Escapes. The MICE logistics, luxury transport, and corporate golf tournament execution were world-class. Highly recommended for corporate travel.",
+    rating: 5,
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80"
   },
   {
     id: "3",
-    name: "Markus Vance",
-    location: "Frankfurt, Germany",
-    role: "Corporate Executive Retreat",
-    quote: "Our executive retreat combined strategic leadership meetings with afternoon golf at Royal Colombo and wellness therapy. AyuraGreen's attention to corporate detail and VIP concierge service set a new benchmark for DMC excellence.",
-    avatar: "MV",
-    rating: 5
+    name: "Elena & Marco Rossi",
+    location: "Italy",
+    role: "Honeymoon & Destination Wedding",
+    quote: "Saying 'I do' on Bentota beach under a golden sunset arranged by AyuraGreen Escapes was magical. Every detail from floral arches to guest transportation was handled with genuine Sri Lankan warmth.",
+    rating: 5,
+    avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80"
   }
 ];
 
 export const DIRECTORS: Director[] = [
   {
-    name: "Mr. Gayan Karunaratne",
-    role: "Director",
-    bio: "Seasoned business leader with extensive expertise in strategic business development, corporate partnerships, international trade, project management, and CRM. Focuses on innovative tourism solutions combining luxury travel, wellness, golf tourism, and destination management, building long-term strategic partnerships across hotel networks, resorts, and corporate clients.",
-    expertise: [
-      "Business Development",
-      "Corporate Strategy",
-      "Destination Management",
-      "International Partnerships",
-      "Tourism Marketing",
-      "Golf Tourism",
-      "Project Management",
-      "Corporate Event Planning"
-    ],
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80"
+    name: "Rishan Sala",
+    role: "Managing Director & CEO",
+    bio: "Rishan Sala leads AyuraGreen Escapes with a vision to redefine Sri Lankan luxury tourism. With extensive expertise in Destination Management (DMC), golf travel, and corporate events, he ensures every journey offers world-class hospitality, authenticity, and seamless execution.",
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80",
+    expertise: ["Luxury Destination Management", "Golf Tourism", "Corporate MICE Events", "Strategic Partnerships"]
   },
   {
     name: "Dr. Sharmini Perera",
-    role: "Director",
-    bio: "Accomplished leader with deep expertise in healthcare, wellness, preventive medicine, and holistic wellbeing. Develops authentic wellness journeys integrating traditional Ayurveda, mindfulness, healthy living, nature therapy, and luxury hospitality in collaboration with top wellness resorts and medical professionals.",
-    expertise: [
-      "Wellness Tourism",
-      "Preventive Healthcare",
-      "Ayurveda & Holistic Wellness",
-      "Health Education",
-      "Sustainable Wellness Programs",
-      "Customer Experience",
-      "Medical & Wellness Partnerships"
-    ],
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80"
+    role: "Executive Director — Healthcare & Wellness",
+    bio: "Dr. Sharmini Perera oversees AyuraGreen Escapes' wellness and medical tourism portfolio. With decades of medical and holistic wellness leadership, she ensures all Ayurveda retreats, detox programs, and spa stays adhere to authentic medical and doctor-certified standards.",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80",
+    expertise: ["Ayurveda & Medical Tourism", "Holistic Wellness Retreats", "Doctor-Led Health Programs", "Guest Care"]
   }
 ];
 
 export const SUSTAINABILITY_COMMITMENTS = [
-  "Supporting Local Communities & Artisans",
-  "Responsible & Ethical Wildlife Tourism",
-  "Eco-friendly & Single-Use Plastic Reduction",
-  "Preservation of Cultural Heritage Sites",
-  "Sustainable Hospitality Partnerships",
-  "Ethical Business Practices",
-  "Environmental & Forest Conservation",
-  "Promoting Local Sri Lankan Businesses"
+  "Plastic-Free Guided Tours & Eco-Friendly Refillable Bottles",
+  "Support for Local Heritage Craft Communities & Artisans",
+  "Carbon-Offsetting Partnerships for Chauffeur Fleet Operations",
+  "Ethical Wildlife Safaris Adhering to Strict National Park Codes"
 ];
