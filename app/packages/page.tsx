@@ -6,9 +6,9 @@ import { PACKAGES } from "@/lib/data";
 import { BiCheck, BiRightArrowAlt } from "react-icons/bi";
 
 export const metadata: Metadata = {
-  title: "Signature Tour Packages Sri Lanka | AyuraGreen Escapes",
+  title: "Signature Tour Packages Sri Lanka | Ayuragreen Escapes",
   description:
-    "Explore AyuraGreen Escapes' 7 signature tour packages: Family Holiday, Luxury Escape, Wellness Retreat, Golf Holiday, Corporate Retreat, Beach Escape, and Tailor-Made Tours.",
+    "Explore Ayuragreen Escapes' 7 signature tour packages: Family Holiday, Luxury Escape, Wellness Retreat, Golf Holiday, Corporate Retreat, Beach Escape, and Tailor-Made Tours.",
 };
 
 export default function PackagesPage() {
@@ -18,7 +18,7 @@ export default function PackagesPage() {
       <section style={{ position: "relative", height: "450px", backgroundColor: "var(--forest-deep)", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <Image
           src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=80"
-          alt="Signature Tour Packages"
+          alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Signature Packages Hero"
           fill
           style={{ objectFit: "cover", opacity: 0.35 }}
           priority
@@ -40,7 +40,7 @@ export default function PackagesPage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: "2.5rem" }}>
             {PACKAGES.map((pkg, idx) => (
               <RevealOnScroll key={pkg.slug} delay={idx * 60}>
-                <div
+                <article
                   id={pkg.slug}
                   className="card-clean"
                   style={{
@@ -74,7 +74,14 @@ export default function PackagesPage() {
                   )}
 
                   <div style={{ position: "relative", width: "100%", height: "240px" }}>
-                    <Image src={pkg.image} alt={pkg.name} fill style={{ objectFit: "cover" }} sizes="400px" />
+                    <Image
+                      src={pkg.image}
+                      alt={`Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - ${pkg.name}`}
+                      fill
+                      loading="lazy"
+                      style={{ objectFit: "cover" }}
+                      sizes="400px"
+                    />
                     <div style={{ position: "absolute", bottom: "1rem", left: "1rem", backgroundColor: "rgba(10,33,22,0.88)", color: "var(--white)", padding: "0.35rem 0.8rem", borderRadius: "4px", fontSize: "0.8rem", fontWeight: 600 }}>
                       {pkg.duration}
                     </div>
@@ -103,12 +110,12 @@ export default function PackagesPage() {
                     </div>
 
                     <div style={{ marginTop: "auto" }}>
-                      <Link href={`/contact?package=${pkg.slug}`} className="btn-gold" style={{ width: "100%", justifyContent: "center" }}>
+                      <Link href={`/contact?package=${pkg.slug}`} className="btn-gold" style={{ width: "100%", justifyContent: "center", minHeight: "44px" }}>
                         Enquire About Package <BiRightArrowAlt style={{ fontSize: "1.2rem" }} />
                       </Link>
                     </div>
                   </div>
-                </div>
+                </article>
               </RevealOnScroll>
             ))}
           </div>
@@ -124,7 +131,7 @@ export default function PackagesPage() {
           <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1.1rem", marginBottom: "2rem" }}>
             Our travel designers customize every detail to match your schedule, group size, and travel style.
           </p>
-          <Link href="/contact?package=tailor-made-tours" className="btn-gold" style={{ padding: "1rem 2.5rem", fontSize: "1rem" }}>
+          <Link href="/contact?package=tailor-made-tours" className="btn-gold" style={{ padding: "1rem 2.5rem", fontSize: "1rem", minHeight: "44px" }}>
             Design My Journey
           </Link>
         </div>

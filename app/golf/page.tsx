@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import TeeTimeForm from "@/components/ui/TeeTimeForm";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import { GOLF_COURSES, COMPANY_FACTS } from "@/lib/data";
@@ -14,9 +13,9 @@ import {
 } from "react-icons/bi";
 
 export const metadata: Metadata = {
-  title: "Golf Holidays in Sri Lanka | AyuraGreen Escapes",
+  title: "Golf Holidays & Tee Times in Sri Lanka | Ayuragreen Escapes",
   description:
-    "Book championship golf holidays in Sri Lanka. Victoria Golf Resort Kandy, Nuwara Eliya Golf Club, Royal Colombo Golf Club, Eagle's Golf Links Trincomalee, and Shangri-La Hambantota.",
+    "Book championship golf holidays in Sri Lanka with Ayuragreen Escapes. Guaranteed tee times at Victoria Golf Resort Kandy, Nuwara Eliya Golf Club, Royal Colombo Golf Club, Eagle's Golf Links Trincomalee, and Shangri-La Hambantota.",
 };
 
 const INTRO_HIGHLIGHTS = [
@@ -53,7 +52,7 @@ export default function GolfPage() {
       <section style={{ position: "relative", height: "550px", backgroundColor: "var(--forest-deep)", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <Image
           src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1920&q=80"
-          alt="Golf Tourism Sri Lanka"
+          alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Golf Tourism Championship Fairway Hero"
           fill
           style={{ objectFit: "cover", opacity: 0.35 }}
           priority
@@ -66,7 +65,7 @@ export default function GolfPage() {
           <p style={{ color: "rgba(255,255,255,0.9)", fontSize: "1.25rem", maxWidth: "750px", margin: "0 auto 2rem auto" }}>
             World-class golf experiences in the heart of Sri Lanka.
           </p>
-          <a href="#book" className="btn-gold" style={{ padding: "1rem 2.2rem", fontSize: "1rem" }}>
+          <a href="#book" className="btn-gold" style={{ padding: "1rem 2.2rem", fontSize: "1rem", minHeight: "44px" }}>
             Reserve Tee Time <BiCalendarCheck style={{ fontSize: "1.2rem" }} />
           </a>
         </div>
@@ -79,7 +78,7 @@ export default function GolfPage() {
             {INTRO_HIGHLIGHTS.map((item, idx) => {
               const IconComp = item.icon;
               return (
-                <div key={idx} style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
+                <article key={idx} style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
                   <div style={{ width: "48px", height: "48px", borderRadius: "10px", backgroundColor: "var(--off-white)", color: "var(--gold)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.5rem", flexShrink: 0 }}>
                     <IconComp />
                   </div>
@@ -87,7 +86,7 @@ export default function GolfPage() {
                     <h3 style={{ fontSize: "1.1rem", fontFamily: "var(--font-playfair)", marginBottom: "0.2rem" }}>{item.title}</h3>
                     <p style={{ fontSize: "0.85rem", color: "var(--ink-soft)", lineHeight: "1.4" }}>{item.desc}</p>
                   </div>
-                </div>
+                </article>
               );
             })}
           </div>
@@ -106,8 +105,9 @@ export default function GolfPage() {
             <div style={{ position: "relative", height: "450px", borderRadius: "16px", overflow: "hidden", boxShadow: "0 20px 45px rgba(18,53,36,0.12)" }}>
               <Image
                 src={victoria.image}
-                alt={victoria.name}
+                alt={`Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - ${victoria.name}`}
                 fill
+                loading="lazy"
                 style={{ objectFit: "cover" }}
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
@@ -147,7 +147,7 @@ export default function GolfPage() {
                 </div>
               </div>
 
-              <a href="#book" className="btn-gold">
+              <a href="#book" className="btn-gold" style={{ minHeight: "44px" }}>
                 Book Tee Time at Victoria <BiCalendarCheck style={{ fontSize: "1.2rem" }} />
               </a>
             </div>
@@ -166,9 +166,16 @@ export default function GolfPage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2.2rem" }}>
             {otherCourses.map((c, idx) => (
               <RevealOnScroll key={c.slug} delay={idx * 80}>
-                <div className="card-clean" style={{ height: "100%", display: "flex", flexDirection: "column" }}>
+                <article className="card-clean" style={{ height: "100%", display: "flex", flexDirection: "column" }}>
                   <div style={{ position: "relative", width: "100%", height: "230px" }}>
-                    <Image src={c.image} alt={c.name} fill style={{ objectFit: "cover" }} sizes="400px" />
+                    <Image
+                      src={c.image}
+                      alt={`Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - ${c.name}`}
+                      fill
+                      loading="lazy"
+                      style={{ objectFit: "cover" }}
+                      sizes="400px"
+                    />
                     <div style={{ position: "absolute", bottom: "1rem", left: "1rem", backgroundColor: "rgba(10,33,22,0.85)", color: "var(--white)", padding: "0.3rem 0.8rem", borderRadius: "4px", fontSize: "0.8rem", fontWeight: 600 }}>
                       {c.location}
                     </div>
@@ -195,7 +202,7 @@ export default function GolfPage() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </article>
               </RevealOnScroll>
             ))}
           </div>
@@ -214,22 +221,22 @@ export default function GolfPage() {
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1.8rem" }}>
-            <div style={{ backgroundColor: "rgba(255,255,255,0.08)", borderRadius: "10px", padding: "1.8rem", border: "1px solid rgba(217,194,133,0.2)" }}>
+            <article style={{ backgroundColor: "rgba(255,255,255,0.08)", borderRadius: "10px", padding: "1.8rem", border: "1px solid rgba(217,194,133,0.2)" }}>
               <h3 style={{ color: "var(--gold)", fontFamily: "var(--font-playfair)", fontSize: "1.3rem", marginBottom: "0.5rem" }}>World-Class Golf</h3>
-              <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.88rem" }}>Access to all 5 championship golf courses across Sri Lanka.</p>
-            </div>
-            <div style={{ backgroundColor: "rgba(255,255,255,0.08)", borderRadius: "10px", padding: "1.8rem", border: "1px solid rgba(217,194,133,0.2)" }}>
+              <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.88rem" }}>Access to all championship golf courses across Sri Lanka.</p>
+            </article>
+            <article style={{ backgroundColor: "rgba(255,255,255,0.08)", borderRadius: "10px", padding: "1.8rem", border: "1px solid rgba(217,194,133,0.2)" }}>
               <h3 style={{ color: "var(--gold)", fontFamily: "var(--font-playfair)", fontSize: "1.3rem", marginBottom: "0.5rem" }}>Wellness & Spa</h3>
               <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.88rem" }}>Post-round Ayurveda massages, hydrotherapy, and yoga sessions.</p>
-            </div>
-            <div style={{ backgroundColor: "rgba(255,255,255,0.08)", borderRadius: "10px", padding: "1.8rem", border: "1px solid rgba(217,194,133,0.2)" }}>
+            </article>
+            <article style={{ backgroundColor: "rgba(255,255,255,0.08)", borderRadius: "10px", padding: "1.8rem", border: "1px solid rgba(217,194,133,0.2)" }}>
               <h3 style={{ color: "var(--gold)", fontFamily: "var(--font-playfair)", fontSize: "1.3rem", marginBottom: "0.5rem" }}>Exquisite Cuisine</h3>
               <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.88rem" }}>Clubhouse fine dining, organic Sri Lankan meals, and wine pairings.</p>
-            </div>
-            <div style={{ backgroundColor: "rgba(255,255,255,0.08)", borderRadius: "10px", padding: "1.8rem", border: "1px solid rgba(217,194,133,0.2)" }}>
+            </article>
+            <article style={{ backgroundColor: "rgba(255,255,255,0.08)", borderRadius: "10px", padding: "1.8rem", border: "1px solid rgba(217,194,133,0.2)" }}>
               <h3 style={{ color: "var(--gold)", fontFamily: "var(--font-playfair)", fontSize: "1.3rem", marginBottom: "0.5rem" }}>Luxury Stays</h3>
               <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.88rem" }}>5-star golf resort villas in Kandy, Nuwara Eliya & Hambantota.</p>
-            </div>
+            </article>
           </div>
         </div>
       </section>

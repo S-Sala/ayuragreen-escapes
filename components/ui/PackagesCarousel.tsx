@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { BiChevronLeft, BiChevronRight, BiCheck, BiRightArrowAlt } from "react-icons/bi";
@@ -8,11 +8,36 @@ import { PACKAGES } from "@/lib/data";
 
 export default function PackagesCarousel() {
   const rowRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const scroll = (direction: "left" | "right") => {
     if (rowRef.current) {
       const scrollAmount = direction === "left" ? -380 : 380;
       rowRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
+
+  const handleScroll = () => {
+    if (rowRef.current) {
+      const scrollLeft = rowRef.current.scrollLeft;
+      const cardWidth = 380;
+      const index = Math.round(scrollLeft / cardWidth);
+      setActiveIndex(Math.min(index, PACKAGES.length - 1));
+    }
+  };
+
+  useEffect(() => {
+    const el = rowRef.current;
+    if (el) {
+      el.addEventListener("scroll", handleScroll, { passive: true });
+      return () => el.removeEventListener("scroll", handleScroll);
+    }
+  }, []);
+
+  const scrollToCard = (index: number) => {
+    if (rowRef.current) {
+      rowRef.current.scrollTo({ left: index * 380, behavior: "smooth" });
+      setActiveIndex(index);
     }
   };
 
@@ -33,6 +58,8 @@ export default function PackagesCarousel() {
               style={{
                 width: "44px",
                 height: "44px",
+                minWidth: "44px",
+                minHeight: "44px",
                 borderRadius: "50%",
                 border: "1px solid var(--line)",
                 backgroundColor: "var(--white)",
@@ -53,6 +80,8 @@ export default function PackagesCarousel() {
               style={{
                 width: "44px",
                 height: "44px",
+                minWidth: "44px",
+                minHeight: "44px",
                 borderRadius: "50%",
                 border: "1px solid var(--line)",
                 backgroundColor: "var(--white)",
@@ -80,10 +109,11 @@ export default function PackagesCarousel() {
             overflowX: "auto",
             scrollSnapType: "x mandatory",
             paddingBottom: "1.5rem",
+            paddingRight: "1rem",
           }}
         >
           {PACKAGES.map((pkg) => (
-            <div
+            <article
               key={pkg.slug}
               className="card-clean"
               style={{
@@ -120,7 +150,14 @@ export default function PackagesCarousel() {
 
               {/* Card Image */}
               <div style={{ position: "relative", width: "100%", height: "220px" }}>
-                <Image src={pkg.image} alt={pkg.name} fill style={{ objectFit: "cover" }} sizes="360px" />
+                <Image
+                  src={pkg.image}
+                  alt={`Ayuragreen Escapes Luxury Tour Package Sri Lanka - ${pkg.name}`}
+                  fill
+                  loading="lazy"
+                  style={{ objectFit: "cover" }}
+                  sizes="360px"
+                />
                 <div style={{ position: "absolute", bottom: "1rem", left: "1rem", backgroundColor: "rgba(10,33,22,0.85)", color: "var(--white)", padding: "0.3rem 0.7rem", borderRadius: "4px", fontSize: "0.8rem", fontWeight: 600 }}>
                   {pkg.duration}
                 </div>
@@ -150,12 +187,35 @@ export default function PackagesCarousel() {
                 </div>
 
                 <div style={{ marginTop: "auto" }}>
-                  <Link href={`/packages#${pkg.slug}`} className="btn-outline-gold" style={{ width: "100%", justifyContent: "center" }}>
+                  <Link href={`/packages#${pkg.slug}`} className="btn-outline-gold" style={{ width: "100%", justifyContent: "center", minHeight: "44px" }}>
                     View Package Details <BiRightArrowAlt style={{ fontSize: "1.2rem" }} />
                   </Link>
                 </div>
               </div>
-            </div>
+            </article>
+          ))}
+        </div>
+
+        {/* Visible Pagination Dots for Touch Devices */}
+        <div style={{ display: "flex", justifyContent: "center", gap: "0.5rem", marginTop: "1rem" }}>
+          {PACKAGES.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => scrollToCard(idx)}
+              style={{
+                width: idx === activeIndex ? "24px" : "12px",
+                height: "12px",
+                minWidth: "12px",
+                minHeight: "12px",
+                borderRadius: "6px",
+                backgroundColor: idx === activeIndex ? "var(--gold)" : "var(--line)",
+                border: "none",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+                padding: 0,
+              }}
+              aria-label={`Scroll to package ${idx + 1}`}
+            />
           ))}
         </div>
       </div>

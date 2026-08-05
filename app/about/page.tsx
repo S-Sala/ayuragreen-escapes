@@ -7,8 +7,8 @@ import { COMPANY_FACTS, CORE_VALUES, DIRECTORS, SUSTAINABILITY_COMMITMENTS } fro
 import { BiCheckCircle, BiLeaf } from "react-icons/bi";
 
 export const metadata: Metadata = {
-  title: "About Us | AyuraGreen Escapes Pvt Ltd",
-  description: "Learn about AyuraGreen Escapes — Sri Lanka's trusted luxury destination management company, vision, mission, core values, leadership team, and sustainability commitments.",
+  title: "About Us | Ayuragreen Escapes Pvt Ltd",
+  description: "Learn about Ayuragreen Escapes — Sri Lanka's trusted luxury destination management company, vision, mission, core values, leadership team, and sustainability commitments.",
 };
 
 export default function AboutPage() {
@@ -17,8 +17,8 @@ export default function AboutPage() {
       {/* 1. Page Hero */}
       <section style={{ position: "relative", height: "450px", backgroundColor: "var(--forest-deep)", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <Image
-          src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=1920&q=80"
-          alt="About AyuraGreen Escapes"
+          src="https://images.unsplash.com/photo-1588598198321-9735fd52455b?auto=format&fit=crop&w=1920&q=80"
+          alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - About Us Hero Sigiriya Lion Rock"
           fill
           style={{ objectFit: "cover", opacity: 0.35 }}
           priority
@@ -49,22 +49,22 @@ export default function AboutPage() {
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2.5rem" }}>
             {/* Vision */}
-            <div style={{ backgroundColor: "var(--off-white)", borderLeft: "4px solid var(--gold)", padding: "2.5rem", borderRadius: "0 12px 12px 0" }}>
+            <article style={{ backgroundColor: "var(--off-white)", borderLeft: "4px solid var(--gold)", padding: "2.5rem", borderRadius: "0 12px 12px 0" }}>
               <span className="eyebrow">OUR VISION</span>
               <h3 style={{ fontSize: "1.5rem", fontFamily: "var(--font-playfair)", marginBottom: "1rem" }}>Global Leadership in Luxury DMC</h3>
               <p style={{ fontSize: "0.98rem", color: "var(--ink-soft)", lineHeight: "1.7", fontStyle: "italic" }}>
                 "{COMPANY_FACTS.vision}"
               </p>
-            </div>
+            </article>
 
             {/* Mission */}
-            <div style={{ backgroundColor: "var(--off-white)", borderLeft: "4px solid var(--forest)", padding: "2.5rem", borderRadius: "0 12px 12px 0" }}>
+            <article style={{ backgroundColor: "var(--off-white)", borderLeft: "4px solid var(--forest)", padding: "2.5rem", borderRadius: "0 12px 12px 0" }}>
               <span className="eyebrow" style={{ color: "var(--forest)" }}>OUR MISSION</span>
               <h3 style={{ fontSize: "1.5rem", fontFamily: "var(--font-playfair)", marginBottom: "1rem" }}>Innovative & Sustainable Solutions</h3>
               <p style={{ fontSize: "0.98rem", color: "var(--ink-soft)", lineHeight: "1.7", fontStyle: "italic" }}>
                 "{COMPANY_FACTS.mission}"
               </p>
-            </div>
+            </article>
           </div>
         </div>
       </section>
@@ -80,11 +80,11 @@ export default function AboutPage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.8rem" }}>
             {CORE_VALUES.map((val, idx) => (
               <RevealOnScroll key={val.title} delay={idx * 70}>
-                <div className="card-clean" style={{ padding: "2rem", height: "100%" }}>
+                <article className="card-clean" style={{ padding: "2rem", height: "100%" }}>
                   <BiCheckCircle style={{ color: "var(--gold)", fontSize: "2rem", marginBottom: "1rem" }} />
                   <h3 style={{ fontSize: "1.25rem", fontFamily: "var(--font-playfair)", marginBottom: "0.5rem" }}>{val.title}</h3>
                   <p style={{ fontSize: "0.9rem", color: "var(--ink-soft)", lineHeight: "1.6" }}>{val.description}</p>
-                </div>
+                </article>
               </RevealOnScroll>
             ))}
           </div>
@@ -104,9 +104,16 @@ export default function AboutPage() {
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: "3rem" }}>
             {DIRECTORS.map((dir) => (
-              <div key={dir.name} className="card-clean" style={{ padding: "2.5rem", display: "flex", flexDirection: "column" }}>
+              <article key={dir.name} className="card-clean" style={{ padding: "2.5rem", display: "flex", flexDirection: "column" }}>
                 <div style={{ position: "relative", width: "120px", height: "120px", borderRadius: "50%", overflow: "hidden", marginBottom: "1.5rem", border: "3px solid var(--gold)" }}>
-                  <Image src={dir.image} alt={dir.name} fill style={{ objectFit: "cover" }} sizes="120px" />
+                  <Image
+                    src={dir.image}
+                    alt={`Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - ${dir.name}`}
+                    fill
+                    loading="lazy"
+                    style={{ objectFit: "cover" }}
+                    sizes="120px"
+                  />
                 </div>
                 <h3 style={{ fontSize: "1.6rem", fontFamily: "var(--font-playfair)", marginBottom: "0.2rem" }}>{dir.name}</h3>
                 <span style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--gold)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "1rem", display: "block" }}>
@@ -128,7 +135,7 @@ export default function AboutPage() {
                     ))}
                   </div>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
@@ -163,7 +170,7 @@ export default function AboutPage() {
           <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1.1rem", marginBottom: "2rem" }}>
             Speak with our travel consultants to design your luxury vacation, golf holiday, or wellness retreat.
           </p>
-          <Link href="/contact" className="btn-gold" style={{ padding: "1rem 2.5rem", fontSize: "1rem" }}>
+          <Link href="/contact" className="btn-gold" style={{ padding: "1rem 2.5rem", fontSize: "1rem", minHeight: "44px" }}>
             Contact Our Travel Desk
           </Link>
         </div>

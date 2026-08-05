@@ -15,8 +15,8 @@ import {
 } from "react-icons/bi";
 
 export const metadata: Metadata = {
-  title: "Service Lines & DMC Portfolio | AyuraGreen Escapes",
-  description: "Explore AyuraGreen Escapes' 8 core DMC service lines: Golf Tourism, Wellness Tourism, Destination Weddings, Corporate Travel, Corporate Golf Events, Destination Management, Luxury Holidays, and Airport Transfers.",
+  title: "Service Lines & DMC Portfolio | Ayuragreen Escapes",
+  description: "Explore Ayuragreen Escapes' 8 core DMC service lines: Golf Tourism, Wellness Tourism, Destination Weddings, Corporate Travel, Corporate Golf Events, Destination Management, Luxury Holidays, and Airport Transfers.",
 };
 
 const SERVICES = [
@@ -101,7 +101,7 @@ export default function ServicesPage() {
       <section style={{ position: "relative", height: "420px", backgroundColor: "var(--forest-deep)", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <Image
           src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=80"
-          alt="AyuraGreen Services"
+          alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Service Line Portfolio"
           fill
           style={{ objectFit: "cover", opacity: 0.3 }}
           priority
@@ -130,32 +130,34 @@ export default function ServicesPage() {
               const IconComp = s.icon;
               return (
                 <RevealOnScroll key={s.id} delay={idx * 60}>
-                  <a
-                    href={`#${s.id}`}
-                    className="card-clean"
-                    style={{ padding: "2rem", display: "flex", flexDirection: "column", height: "100%", textDecoration: "none" }}
-                  >
-                    <div
-                      style={{
-                        width: "56px",
-                        height: "56px",
-                        borderRadius: "12px",
-                        backgroundColor: "var(--off-white)",
-                        color: "var(--gold)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        fontSize: "1.8rem",
-                        marginBottom: "1.2rem",
-                        border: "1px solid var(--line)",
-                      }}
+                  <article>
+                    <a
+                      href={`#${s.id}`}
+                      className="card-clean"
+                      style={{ padding: "2rem", display: "flex", flexDirection: "column", height: "100%", textDecoration: "none", minHeight: "220px" }}
                     >
-                      <IconComp />
-                    </div>
-                    <h3 style={{ fontSize: "1.3rem", fontFamily: "var(--font-playfair)", marginBottom: "0.6rem" }}>{s.title}</h3>
-                    <p style={{ fontSize: "0.9rem", color: "var(--ink-soft)", lineHeight: "1.5", marginBottom: "1.2rem" }}>{s.teaser}</p>
-                    <span style={{ marginTop: "auto", fontSize: "0.85rem", fontWeight: 600, color: "var(--forest)" }}>Read Detail ↓</span>
-                  </a>
+                      <div
+                        style={{
+                          width: "56px",
+                          height: "56px",
+                          borderRadius: "12px",
+                          backgroundColor: "var(--off-white)",
+                          color: "var(--gold)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          fontSize: "1.8rem",
+                          marginBottom: "1.2rem",
+                          border: "1px solid var(--line)",
+                        }}
+                      >
+                        <IconComp />
+                      </div>
+                      <h3 style={{ fontSize: "1.3rem", fontFamily: "var(--font-playfair)", marginBottom: "0.6rem" }}>{s.title}</h3>
+                      <p style={{ fontSize: "0.9rem", color: "var(--ink-soft)", lineHeight: "1.5", marginBottom: "1.2rem" }}>{s.teaser}</p>
+                      <span style={{ marginTop: "auto", fontSize: "0.85rem", fontWeight: 600, color: "var(--forest)" }}>Read Detail ↓</span>
+                    </a>
+                  </article>
                 </RevealOnScroll>
               );
             })}
@@ -186,7 +188,7 @@ export default function ServicesPage() {
                     ))}
                   </ul>
 
-                  <Link href={s.link} className="btn-gold">
+                  <Link href={s.link} className="btn-gold" style={{ minHeight: "44px" }}>
                     {s.linkText}
                   </Link>
                 </div>
@@ -198,10 +200,11 @@ export default function ServicesPage() {
                       idx === 1 ? "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" :
                       idx === 2 ? "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" :
                       idx === 3 ? "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80" :
-                      "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=800&q=80"
+                      "https://images.unsplash.com/photo-1588598198321-9735fd52455b?auto=format&fit=crop&w=800&q=80"
                     }
-                    alt={s.title}
+                    alt={`Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - ${s.title}`}
                     fill
+                    loading="lazy"
                     style={{ objectFit: "cover" }}
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
@@ -221,7 +224,7 @@ export default function ServicesPage() {
           <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1.1rem", marginBottom: "2rem" }}>
             Our destination managers are ready to build a tailor-made program for your group.
           </p>
-          <Link href="/contact" className="btn-gold" style={{ padding: "1rem 2.5rem", fontSize: "1rem" }}>
+          <Link href="/contact" className="btn-gold" style={{ padding: "1rem 2.5rem", fontSize: "1rem", minHeight: "44px" }}>
             Contact DMC Desk
           </Link>
         </div>

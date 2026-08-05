@@ -16,9 +16,9 @@ import {
 } from "react-icons/bi";
 
 export const metadata: Metadata = {
-  title: "Contact Us | AyuraGreen Escapes Pvt Ltd",
+  title: "Contact Us | Ayuragreen Escapes Pvt Ltd",
   description:
-    "Get in touch with AyuraGreen Escapes — Sri Lanka luxury Destination Management Company. Phone/WhatsApp: +94 77 215 8888, Email: info@ayuragreenescapes.com.",
+    "Get in touch with Ayuragreen Escapes — Sri Lanka luxury Destination Management Company. Phone/WhatsApp: +94 77 215 8888, Email: info@ayuragreenescapes.com.",
 };
 
 export default function ContactPage() {
@@ -28,7 +28,7 @@ export default function ContactPage() {
       <section style={{ position: "relative", height: "420px", backgroundColor: "var(--forest-deep)", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <Image
           src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=80"
-          alt="Contact AyuraGreen Escapes"
+          alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Contact Us Hero"
           fill
           style={{ objectFit: "cover", opacity: 0.3 }}
           priority
@@ -50,7 +50,7 @@ export default function ContactPage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: "4rem" }}>
             
             {/* Left Column: Office & Contact Info */}
-            <div>
+            <article>
               <span className="eyebrow">DIRECT HEADQUARTERS</span>
               <h2 style={{ fontSize: "clamp(2rem, 3.5vw, 2.6rem)", marginBottom: "1.5rem" }}>
                 AyuraGreen Escapes (Pvt) Ltd
@@ -124,10 +124,10 @@ export default function ContactPage() {
                   </a>
                 </div>
               </div>
-            </div>
+            </article>
 
             {/* Right Column: Contact Form */}
-            <div style={{ backgroundColor: "var(--off-white)", padding: "2.5rem", borderRadius: "16px", border: "1px solid var(--line)", boxShadow: "0 15px 40px rgba(18,53,36,0.06)" }}>
+            <article style={{ backgroundColor: "var(--off-white)", padding: "2.5rem", borderRadius: "16px", border: "1px solid var(--line)", boxShadow: "0 15px 40px rgba(18,53,36,0.06)" }}>
               <h3 style={{ fontSize: "1.6rem", fontFamily: "var(--font-playfair)", marginBottom: "0.4rem" }}>
                 Send Us a Message
               </h3>
@@ -135,7 +135,7 @@ export default function ContactPage() {
                 Fill out your details below and our DMC desk will respond within 12 hours.
               </p>
               <ContactForm />
-            </div>
+            </article>
 
           </div>
         </div>

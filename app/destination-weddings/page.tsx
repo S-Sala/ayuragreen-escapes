@@ -14,9 +14,9 @@ import {
 } from "react-icons/bi";
 
 export const metadata: Metadata = {
-  title: "Destination Weddings in Sri Lanka | AyuraGreen Escapes",
+  title: "Destination Weddings in Sri Lanka | Ayuragreen Escapes",
   description:
-    "Where love meets paradise. Say 'I do' on pristine Sri Lankan beaches or colonial tea garden estates. Turn-key wedding planning, luxury accommodation, and guest logistics.",
+    "Where love meets paradise. Say 'I do' on pristine Sri Lankan beaches or colonial tea garden estates. Turn-key wedding planning, luxury accommodation, and guest logistics with Ayuragreen Escapes.",
 };
 
 const WEDDING_FEATURES = [
@@ -28,10 +28,10 @@ const WEDDING_FEATURES = [
 ];
 
 const GALLERY_STRIP = [
-  { src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80", title: "Sunset Beach Arch Ceremony" },
-  { src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80", title: "Coastal Lighthouse Romantic Walk" },
-  { src: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80", title: "Candlelit Outdoor Dinner Reception" },
-  { src: "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=800&q=80", title: "Scenic Rock Fortress Couple Excursion" },
+  { src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80", title: "Sunset Beach Arch Ceremony", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Sunset Beach Arch Wedding Ceremony Bentota" },
+  { src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80", title: "Coastal Lighthouse Romantic Walk", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Galle Lighthouse Romantic Wedding Session" },
+  { src: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80", title: "Candlelit Outdoor Dinner Reception", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Candlelit Outdoor Wedding Reception" },
+  { src: "https://images.unsplash.com/photo-1588598198321-9735fd52455b?auto=format&fit=crop&w=800&q=80", title: "Scenic Rock Fortress Couple Excursion", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Sigiriya Lion Rock Fortress Honeymoon Excursion" },
 ];
 
 export default function WeddingsPage() {
@@ -41,7 +41,7 @@ export default function WeddingsPage() {
       <section style={{ position: "relative", height: "550px", backgroundColor: "var(--forest-deep)", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <Image
           src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80"
-          alt="Destination Weddings Sri Lanka"
+          alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Destination Weddings Hero"
           fill
           style={{ objectFit: "cover", opacity: 0.35 }}
           priority
@@ -80,13 +80,13 @@ export default function WeddingsPage() {
               const IconComp = feat.icon;
               return (
                 <RevealOnScroll key={feat.title} delay={idx * 60}>
-                  <div className="card-clean" style={{ padding: "2rem", height: "100%", textAlign: "center" }}>
+                  <article className="card-clean" style={{ padding: "2rem", height: "100%", textAlign: "center" }}>
                     <div style={{ width: "56px", height: "56px", borderRadius: "50%", backgroundColor: "var(--off-white)", color: "var(--gold)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.8rem", margin: "0 auto 1.2rem auto" }}>
                       <IconComp />
                     </div>
                     <h3 style={{ fontSize: "1.2rem", fontFamily: "var(--font-playfair)", marginBottom: "0.5rem" }}>{feat.title}</h3>
                     <p style={{ fontSize: "0.88rem", color: "var(--ink-soft)", lineHeight: "1.5" }}>{feat.desc}</p>
-                  </div>
+                  </article>
                 </RevealOnScroll>
               );
             })}
@@ -104,9 +104,16 @@ export default function WeddingsPage() {
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))", gap: "3rem" }}>
             {/* Tile 1: Beach */}
-            <div id="beach" className="card-clean" style={{ overflow: "hidden" }}>
+            <article id="beach" className="card-clean" style={{ overflow: "hidden" }}>
               <div style={{ position: "relative", width: "100%", height: "300px" }}>
-                <Image src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Tropical Beach Wedding" fill style={{ objectFit: "cover" }} sizes="500px" />
+                <Image
+                  src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
+                  alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Tropical Beach Wedding Bentota Coast"
+                  fill
+                  loading="lazy"
+                  style={{ objectFit: "cover" }}
+                  sizes="500px"
+                />
                 <div style={{ position: "absolute", top: "1rem", left: "1rem", backgroundColor: "var(--gold)", color: "var(--white)", padding: "0.3rem 0.8rem", borderRadius: "4px", fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase" }}>
                   West & South Coast
                 </div>
@@ -121,12 +128,19 @@ export default function WeddingsPage() {
                   <li style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}><BiCheck style={{ color: "var(--gold)" }} /> Seafood Banquet & Beach Firepit</li>
                 </ul>
               </div>
-            </div>
+            </article>
 
             {/* Tile 2: Garden */}
-            <div id="garden" className="card-clean" style={{ overflow: "hidden" }}>
+            <article id="garden" className="card-clean" style={{ overflow: "hidden" }}>
               <div style={{ position: "relative", width: "100%", height: "300px" }}>
-                <Image src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Colonial Garden Wedding" fill style={{ objectFit: "cover" }} sizes="500px" />
+                <Image
+                  src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80"
+                  alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Colonial Tea Garden Estate Wedding Kandy"
+                  fill
+                  loading="lazy"
+                  style={{ objectFit: "cover" }}
+                  sizes="500px"
+                />
                 <div style={{ position: "absolute", top: "1rem", left: "1rem", backgroundColor: "var(--forest)", color: "var(--white)", padding: "0.3rem 0.8rem", borderRadius: "4px", fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase" }}>
                   Kandy & Nuwara Eliya
                 </div>
@@ -141,7 +155,7 @@ export default function WeddingsPage() {
                   <li style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}><BiCheck style={{ color: "var(--gold)" }} /> Traditional Poruwa Ceremony Options</li>
                 </ul>
               </div>
-            </div>
+            </article>
 
           </div>
         </div>
@@ -157,12 +171,12 @@ export default function WeddingsPage() {
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5rem" }}>
             {GALLERY_STRIP.map((img, idx) => (
-              <div key={idx} style={{ position: "relative", height: "280px", borderRadius: "10px", overflow: "hidden" }}>
-                <Image src={img.src} alt={img.title} fill style={{ objectFit: "cover" }} sizes="300px" />
+              <article key={idx} style={{ position: "relative", height: "280px", borderRadius: "10px", overflow: "hidden" }}>
+                <Image src={img.src} alt={img.alt} fill loading="lazy" style={{ objectFit: "cover" }} sizes="300px" />
                 <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(10,33,22,0.85) 100%)", padding: "1.2rem", display: "flex", alignItems: "flex-end" }}>
                   <span style={{ color: "var(--white)", fontFamily: "var(--font-playfair)", fontSize: "1.1rem" }}>{img.title}</span>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>

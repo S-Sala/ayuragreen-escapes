@@ -35,11 +35,23 @@ export default function Navbar() {
           boxShadow: isScrolled ? "0 4px 20px rgba(18, 53, 36, 0.08)" : "none",
           borderBottom: isScrolled ? "1px solid var(--line)" : "1px solid rgba(231, 227, 216, 0.4)",
           backdropFilter: "blur(12px)",
+          paddingLeft: "clamp(1rem, 4vw, 2.5rem)",
+          paddingRight: "clamp(1rem, 4vw, 2.5rem)",
         }}
       >
-        <div className="container-custom" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "84px" }}>
+        <div
+          className="container-custom"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            height: "84px",
+            paddingLeft: 0,
+            paddingRight: 0,
+          }}
+        >
           {/* Logo & Brand */}
-          <Link href="/" style={{ display: "flex", flexDirection: "column" }}>
+          <Link href="/" style={{ display: "flex", flexDirection: "column", minHeight: "44px", justifyContent: "center" }}>
             <span style={{ fontFamily: "var(--font-playfair)", fontSize: "1.5rem", fontWeight: 800, color: "var(--forest)", letterSpacing: "-0.02em", lineHeight: 1 }}>
               AYURAGREEN
             </span>
@@ -49,7 +61,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav style={{ display: "none", alignItems: "center", gap: "2.2rem" }} className="desktop-nav">
+          <nav style={{ display: "none", alignItems: "center", gap: "2.2rem" }} className="desktop-nav" aria-label="Main Navigation">
             <Link href="/" className="nav-link">Home</Link>
             <Link href="/about" className="nav-link">About Us</Link>
 
@@ -71,6 +83,7 @@ export default function Navbar() {
                   color: "var(--forest)",
                   cursor: "pointer",
                   padding: "0.5rem 0",
+                  minHeight: "44px",
                 }}
                 aria-expanded={dropdownOpen}
               >
@@ -152,14 +165,14 @@ export default function Navbar() {
           <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
             <a
               href={`tel:${COMPANY_FACTS.phone.replace(/\s+/g, '')}`}
-              style={{ display: "none", alignItems: "center", gap: "0.5rem", fontSize: "0.88rem", fontWeight: 600, color: "var(--forest)" }}
+              style={{ display: "none", alignItems: "center", gap: "0.5rem", fontSize: "0.88rem", fontWeight: 600, color: "var(--forest)", minHeight: "44px" }}
               className="phone-link"
             >
               <BiPhoneCall style={{ fontSize: "1.2rem", color: "var(--gold)" }} />
               {COMPANY_FACTS.phone}
             </a>
 
-            <Link href="/contact" className="btn-gold" style={{ padding: "0.65rem 1.4rem", fontSize: "0.85rem" }}>
+            <Link href="/contact" className="btn-gold" style={{ padding: "0.65rem 1.4rem", fontSize: "0.85rem", minHeight: "44px" }}>
               Plan My Journey
             </Link>
 
@@ -174,6 +187,10 @@ export default function Navbar() {
                 cursor: "pointer",
                 padding: "0.3rem",
                 display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                minWidth: "44px",
+                minHeight: "44px",
               }}
               aria-label="Toggle navigation drawer"
               className="mobile-toggle"
@@ -217,6 +234,7 @@ export default function Navbar() {
           zIndex: 1003,
           boxShadow: "5px 0 25px rgba(0,0,0,0.3)",
         }}
+        aria-label="Mobile Menu"
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid rgba(255,255,255,0.1)", paddingBottom: "1rem" }}>
           <div>
@@ -225,27 +243,28 @@ export default function Navbar() {
           </div>
           <button
             onClick={() => setMobileMenuOpen(false)}
-            style={{ background: "none", border: "none", color: "var(--white)", fontSize: "1.8rem", cursor: "pointer" }}
+            style={{ background: "none", border: "none", color: "var(--white)", fontSize: "1.8rem", cursor: "pointer", minWidth: "44px", minHeight: "44px", display: "flex", alignItems: "center", justifyContent: "center" }}
+            aria-label="Close menu"
           >
             <BiX />
           </button>
         </div>
 
-        <nav style={{ display: "flex", flexDirection: "column", gap: "1.1rem", fontSize: "1.05rem" }}>
-          <Link href="/" onClick={() => setMobileMenuOpen(false)}>Home</Link>
-          <Link href="/about" onClick={() => setMobileMenuOpen(false)}>About Us</Link>
-          <Link href="/golf" onClick={() => setMobileMenuOpen(false)}>Golf Holidays</Link>
-          <Link href="/wellness" onClick={() => setMobileMenuOpen(false)}>Wellness & Ayurveda</Link>
-          <Link href="/destination-weddings" onClick={() => setMobileMenuOpen(false)}>Destination Weddings</Link>
-          <Link href="/services" onClick={() => setMobileMenuOpen(false)}>Services</Link>
-          <Link href="/packages" onClick={() => setMobileMenuOpen(false)}>Signature Packages</Link>
-          <Link href="/gallery" onClick={() => setMobileMenuOpen(false)}>Gallery</Link>
-          <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
+        <nav style={{ display: "flex", flexDirection: "column", gap: "0.8rem", fontSize: "1.05rem" }}>
+          <Link href="/" onClick={() => setMobileMenuOpen(false)} style={{ minHeight: "44px", display: "flex", alignItems: "center" }}>Home</Link>
+          <Link href="/about" onClick={() => setMobileMenuOpen(false)} style={{ minHeight: "44px", display: "flex", alignItems: "center" }}>About Us</Link>
+          <Link href="/golf" onClick={() => setMobileMenuOpen(false)} style={{ minHeight: "44px", display: "flex", alignItems: "center" }}>Golf Holidays</Link>
+          <Link href="/wellness" onClick={() => setMobileMenuOpen(false)} style={{ minHeight: "44px", display: "flex", alignItems: "center" }}>Wellness & Ayurveda</Link>
+          <Link href="/destination-weddings" onClick={() => setMobileMenuOpen(false)} style={{ minHeight: "44px", display: "flex", alignItems: "center" }}>Destination Weddings</Link>
+          <Link href="/services" onClick={() => setMobileMenuOpen(false)} style={{ minHeight: "44px", display: "flex", alignItems: "center" }}>Services</Link>
+          <Link href="/packages" onClick={() => setMobileMenuOpen(false)} style={{ minHeight: "44px", display: "flex", alignItems: "center" }}>Signature Packages</Link>
+          <Link href="/gallery" onClick={() => setMobileMenuOpen(false)} style={{ minHeight: "44px", display: "flex", alignItems: "center" }}>Gallery</Link>
+          <Link href="/contact" onClick={() => setMobileMenuOpen(false)} style={{ minHeight: "44px", display: "flex", alignItems: "center" }}>Contact</Link>
         </nav>
 
         <div style={{ marginTop: "auto", borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: "1.5rem" }}>
           <p style={{ fontSize: "0.8rem", color: "var(--gold-light)", marginBottom: "0.8rem" }}>Direct Booking Desk:</p>
-          <a href={`https://wa.me/${COMPANY_FACTS.whatsapp}`} target="_blank" rel="noopener noreferrer" className="btn-gold" style={{ width: "100%", justifyContent: "center" }}>
+          <a href={`https://wa.me/${COMPANY_FACTS.whatsapp}`} target="_blank" rel="noopener noreferrer" className="btn-gold" style={{ width: "100%", justifyContent: "center", minHeight: "44px" }}>
             WhatsApp Us
           </a>
         </div>

@@ -24,19 +24,19 @@ import {
 const HERO_SLIDES = [
   {
     src: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1920&q=80",
-    alt: "Luxury Championship Golf at Dawn in Kandy Sri Lanka",
+    alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Victoria Golf Resort Kandy Dawn",
   },
   {
     src: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=80",
-    alt: "Serene Ayurveda Wellness Resort in Sri Lanka",
+    alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Serene Ayurveda Wellness Resort",
   },
   {
     src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80",
-    alt: "Romantic Beach Wedding Setup on Pristine Sri Lankan Coast",
+    alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Romantic Beach Wedding Bentota Coast",
   },
   {
-    src: "https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=1920&q=80",
-    alt: "Nine Arch Bridge in Ella Misty Tea Country",
+    src: "https://images.unsplash.com/photo-1566296537600-247ba48b9212?auto=format&fit=crop&w=1920&q=80",
+    alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Nine Arch Railway Bridge Ella",
   },
 ];
 
@@ -52,12 +52,12 @@ const TRAVEL_STYLES = [
 ];
 
 const GALLERY_TEASERS = [
-  { src: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=800&q=80", title: "Victoria Golf Resort Kandy" },
-  { src: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80", title: "Ayurveda Spa Deck" },
-  { src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80", title: "Bentota Sunset Beach" },
-  { src: "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=800&q=80", title: "Sigiriya Lion Rock Fortress" },
-  { src: "https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=800&q=80", title: "Nine Arch Bridge Ella" },
-  { src: "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=800&q=80", title: "Nuwara Eliya Tea Hills" },
+  { src: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=800&q=80", title: "Victoria Golf Resort Kandy", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Victoria Golf Resort Kandy" },
+  { src: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80", title: "Ayurveda Spa Deck", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Certified Ayurveda Spa Deck" },
+  { src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80", title: "Bentota Sunset Beach", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Bentota Sunset Beach" },
+  { src: "https://images.unsplash.com/photo-1588598198321-9735fd52455b?auto=format&fit=crop&w=800&q=80", title: "Sigiriya Lion Rock Fortress", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Sigiriya Lion Rock Fortress" },
+  { src: "https://images.unsplash.com/photo-1566296537600-247ba48b9212?auto=format&fit=crop&w=800&q=80", title: "Nine Arch Bridge Ella", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Nine Arch Bridge Ella Tea Country" },
+  { src: "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=800&q=80", title: "Nuwara Eliya Tea Hills", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Nuwara Eliya Tea Estate Hills" },
 ];
 
 export default function HomePage() {
@@ -84,7 +84,7 @@ export default function HomePage() {
               const IconComp = style.icon;
               return (
                 <RevealOnScroll key={style.title} delay={idx * 60}>
-                  <Link href={style.link} className="card-clean" style={{ padding: "2rem", display: "flex", flexDirection: "column", height: "100%" }}>
+                  <Link href={style.link} className="card-clean" style={{ padding: "2rem", display: "flex", flexDirection: "column", height: "100%", minHeight: "220px" }}>
                     <div
                       style={{
                         width: "56px",
@@ -135,52 +135,80 @@ export default function HomePage() {
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.8rem" }}>
             {/* Tile 1: Golf */}
-            <div style={{ position: "relative", height: "380px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
-              <Image src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=800&q=80" alt="Golf Tourism" fill style={{ objectFit: "cover" }} sizes="300px" />
+            <article style={{ position: "relative", height: "380px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
+              <Image
+                src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=800&q=80"
+                alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Golf Tourism Championship Fairway"
+                fill
+                loading="lazy"
+                style={{ objectFit: "cover" }}
+                sizes="300px"
+              />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(10,33,22,0.95) 100%)", padding: "1.8rem", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
                 <span style={{ color: "var(--gold-light)", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.15em", fontWeight: 700 }}>Tee Off In Paradise</span>
                 <h3 style={{ color: "var(--white)", fontFamily: "var(--font-playfair)", fontSize: "1.6rem", margin: "0.3rem 0 0.8rem 0" }}>Golf Tourism</h3>
-                <Link href="/golf" className="btn-gold" style={{ padding: "0.6rem 1.2rem", fontSize: "0.85rem", width: "fit-content" }}>
+                <Link href="/golf" className="btn-gold" style={{ padding: "0.6rem 1.2rem", fontSize: "0.85rem", width: "fit-content", minHeight: "44px" }}>
                   Explore Courses →
                 </Link>
               </div>
-            </div>
+            </article>
 
             {/* Tile 2: Wellness */}
-            <div style={{ position: "relative", height: "380px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
-              <Image src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" alt="Ayurveda Wellness" fill style={{ objectFit: "cover" }} sizes="300px" />
+            <article style={{ position: "relative", height: "380px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
+              <Image
+                src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80"
+                alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Ayurveda Wellness Retreat"
+                fill
+                loading="lazy"
+                style={{ objectFit: "cover" }}
+                sizes="300px"
+              />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(10,33,22,0.95) 100%)", padding: "1.8rem", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
                 <span style={{ color: "var(--gold-light)", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.15em", fontWeight: 700 }}>Mind & Body Harmony</span>
                 <h3 style={{ color: "var(--white)", fontFamily: "var(--font-playfair)", fontSize: "1.6rem", margin: "0.3rem 0 0.8rem 0" }}>Wellness & Ayurveda</h3>
-                <Link href="/wellness" className="btn-gold" style={{ padding: "0.6rem 1.2rem", fontSize: "0.85rem", width: "fit-content" }}>
+                <Link href="/wellness" className="btn-gold" style={{ padding: "0.6rem 1.2rem", fontSize: "0.85rem", width: "fit-content", minHeight: "44px" }}>
                   View Retreats →
                 </Link>
               </div>
-            </div>
+            </article>
 
             {/* Tile 3: Weddings */}
-            <div style={{ position: "relative", height: "380px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
-              <Image src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Destination Weddings" fill style={{ objectFit: "cover" }} sizes="300px" />
+            <article style={{ position: "relative", height: "380px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
+              <Image
+                src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
+                alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Destination Wedding Ceremony Bentota"
+                fill
+                loading="lazy"
+                style={{ objectFit: "cover" }}
+                sizes="300px"
+              />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(10,33,22,0.95) 100%)", padding: "1.8rem", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
                 <span style={{ color: "var(--gold-light)", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.15em", fontWeight: 700 }}>Where Love Meets Paradise</span>
                 <h3 style={{ color: "var(--white)", fontFamily: "var(--font-playfair)", fontSize: "1.6rem", margin: "0.3rem 0 0.8rem 0" }}>Destination Weddings</h3>
-                <Link href="/destination-weddings" className="btn-gold" style={{ padding: "0.6rem 1.2rem", fontSize: "0.85rem", width: "fit-content" }}>
+                <Link href="/destination-weddings" className="btn-gold" style={{ padding: "0.6rem 1.2rem", fontSize: "0.85rem", width: "fit-content", minHeight: "44px" }}>
                   Plan Ceremony →
                 </Link>
               </div>
-            </div>
+            </article>
 
             {/* Tile 4: Corporate */}
-            <div style={{ position: "relative", height: "380px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
-              <Image src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80" alt="Corporate Travel" fill style={{ objectFit: "cover" }} sizes="300px" />
+            <article style={{ position: "relative", height: "380px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
+              <Image
+                src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80"
+                alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Corporate Travel MICE Conference"
+                fill
+                loading="lazy"
+                style={{ objectFit: "cover" }}
+                sizes="300px"
+              />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(10,33,22,0.95) 100%)", padding: "1.8rem", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
                 <span style={{ color: "var(--gold-light)", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.15em", fontWeight: 700 }}>Executive Events & MICE</span>
                 <h3 style={{ color: "var(--white)", fontFamily: "var(--font-playfair)", fontSize: "1.6rem", margin: "0.3rem 0 0.8rem 0" }}>Corporate Travel</h3>
-                <Link href="/services#corporate" className="btn-gold" style={{ padding: "0.6rem 1.2rem", fontSize: "0.85rem", width: "fit-content" }}>
+                <Link href="/services#corporate" className="btn-gold" style={{ padding: "0.6rem 1.2rem", fontSize: "0.85rem", width: "fit-content", minHeight: "44px" }}>
                   MICE Services →
                 </Link>
               </div>
-            </div>
+            </article>
           </div>
         </div>
       </section>
@@ -203,18 +231,18 @@ export default function HomePage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "1.5rem" }}>
             {GALLERY_TEASERS.map((g, idx) => (
               <RevealOnScroll key={idx} delay={idx * 70}>
-                <div style={{ position: "relative", height: "260px", borderRadius: "10px", overflow: "hidden", boxShadow: "0 8px 25px rgba(18,53,36,0.06)" }}>
-                  <Image src={g.src} alt={g.title} fill style={{ objectFit: "cover" }} sizes="400px" />
+                <article style={{ position: "relative", height: "260px", borderRadius: "10px", overflow: "hidden", boxShadow: "0 8px 25px rgba(18,53,36,0.06)" }}>
+                  <Image src={g.src} alt={g.alt} fill loading="lazy" style={{ objectFit: "cover" }} sizes="400px" />
                   <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(10,33,22,0.85) 100%)", padding: "1.2rem", display: "flex", alignItems: "flex-end" }}>
                     <span style={{ color: "var(--white)", fontFamily: "var(--font-playfair)", fontSize: "1.1rem" }}>{g.title}</span>
                   </div>
-                </div>
+                </article>
               </RevealOnScroll>
             ))}
           </div>
 
           <div style={{ textAlign: "center", marginTop: "2.5rem" }}>
-            <Link href="/gallery" className="btn-forest">
+            <Link href="/gallery" className="btn-forest" style={{ minHeight: "44px" }}>
               View Full Photo Gallery <BiRightArrowAlt style={{ fontSize: "1.3rem" }} />
             </Link>
           </div>
@@ -232,7 +260,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 10. CONTACT CTA BAND (Dark --forest background) */}
+      {/* 10. CONTACT CTA BAND */}
       <section className="bg-forest section-padding">
         <div className="container-custom">
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "4rem", alignItems: "center" }}>

@@ -12,9 +12,9 @@ import {
 } from "react-icons/bi";
 
 export const metadata: Metadata = {
-  title: "Wellness & Ayurveda Tourism Sri Lanka | AyuraGreen Escapes",
+  title: "Wellness & Ayurveda Tourism Sri Lanka | Ayuragreen Escapes",
   description:
-    "Doctor-led Ayurveda retreats, yoga, meditation, nature therapy, and holistic wellness holidays in Sri Lanka luxury wellness resorts.",
+    "Doctor-led Ayurveda retreats, yoga, meditation, nature therapy, and holistic wellness holidays in Sri Lanka luxury wellness resorts with Ayuragreen Escapes.",
 };
 
 const WELLNESS_PROGRAMS = [
@@ -39,7 +39,7 @@ export default function WellnessPage() {
       <section style={{ position: "relative", height: "500px", backgroundColor: "var(--forest-deep)", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <Image
           src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=80"
-          alt="Ayurveda Wellness Retreat Sri Lanka"
+          alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Ayurveda Wellness Retreat Hero"
           fill
           style={{ objectFit: "cover", opacity: 0.35 }}
           priority
@@ -52,7 +52,7 @@ export default function WellnessPage() {
           <p style={{ color: "rgba(255,255,255,0.9)", fontSize: "1.2rem", maxWidth: "750px", margin: "1rem auto 2rem auto" }}>
             Certified Ayurveda retreats, daily yoga, mindfulness meditation, and luxury wellness resort stays in Sri Lanka.
           </p>
-          <Link href="/packages#wellness-retreat" className="btn-gold">
+          <Link href="/packages#wellness-retreat" className="btn-gold" style={{ minHeight: "44px" }}>
             View Wellness Retreat Package <BiRightArrowAlt style={{ fontSize: "1.2rem" }} />
           </Link>
         </div>
@@ -69,13 +69,13 @@ export default function WellnessPage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.8rem" }}>
             {WELLNESS_PROGRAMS.map((prog, idx) => (
               <RevealOnScroll key={prog.title} delay={idx * 50}>
-                <div className="card-clean" style={{ padding: "1.8rem", height: "100%" }}>
+                <article className="card-clean" style={{ padding: "1.8rem", height: "100%" }}>
                   <div style={{ width: "48px", height: "48px", borderRadius: "10px", backgroundColor: "var(--off-white)", color: "var(--gold)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.5rem", marginBottom: "1rem" }}>
                     {idx % 3 === 0 ? <BiSpa /> : idx % 3 === 1 ? <BiLeaf /> : <BiSun />}
                   </div>
                   <h3 style={{ fontSize: "1.2rem", fontFamily: "var(--font-playfair)", marginBottom: "0.5rem" }}>{prog.title}</h3>
                   <p style={{ fontSize: "0.88rem", color: "var(--ink-soft)", lineHeight: "1.6" }}>{prog.desc}</p>
-                </div>
+                </article>
               </RevealOnScroll>
             ))}
           </div>
@@ -109,7 +109,14 @@ export default function WellnessPage() {
         <div className="container-custom">
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "3.5rem", alignItems: "center" }}>
             <div style={{ position: "relative", height: "420px", borderRadius: "16px", overflow: "hidden", boxShadow: "0 15px 40px rgba(18,53,36,0.1)" }}>
-              <Image src={drSharmini.image} alt={drSharmini.name} fill style={{ objectFit: "cover" }} sizes="(max-width: 768px) 100vw, 50vw" />
+              <Image
+                src={drSharmini.image}
+                alt={`Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - ${drSharmini.name}`}
+                fill
+                loading="lazy"
+                style={{ objectFit: "cover" }}
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
             </div>
 
             <div>
@@ -121,7 +128,7 @@ export default function WellnessPage() {
               <p style={{ fontSize: "1rem", color: "var(--ink-soft)", lineHeight: "1.7", marginBottom: "1.5rem" }}>
                 {drSharmini.bio}
               </p>
-              <Link href="/about#leadership" className="btn-outline-gold">
+              <Link href="/about#leadership" className="btn-outline-gold" style={{ minHeight: "44px" }}>
                 Learn About Leadership Team
               </Link>
             </div>
@@ -138,7 +145,7 @@ export default function WellnessPage() {
           <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1.1rem", marginBottom: "2rem" }}>
             Consult with our wellness desk for doctor-approved Ayurveda resort packages.
           </p>
-          <Link href="/packages#wellness-retreat" className="btn-gold" style={{ padding: "1rem 2.5rem", fontSize: "1rem" }}>
+          <Link href="/packages#wellness-retreat" className="btn-gold" style={{ padding: "1rem 2.5rem", fontSize: "1rem", minHeight: "44px" }}>
             Explore Wellness Packages
           </Link>
         </div>

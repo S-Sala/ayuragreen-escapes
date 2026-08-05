@@ -6,10 +6,10 @@ import RevealOnScroll from "./RevealOnScroll";
 import { STRENGTHS } from "@/lib/data";
 
 const SHOWCASE_IMAGES = [
-  { src: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1000&q=80", title: "Championship Golf Courses" },
-  { src: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=80", title: "Certified Ayurveda & Wellness" },
-  { src: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=1000&q=80", title: "World-Class Hospitality" },
-  { src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80", title: "Bespoke Beach & Villa Escapes" }
+  { src: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1000&q=80", title: "Championship Golf Courses", alt: "Victoria Golf Resort Kandy Championship Golf Course Sri Lanka" },
+  { src: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=80", title: "Certified Ayurveda & Wellness", alt: "Certified Ayurveda and Wellness Resort Sri Lanka" },
+  { src: "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=1000&q=80", title: "World-Class Sri Lankan Hospitality", alt: "Ayuragreen Escapes Luxury Hospitality & Boutique Villa Experience Sri Lanka" },
+  { src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80", title: "Bespoke Beach & Villa Escapes", alt: "Luxury Oceanfront Beach Escape Bentota Sri Lanka" }
 ];
 
 export default function WhyUsSlider() {
@@ -38,7 +38,7 @@ export default function WhyUsSlider() {
             <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: "1.5rem" }}>
               {STRENGTHS.slice(0, 6).map((item, idx) => (
                 <RevealOnScroll key={item.id} delay={idx * 80}>
-                  <div style={{ display: "flex", gap: "1.2rem", alignItems: "flex-start", padding: "1rem", borderRadius: "8px", backgroundColor: "var(--off-white)", border: "1px solid var(--line)" }}>
+                  <article style={{ display: "flex", gap: "1.2rem", alignItems: "flex-start", padding: "1rem", borderRadius: "8px", backgroundColor: "var(--off-white)", border: "1px solid var(--line)" }}>
                     <span
                       style={{
                         fontFamily: "var(--font-playfair)",
@@ -51,10 +51,10 @@ export default function WhyUsSlider() {
                       {item.num}
                     </span>
                     <div>
-                      <h4 style={{ fontSize: "1.1rem", marginBottom: "0.2rem" }}>{item.title}</h4>
+                      <h3 style={{ fontSize: "1.1rem", marginBottom: "0.2rem", fontFamily: "var(--font-playfair)" }}>{item.title}</h3>
                       <p style={{ fontSize: "0.88rem", color: "var(--ink-soft)", lineHeight: "1.5" }}>{item.description}</p>
                     </div>
-                  </div>
+                  </article>
                 </RevealOnScroll>
               ))}
             </div>
@@ -74,8 +74,9 @@ export default function WhyUsSlider() {
               >
                 <Image
                   src={img.src}
-                  alt={img.title}
+                  alt={img.alt}
                   fill
+                  loading="lazy"
                   style={{ objectFit: "cover" }}
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
@@ -103,13 +104,16 @@ export default function WhyUsSlider() {
                   key={i}
                   onClick={() => setActiveImg(i)}
                   style={{
-                    width: i === activeImg ? "24px" : "8px",
-                    height: "8px",
-                    borderRadius: "4px",
-                    backgroundColor: i === activeImg ? "var(--gold)" : "rgba(255, 255, 255, 0.5)",
+                    width: i === activeImg ? "24px" : "12px",
+                    height: "12px",
+                    minWidth: "12px",
+                    minHeight: "12px",
+                    borderRadius: "6px",
+                    backgroundColor: i === activeImg ? "var(--gold)" : "rgba(255, 255, 255, 0.6)",
                     border: "none",
                     cursor: "pointer",
                     transition: "all 0.3s ease",
+                    padding: 0,
                   }}
                   aria-label={`Go to showcase photo ${i + 1}`}
                 />

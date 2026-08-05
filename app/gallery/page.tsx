@@ -5,18 +5,18 @@ import Image from "next/image";
 import Lightbox from "@/components/ui/Lightbox";
 
 const GALLERY_ITEMS = [
-  { id: "1", src: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1200&q=80", alt: "Victoria Golf Resort Kandy Dawn Fairway", category: "Golf" },
-  { id: "2", src: "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=1200&q=80", alt: "Nuwara Eliya Heritage Golf Course", category: "Golf" },
-  { id: "3", src: "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=1200&q=80", alt: "Royal Colombo Golf Club Fairway", category: "Golf" },
-  { id: "4", src: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80", alt: "Ayurveda Wellness Resort Spa Deck", category: "Wellness" },
-  { id: "5", src: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80", alt: "Sunrise Yoga Session Overlooking Jungle", category: "Wellness" },
-  { id: "6", src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80", alt: "Bentota Oceanfront Sunset Wedding Arch", category: "Weddings" },
-  { id: "7", src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80", alt: "Colonial Tea Garden Wedding Ceremony", category: "Weddings" },
-  { id: "8", src: "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=1200&q=80", alt: "Sigiriya Rock Fortress Ancient Frescoes", category: "Destinations" },
-  { id: "9", src: "https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=1200&q=80", alt: "Nine Arch Bridge Scenic Train Journey", category: "Destinations" },
-  { id: "10", src: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=1200&q=80", alt: "Galle Fort Colonial Ramparts & Ocean View", category: "Destinations" },
-  { id: "11", src: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80", alt: "Executive MICE Corporate Conference Setup", category: "Corporate" },
-  { id: "12", src: "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=1200&q=80", alt: "Family Wildlife Safari in Yala National Park", category: "Leisure" },
+  { id: "1", src: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1200&q=80", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Victoria Golf Resort Kandy Dawn Fairway", category: "Golf" },
+  { id: "2", src: "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=1200&q=80", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Nuwara Eliya Heritage Golf Course", category: "Golf" },
+  { id: "3", src: "https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=1200&q=80", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Royal Colombo Golf Club Fairway", category: "Golf" },
+  { id: "4", src: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Ayurveda Wellness Resort Spa Deck", category: "Wellness" },
+  { id: "5", src: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Sunrise Yoga Session Overlooking Jungle", category: "Wellness" },
+  { id: "6", src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Bentota Oceanfront Sunset Wedding Arch", category: "Weddings" },
+  { id: "7", src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Colonial Tea Garden Wedding Ceremony", category: "Weddings" },
+  { id: "8", src: "https://images.unsplash.com/photo-1588598198321-9735fd52455b?auto=format&fit=crop&w=1200&q=80", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Sigiriya Lion Rock Fortress Ancient Palace Grounds", category: "Destinations" },
+  { id: "9", src: "https://images.unsplash.com/photo-1566296537600-247ba48b9212?auto=format&fit=crop&w=1200&q=80", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Nine Arch Bridge Ella Scenic Train Journey", category: "Destinations" },
+  { id: "10", src: "https://images.unsplash.com/photo-1627885721868-80979bf33fb7?auto=format&fit=crop&w=1200&q=80", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Galle Fort Colonial Dutch Ramparts & Lighthouse", category: "Destinations" },
+  { id: "11", src: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Executive MICE Corporate Conference Setup", category: "Corporate" },
+  { id: "12", src: "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=1200&q=80", alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Family Wildlife Safari in Yala National Park", category: "Leisure" },
 ];
 
 const CATEGORIES = ["All", "Golf", "Wellness", "Weddings", "Destinations", "Corporate", "Leisure"];
@@ -40,8 +40,8 @@ export default function GalleryPage() {
       {/* Hero */}
       <section style={{ position: "relative", height: "420px", backgroundColor: "var(--forest-deep)", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <Image
-          src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=1920&q=80"
-          alt="AyuraGreen Gallery"
+          src="https://images.unsplash.com/photo-1627885721868-80979bf33fb7?auto=format&fit=crop&w=1920&q=80"
+          alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Galle Fort Lighthouse Hero"
           fill
           style={{ objectFit: "cover", opacity: 0.3 }}
           priority
@@ -70,6 +70,7 @@ export default function GalleryPage() {
                   onClick={() => setActiveFilter(cat)}
                   style={{
                     padding: "0.6rem 1.4rem",
+                    minHeight: "44px",
                     borderRadius: "30px",
                     border: isActive ? "1px solid var(--gold)" : "1px solid var(--line)",
                     backgroundColor: isActive ? "var(--gold)" : "var(--off-white)",
@@ -79,6 +80,7 @@ export default function GalleryPage() {
                     cursor: "pointer",
                     transition: "all 0.3s ease",
                   }}
+                  aria-pressed={isActive}
                 >
                   {cat}
                 </button>
@@ -89,7 +91,7 @@ export default function GalleryPage() {
           {/* Gallery Grid */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: "1.5rem" }}>
             {filteredItems.map((item, idx) => (
-              <div
+              <article
                 key={item.id}
                 onClick={() => openLightbox(idx)}
                 style={{
@@ -102,7 +104,7 @@ export default function GalleryPage() {
                 }}
                 className="gallery-tile"
               >
-                <Image src={item.src} alt={item.alt} fill style={{ objectFit: "cover", transition: "transform 0.5s ease" }} sizes="400px" />
+                <Image src={item.src} alt={item.alt} fill loading="lazy" style={{ objectFit: "cover", transition: "transform 0.5s ease" }} sizes="400px" />
                 <div
                   style={{
                     position: "absolute",
@@ -121,7 +123,7 @@ export default function GalleryPage() {
                     {item.alt}
                   </h3>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
 

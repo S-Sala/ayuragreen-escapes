@@ -12,7 +12,7 @@ export const COMPANY_FACTS = {
   phone: "+94 77 215 8888",
   whatsapp: "+94772158888",
   email: "info@ayuragreenescapes.com",
-  website: "www.ayuragreenescapes.com",
+  website: "https://coruscating-wisp-db5332.netlify.app/",
   location: "Sri Lanka",
   vision: "To become Sri Lanka's most trusted luxury destination management company, recognized globally for creating exceptional travel experiences that inspire, rejuvenate, and connect people with authentic Sri Lanka.",
   mission: "To provide innovative, personalized, and sustainable travel solutions through exceptional service, strategic partnerships, and local expertise while exceeding client expectations.",
@@ -91,28 +91,28 @@ export const DESTINATIONS: Destination[] = [
     name: "Sigiriya Rock Fortress",
     tagline: "The 8th Wonder of the Ancient World",
     description: "Ascend the iconic 5th-century lion rock fortress surrounded by royal water gardens and ancient frescoes.",
-    image: "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=1200&q=80"
+    image: "https://images.unsplash.com/photo-1588598198321-9735fd52455b?auto=format&fit=crop&w=1200&q=80"
   },
   {
     slug: "ella",
     name: "Ella & Nine Arch Bridge",
     tagline: "Mountain Paradise & Misty Peaks",
-    description: "Marvel at the world-famous Nine Arch Bridge and hike through serene tea plantations and waterfalls.",
-    image: "https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=1200&q=80"
+    description: "Marvel at the world-famous Nine Arch Railway Bridge in Ella and hike through serene tea plantations and waterfalls.",
+    image: "https://images.unsplash.com/photo-1566296537600-247ba48b9212?auto=format&fit=crop&w=1200&q=80"
   },
   {
     slug: "kandy",
     name: "Temple of the Tooth (Kandy)",
     tagline: "Cultural Heartland of Sri Lanka",
-    description: "Visit the sacred Temple of the Tooth Relic nestled by the tranquil Kandy Lake in the central highlands.",
-    image: "https://images.unsplash.com/photo-1578500494198-246f612d3b3d?auto=format&fit=crop&w=1200&q=80"
+    description: "Visit the sacred Temple of the Tooth Relic (Sri Dalada Maligawa) nestled by the tranquil Kandy Lake in the central highlands.",
+    image: "https://images.unsplash.com/photo-1625736338592-f70d62db94ea?auto=format&fit=crop&w=1200&q=80"
   },
   {
     slug: "galle-fort",
     name: "Galle Fort",
     tagline: "Colonial Charm & Coastal Sophistication",
-    description: "Stroll along 17th-century Dutch ramparts, chic boutiques, and cobblestone seaside alleys.",
-    image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=1200&q=80"
+    description: "Stroll along 17th-century Dutch ramparts, iconic lighthouse, chic boutiques, and cobblestone seaside alleys.",
+    image: "https://images.unsplash.com/photo-1627885721868-80979bf33fb7?auto=format&fit=crop&w=1200&q=80"
   },
   {
     slug: "nuwara-eliya",
@@ -250,7 +250,7 @@ export const PACKAGES: PackageItem[] = [
       "Flexible schedule and dedicated chauffeur guide",
       "24/7 concierge assistance"
     ],
-    image: "https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=1200&q=80"
+    image: "https://images.unsplash.com/photo-1588598198321-9735fd52455b?auto=format&fit=crop&w=1200&q=80"
   }
 ];
 

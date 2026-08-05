@@ -50,6 +50,11 @@ button, input, select, textarea {
   font-family: inherit;
 }
 
+/* Ensure 44px minimum touch target for interactive controls on mobile viewports */
+button, .btn-gold, .btn-forest, .btn-outline-gold, .btn-outline-white, .social-badge, .mobile-toggle {
+  min-height: 44px;
+}
+
 .eyebrow {
   font-family: var(--font-poppins);
   text-transform: uppercase;
@@ -64,7 +69,7 @@ button, input, select, textarea {
 .container-custom {
   max-width: 1360px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 clamp(1rem, 4vw, 2.5rem);
 }
 
 .section-padding {
@@ -111,6 +116,7 @@ button, input, select, textarea {
   transition: all 0.3s ease;
   border: none;
   cursor: pointer;
+  min-height: 44px;
 }
 
 .btn-gold:hover {
@@ -132,6 +138,7 @@ button, input, select, textarea {
   transition: all 0.3s ease;
   border: none;
   cursor: pointer;
+  min-height: 44px;
 }
 
 .btn-forest:hover {
@@ -153,6 +160,7 @@ button, input, select, textarea {
   gap: 0.5rem;
   transition: all 0.3s ease;
   cursor: pointer;
+  min-height: 44px;
 }
 
 .btn-outline-gold:hover {
@@ -174,6 +182,7 @@ button, input, select, textarea {
   gap: 0.5rem;
   transition: all 0.3s ease;
   cursor: pointer;
+  min-height: 44px;
 }
 
 .btn-outline-white:hover {
@@ -204,11 +213,14 @@ button, input, select, textarea {
   position: relative;
   padding: 0.4rem 0;
   transition: color 0.3s ease;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
 }
 .nav-link::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: 6px;
   left: 0;
   width: 0%;
   height: 2px;
@@ -224,6 +236,7 @@ button, input, select, textarea {
   color: var(--ink-soft);
   transition: color 0.2s ease, transform 0.2s ease;
   display: inline-block;
+  padding: 0.3rem 0;
 }
 .dropdown-item:hover {
   color: var(--gold);
@@ -234,6 +247,9 @@ button, input, select, textarea {
   color: rgba(255, 255, 255, 0.75);
   transition: color 0.25s ease, transform 0.25s ease;
   display: inline-block;
+  padding: 0.3rem 0;
+  min-height: 44px;
+  line-height: 44px;
 }
 .footer-link:hover {
   color: var(--gold);
@@ -241,15 +257,17 @@ button, input, select, textarea {
 }
 
 .social-badge {
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   border-radius: 50%;
   border: 1px solid rgba(217, 194, 133, 0.4);
   color: var(--gold-light);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   transition: all 0.3s ease;
 }
 .social-badge:hover {

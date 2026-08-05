@@ -7,29 +7,48 @@ import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import BackToTop from "@/components/layout/BackToTop";
 import Preloader from "@/components/ui/Preloader";
-import { COMPANY_FACTS } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "AyuraGreen Escapes | Luxury Destination Management Company Sri Lanka",
+  title: "Ayuragreen Escapes | Luxury Golf, Wellness & Tailored Travel in Sri Lanka",
   description:
-    "Crafting unforgettable luxury travel, championship golf holidays, certified Ayurveda wellness retreats, destination weddings, and corporate travel in Sri Lanka.",
+    "Experience bespoke luxury travel, championship golf packages, and authentic Ayurvedic wellness retreats in Sri Lanka with Ayuragreen Escapes.",
   keywords: [
+    "Ayuragreen Escapes",
     "Sri Lanka Luxury Travel",
     "Golf Tourism Sri Lanka",
     "Ayurveda Wellness Retreats",
     "Destination Wedding Sri Lanka",
     "DMC Sri Lanka",
-    "Victoria Golf Resort",
+    "Victoria Golf Resort Kandy",
     "Luxury Sri Lanka DMC",
   ],
-  metadataBase: new URL("https://www.ayuragreenescapes.com"),
+  metadataBase: new URL("https://coruscating-wisp-db5332.netlify.app"),
+  alternates: {
+    canonical: "https://coruscating-wisp-db5332.netlify.app/",
+  },
   openGraph: {
-    title: "AyuraGreen Escapes | Luxury DMC Sri Lanka",
-    description: "Luxury • Wellness • Golf • Corporate • Authentic Sri Lanka",
-    url: "https://www.ayuragreenescapes.com",
-    siteName: "AyuraGreen Escapes",
+    title: "Ayuragreen Escapes | Luxury Golf, Wellness & Tailored Travel in Sri Lanka",
+    description:
+      "Experience bespoke luxury travel, championship golf packages, and authentic Ayurvedic wellness retreats in Sri Lanka with Ayuragreen Escapes.",
+    url: "https://coruscating-wisp-db5332.netlify.app/",
+    siteName: "Ayuragreen Escapes",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80",
+        width: 1200,
+        height: 630,
+        alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ayuragreen Escapes | Luxury Golf, Wellness & Tailored Travel in Sri Lanka",
+    description:
+      "Experience bespoke luxury travel, championship golf packages, and authentic Ayurvedic wellness retreats in Sri Lanka with Ayuragreen Escapes.",
+    images: ["https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80"],
   },
 };
 
@@ -41,26 +60,34 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "TravelAgency",
-    "name": COMPANY_FACTS.name,
-    "description": COMPANY_FACTS.positioning,
-    "telephone": COMPANY_FACTS.phone,
-    "email": COMPANY_FACTS.email,
-    "url": "https://www.ayuragreenescapes.com",
+    "name": "Ayuragreen Escapes",
+    "url": "https://coruscating-wisp-db5332.netlify.app/",
+    "telephone": "+94772158888",
     "address": {
       "@type": "PostalAddress",
       "addressCountry": "LK",
-      "addressLocality": "Sri Lanka"
+      "addressRegion": "Western Province",
+      "addressLocality": "Colombo"
     },
-    "sameAs": [
-      "https://facebook.com",
-      "https://instagram.com",
-      "https://linkedin.com"
+    "areaServed": {
+      "@type": "Country",
+      "name": "Sri Lanka"
+    },
+    "makesOffer": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "TouristTrip",
+          "name": "Luxury Golf & Wellness Tours Sri Lanka"
+        }
+      }
     ]
   };
 
   return (
     <html lang="en">
       <head>
+        <link rel="canonical" href="https://coruscating-wisp-db5332.netlify.app/" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600..800;1,600..800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -73,7 +100,7 @@ export default function RootLayout({
         <Preloader />
         <ScrollProgressBar />
         <Navbar />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <Footer />
         <WhatsAppButton />
         <BackToTop />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { BiChevronLeft, BiChevronRight, BiRightArrowAlt } from "react-icons/bi";
@@ -8,11 +8,36 @@ import { DESTINATIONS } from "@/lib/data";
 
 export default function DestinationsCarousel() {
   const rowRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const scroll = (direction: "left" | "right") => {
     if (rowRef.current) {
       const scrollAmount = direction === "left" ? -360 : 360;
       rowRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
+
+  const handleScroll = () => {
+    if (rowRef.current) {
+      const scrollLeft = rowRef.current.scrollLeft;
+      const cardWidth = 360;
+      const index = Math.round(scrollLeft / cardWidth);
+      setActiveIndex(Math.min(index, DESTINATIONS.length - 1));
+    }
+  };
+
+  useEffect(() => {
+    const el = rowRef.current;
+    if (el) {
+      el.addEventListener("scroll", handleScroll, { passive: true });
+      return () => el.removeEventListener("scroll", handleScroll);
+    }
+  }, []);
+
+  const scrollToCard = (index: number) => {
+    if (rowRef.current) {
+      rowRef.current.scrollTo({ left: index * 360, behavior: "smooth" });
+      setActiveIndex(index);
     }
   };
 
@@ -34,6 +59,8 @@ export default function DestinationsCarousel() {
               style={{
                 width: "44px",
                 height: "44px",
+                minWidth: "44px",
+                minHeight: "44px",
                 borderRadius: "50%",
                 border: "1px solid var(--line)",
                 backgroundColor: "var(--white)",
@@ -64,6 +91,8 @@ export default function DestinationsCarousel() {
               style={{
                 width: "44px",
                 height: "44px",
+                minWidth: "44px",
+                minHeight: "44px",
                 borderRadius: "50%",
                 border: "1px solid var(--line)",
                 backgroundColor: "var(--white)",
@@ -101,10 +130,11 @@ export default function DestinationsCarousel() {
             overflowX: "auto",
             scrollSnapType: "x mandatory",
             paddingBottom: "1.5rem",
+            paddingRight: "1rem",
           }}
         >
           {DESTINATIONS.map((dest) => (
-            <div
+            <article
               key={dest.slug}
               style={{
                 flex: "0 0 340px",
@@ -120,8 +150,9 @@ export default function DestinationsCarousel() {
             >
               <Image
                 src={dest.image}
-                alt={dest.name}
+                alt={`Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - ${dest.name}`}
                 fill
+                loading="lazy"
                 style={{ objectFit: "cover", transition: "transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)" }}
                 sizes="340px"
               />
@@ -147,15 +178,39 @@ export default function DestinationsCarousel() {
                   {dest.description}
                 </p>
               </div>
-            </div>
+            </article>
+          ))}
+        </div>
+
+        {/* Visible Pagination Dots for Touch Devices */}
+        <div style={{ display: "flex", justifyContent: "center", gap: "0.5rem", marginTop: "1rem", marginBottom: "1.5rem" }}>
+          {DESTINATIONS.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => scrollToCard(idx)}
+              style={{
+                width: idx === activeIndex ? "24px" : "12px",
+                height: "12px",
+                minWidth: "12px",
+                minHeight: "12px",
+                borderRadius: "6px",
+                backgroundColor: idx === activeIndex ? "var(--gold)" : "var(--line)",
+                border: "none",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+                padding: 0,
+              }}
+              aria-label={`Scroll to destination ${idx + 1}`}
+            />
           ))}
         </div>
 
         {/* Explore All Bottom CTA Link */}
-        <div style={{ textAlign: "center", marginTop: "2.5rem" }}>
+        <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
           <Link
             href="/gallery"
             className="btn-outline-gold"
+            style={{ minHeight: "44px", minWidth: "44px" }}
           >
             Explore All Destinations <BiRightArrowAlt style={{ fontSize: "1.3rem" }} />
           </Link>
