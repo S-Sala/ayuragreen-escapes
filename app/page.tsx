@@ -23,20 +23,20 @@ import {
 
 const HERO_SLIDES = [
   {
-    src: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1920&q=80",
-    alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Victoria Golf Resort Kandy Dawn",
+    src: "/images/hero/hero-golf-mountain.jpg",
+    alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Victoria Championship Golf Resort",
   },
   {
-    src: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=80",
-    alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Serene Ayurveda Wellness Resort",
+    src: "/images/hero/hero-ayurveda-spa.jpg",
+    alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Certified Ayurveda Spa Therapy",
   },
   {
-    src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80",
-    alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Romantic Beach Wedding Bentota Coast",
+    src: "/images/hero/hero-luxury-villa.jpg",
+    alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Executive Resort Villa & Pool",
   },
   {
-    src: "https://images.unsplash.com/photo-1566296537600-247ba48b9212?auto=format&fit=crop&w=1920&q=80",
-    alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Nine Arch Railway Bridge Ella",
+    src: "/images/hero/hero-beach-wedding.jpg",
+    alt: "Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Sunset Beach Wedding Ceremony",
   },
 ];
 
@@ -123,7 +123,7 @@ export default function HomePage() {
             {/* Tile 1: Golf */}
             <article style={{ position: "relative", height: "340px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
               <Image
-                src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=800&q=80"
+                src="/images/hero/hero-golf-mountain.jpg"
                 alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Golf Tourism Championship Fairway"
                 fill
                 loading="lazy"
@@ -142,7 +142,7 @@ export default function HomePage() {
             {/* Tile 2: Wellness */}
             <article style={{ position: "relative", height: "340px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
               <Image
-                src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80"
+                src="/images/hero/hero-ayurveda-spa.jpg"
                 alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Ayurveda Wellness Retreat"
                 fill
                 loading="lazy"
@@ -161,7 +161,7 @@ export default function HomePage() {
             {/* Tile 3: Weddings */}
             <article style={{ position: "relative", height: "340px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
               <Image
-                src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
+                src="/images/hero/hero-beach-wedding.jpg"
                 alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Destination Wedding Ceremony Bentota"
                 fill
                 loading="lazy"
@@ -177,11 +177,11 @@ export default function HomePage() {
               </div>
             </article>
 
-            {/* Tile 4: Corporate */}
+            {/* Tile 4: Corporate / Luxury */}
             <article style={{ position: "relative", height: "340px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
               <Image
-                src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80"
-                alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Corporate Travel MICE Conference"
+                src="/images/hero/hero-luxury-villa.jpg"
+                alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Corporate Travel MICE Conference Luxury Villa"
                 fill
                 loading="lazy"
                 style={{ objectFit: "cover" }}
