@@ -3,6 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { PACKAGES } from "@/lib/data";
 
 export default function PackagesCarousel() {
@@ -12,11 +13,16 @@ export default function PackagesCarousel() {
   // Filter or take the top 4 luxury travel packages
   const luxuryPackages = PACKAGES.slice(0, 4);
 
+  const scroll = (direction: "left" | "right") => {
+    if (rowRef.current) {
+      const scrollAmount = direction === "left" ? -300 : 300;
+      rowRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    }
+  };
+
   const handleScroll = () => {
     if (rowRef.current) {
       const scrollLeft = rowRef.current.scrollLeft;
-      const width = rowRef.current.clientWidth;
-      // Estimate card width based on container width or children
       const cardEl = rowRef.current.children[0] as HTMLElement;
       const cardWidth = cardEl ? cardEl.offsetWidth + 16 : 290;
       const index = Math.round(scrollLeft / cardWidth);
@@ -48,46 +54,103 @@ export default function PackagesCarousel() {
   return (
     <section className="section-padding bg-off-white" id="luxury-packages">
       <div className="container-custom">
-        {/* Section Header */}
-        <div style={{ textAlign: "center", maxWidth: "650px", margin: "0 auto 2rem auto" }}>
-          <span
-            style={{
-              color: "#C5A059",
-              fontSize: "0.75rem",
-              letterSpacing: "2px",
-              textTransform: "uppercase",
-              fontWeight: 600,
-              display: "block",
-              marginBottom: "0.5rem",
-            }}
-          >
-            — CURATED JUST FOR YOU —
-          </span>
-          <h2
-            style={{
-              color: "#1B3626",
-              fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
-              fontFamily: "var(--font-playfair), Georgia, serif",
-              fontWeight: 700,
-              lineHeight: 1.2,
-              marginBottom: "0.75rem",
-            }}
-          >
-            Luxury Travel Packages
-          </h2>
-          <p
-            style={{
-              color: "#555555",
-              fontSize: "0.95rem",
-              lineHeight: 1.5,
-              margin: 0,
-            }}
-          >
-            Handpicked experiences designed to showcase the very best of Sri Lanka. From relaxation and adventure to wellness and heritage, we create unforgettable memories.
-          </p>
+        {/* Section Header with Left/Right Slider Navigation Buttons */}
+        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "1.5rem", gap: "1rem" }}>
+          <div>
+            <span
+              style={{
+                color: "#C5A059",
+                fontSize: "0.75rem",
+                letterSpacing: "2px",
+                textTransform: "uppercase",
+                fontWeight: 600,
+                display: "block",
+                marginBottom: "0.4rem",
+              }}
+            >
+              — CURATED JUST FOR YOU —
+            </span>
+            <h2
+              style={{
+                color: "#1B3626",
+                fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
+                fontFamily: "var(--font-playfair), Georgia, serif",
+                fontWeight: 700,
+                lineHeight: 1.2,
+                margin: 0,
+              }}
+            >
+              Luxury Travel Packages
+            </h2>
+          </div>
+
+          {/* Slider Prev / Next Arrow Buttons */}
+          <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+            <button
+              onClick={() => scroll("left")}
+              aria-label="Previous deal package"
+              style={{
+                width: "38px",
+                height: "38px",
+                minWidth: "38px",
+                minHeight: "38px",
+                borderRadius: "50%",
+                border: "1px solid #EAEAEA",
+                backgroundColor: "#FFFFFF",
+                color: "#1B3626",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "1.3rem",
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+              }}
+              className="slider-nav-btn"
+            >
+              <BiChevronLeft />
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              aria-label="Next deal package"
+              style={{
+                width: "38px",
+                height: "38px",
+                minWidth: "38px",
+                minHeight: "38px",
+                borderRadius: "50%",
+                border: "1px solid #EAEAEA",
+                backgroundColor: "#FFFFFF",
+                color: "#1B3626",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "1.3rem",
+                cursor: "pointer",
+                transition: "all 0.2s ease",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+              }}
+              className="slider-nav-btn"
+            >
+              <BiChevronRight />
+            </button>
+          </div>
         </div>
 
-        {/* Responsive Grid / Horizontal Carousel Container */}
+        {/* Subtitle */}
+        <p
+          style={{
+            color: "#555555",
+            fontSize: "0.95rem",
+            lineHeight: 1.5,
+            margin: "0 0 1.8rem 0",
+            maxWidth: "650px",
+          }}
+        >
+          Handpicked experiences designed to showcase the very best of Sri Lanka. From relaxation and adventure to wellness and heritage, we create unforgettable memories.
+        </p>
+
+        {/* Responsive Horizontal Slider Container */}
         <div
           ref={rowRef}
           className="no-scrollbar luxury-packages-grid"
@@ -177,13 +240,13 @@ export default function PackagesCarousel() {
                 </div>
               </div>
 
-              {/* Compact Card Body Content (16px padding, 10px gap) */}
+              {/* Compact Card Body Content (16px padding, tight vertical gap) */}
               <div
                 style={{
                   padding: "16px",
                   display: "flex",
                   flexDirection: "column",
-                  gap: "10px",
+                  gap: "8px",
                   flex: 1,
                 }}
               >
@@ -221,9 +284,8 @@ export default function PackagesCarousel() {
                       fontSize: "0.7rem",
                       fontWeight: 700,
                       letterSpacing: "0.8px",
-                      marginTop: "4px",
                       display: "block",
-                      marginBottom: "6px",
+                      marginBottom: "4px",
                       textTransform: "uppercase",
                     }}
                   >
@@ -233,7 +295,7 @@ export default function PackagesCarousel() {
                     style={{
                       display: "flex",
                       flexDirection: "column",
-                      gap: "6px",
+                      gap: "5px",
                       padding: 0,
                       margin: 0,
                       listStyle: "none",
@@ -251,30 +313,30 @@ export default function PackagesCarousel() {
                           gap: "8px",
                         }}
                       >
-                        <svg
-                          width="12"
-                          height="12"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="#C5A059"
-                          strokeWidth="3.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          style={{ flexShrink: 0, marginTop: "2px" }}
-                        >
-                          <polyline points="20 6 9 17 4 12" />
-                        </svg>
+                        <span
+                          style={{
+                            width: "6px",
+                            height: "6px",
+                            minWidth: "6px",
+                            minHeight: "6px",
+                            borderRadius: "50%",
+                            backgroundColor: "#C5A059",
+                            display: "inline-block",
+                            flexShrink: 0,
+                            marginTop: "5px",
+                          }}
+                        />
                         <span>{highlight}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                {/* Price Tag & CTA Button Wrapper */}
-                <div style={{ marginTop: "auto", paddingTop: "6px", display: "flex", flexDirection: "column", gap: "10px" }}>
-                  {/* Price Tag */}
+                {/* Price Tag & CTA Button Wrapper with REDUCED GAP */}
+                <div style={{ marginTop: "auto", paddingTop: "4px", display: "flex", flexDirection: "column", gap: "8px" }}>
+                  {/* Price Tag (Reduced gap to included highlights above) */}
                   {pkg.price && (
-                    <div style={{ fontSize: "0.85rem", color: "#666666", display: "flex", alignItems: "baseline", gap: "4px" }}>
+                    <div style={{ fontSize: "0.85rem", color: "#666666", display: "flex", alignItems: "baseline", gap: "4px", margin: 0 }}>
                       <span>From </span>
                       <span style={{ fontSize: "1.25rem", fontWeight: 700, color: "#1B3626" }}>{pkg.price}</span>
                       <span> / Person</span>
@@ -311,13 +373,13 @@ export default function PackagesCarousel() {
           ))}
         </div>
 
-        {/* Responsive Active Dots Pagination Indicators */}
+        {/* Responsive Active Dots Pagination Indicators (100% Perfect Circles) */}
         <div
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            gap: "6px",
+            gap: "8px",
             marginTop: "20px",
           }}
         >
@@ -326,16 +388,21 @@ export default function PackagesCarousel() {
               key={idx}
               onClick={() => scrollToCard(idx)}
               className={`dot ${idx === activeIndex ? "active" : ""}`}
-              aria-label={`Go to package slide ${idx + 1}`}
+              aria-label={`Go to package deal slide ${idx + 1}`}
               style={{
-                width: idx === activeIndex ? "10px" : "8px",
-                height: idx === activeIndex ? "10px" : "8px",
+                width: "8px",
+                height: "8px",
+                minWidth: "8px",
+                minHeight: "8px",
+                aspectRatio: "1 / 1",
                 borderRadius: "50%",
-                background: idx === activeIndex ? "#1B3626" : "#CCC",
+                backgroundColor: idx === activeIndex ? "#1B3626" : "#CCCCCC",
                 border: "none",
                 padding: 0,
                 cursor: "pointer",
-                transition: "all 0.3s ease",
+                transition: "all 0.25s ease",
+                flexShrink: 0,
+                outline: "none",
               }}
             />
           ))}
