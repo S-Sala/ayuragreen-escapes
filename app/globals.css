@@ -522,3 +522,60 @@ button, .btn-gold, .btn-forest, .btn-outline-gold, .btn-outline-white, .social-b
     scroll-behavior: auto !important;
   }
 }
+
+/* Luxury Travel Packages Section & Cards */
+.luxury-packages-grid {
+  display: flex !important;
+  gap: 16px !important;
+  overflow-x: auto !important;
+  scroll-snap-type: x mandatory !important;
+  padding-bottom: 0.5rem;
+}
+
+.luxury-package-card {
+  flex: 1 1 calc(25% - 12px);
+  min-width: 260px;
+  scroll-snap-align: start;
+}
+
+.package-cta-btn:hover {
+  background-color: #A88746 !important;
+  transform: translateY(-1px);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #CCC;
+  transition: all 0.3s ease;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.dot.active {
+  width: 10px;
+  height: 10px;
+  background: #1B3626 !important;
+}
+
+@media (max-width: 1024px) {
+  .luxury-packages-grid {
+    gap: 14px !important;
+  }
+  .luxury-package-card {
+    flex: 0 0 280px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .luxury-packages-grid {
+    gap: 12px !important;
+  }
+  .luxury-package-card {
+    flex: 0 0 82vw !important;
+    max-width: 320px !important;
+  }
+}
+

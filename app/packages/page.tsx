@@ -37,81 +37,204 @@ export default function PackagesPage() {
       {/* Packages Grid */}
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(270px, 1fr))", gap: "16px" }}>
             {PACKAGES.map((pkg, idx) => (
               <RevealOnScroll key={pkg.slug} delay={idx * 50}>
                 <article
                   id={pkg.slug}
-                  className="card-clean"
                   style={{
-                    scrollMarginTop: "90px",
-                    height: "100%",
+                    backgroundColor: "#FFFFFF",
+                    borderRadius: "16px",
+                    border: "1px solid #EAEAEA",
+                    boxShadow: "0 4px 16px rgba(0, 0, 0, 0.06)",
+                    overflow: "hidden",
                     display: "flex",
                     flexDirection: "column",
                     position: "relative",
-                    border: pkg.featured ? "2px solid var(--gold)" : "1px solid var(--line)",
+                    scrollMarginTop: "90px",
+                    height: "100%",
                   }}
                 >
-                  {pkg.featured && (
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: "0.75rem",
-                        right: "0.75rem",
-                        backgroundColor: "var(--gold)",
-                        color: "var(--white)",
-                        padding: "0.25rem 0.65rem",
-                        borderRadius: "4px",
-                        fontSize: "0.7rem",
-                        fontWeight: 700,
-                        textTransform: "uppercase",
-                        letterSpacing: "0.1em",
-                        zIndex: 10,
-                      }}
-                    >
-                      Most Popular
-                    </div>
-                  )}
-
-                  <div className="package-card-img-wrap" style={{ position: "relative", width: "100%", height: "180px" }}>
+                  {/* Reduced Image Header (170px) */}
+                  <div
+                    style={{
+                      position: "relative",
+                      width: "100%",
+                      height: "170px",
+                      overflow: "hidden",
+                      borderTopLeftRadius: "16px",
+                      borderTopRightRadius: "16px",
+                    }}
+                  >
                     <Image
                       src={pkg.image}
-                      alt={`Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - ${pkg.name}`}
+                      alt={`Ayuragreen Escapes - ${pkg.name}`}
                       fill
                       loading="lazy"
                       style={{ objectFit: "cover" }}
-                      sizes="400px"
+                      sizes="(max-width: 768px) 280px, 400px"
                     />
-                    <div style={{ position: "absolute", bottom: "0.75rem", left: "0.75rem", backgroundColor: "rgba(10,33,22,0.88)", color: "var(--white)", padding: "0.25rem 0.6rem", borderRadius: "4px", fontSize: "0.75rem", fontWeight: 600 }}>
+
+                    {/* Top-Right Badge */}
+                    {pkg.badgeTop && (
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: "10px",
+                          right: "10px",
+                          zIndex: 2,
+                          background: pkg.badgeTopType === "forest" || pkg.badgeTop === "NEW" ? "#1B3626" : "#C5A059",
+                          color: "#FFF",
+                          fontSize: "0.7rem",
+                          fontWeight: 600,
+                          padding: "4px 10px",
+                          borderRadius: "12px",
+                          boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+                          letterSpacing: "0.5px",
+                        }}
+                      >
+                        {pkg.badgeTop}
+                      </div>
+                    )}
+
+                    {/* Bottom-Left Badge (Duration) */}
+                    <div
+                      style={{
+                        position: "absolute",
+                        bottom: "10px",
+                        left: "10px",
+                        zIndex: 2,
+                        background: "rgba(27, 54, 38, 0.85)",
+                        color: "#FFF",
+                        fontSize: "0.75rem",
+                        fontWeight: 500,
+                        padding: "4px 10px",
+                        borderRadius: "12px",
+                        backdropFilter: "blur(4px)",
+                      }}
+                    >
                       {pkg.duration}
                     </div>
                   </div>
 
-                  <div className="package-card-body" style={{ padding: "1.2rem", display: "flex", flexDirection: "column", flex: 1 }}>
-                    <h3 className="package-card-title" style={{ fontSize: "1.3rem", fontFamily: "var(--font-playfair)", marginBottom: "0.3rem" }}>
+                  {/* Compact Card Body Content (16px padding, 10px gap) */}
+                  <div
+                    style={{
+                      padding: "16px",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "10px",
+                      flex: 1,
+                    }}
+                  >
+                    <h3
+                      style={{
+                        color: "#1B3626",
+                        fontSize: "1.125rem",
+                        fontWeight: 600,
+                        margin: 0,
+                        lineHeight: 1.3,
+                        fontFamily: "var(--font-playfair), Georgia, serif",
+                      }}
+                    >
                       {pkg.name}
                     </h3>
-                    <p className="package-card-tagline" style={{ fontSize: "0.85rem", color: "var(--ink-soft)", lineHeight: "1.4", marginBottom: "1rem" }}>
+                    <p
+                      style={{
+                        color: "#666666",
+                        fontSize: "0.85rem",
+                        lineHeight: 1.35,
+                        margin: 0,
+                      }}
+                    >
                       {pkg.tagline}
                     </p>
 
-                    <div className="package-card-highlights" style={{ borderTop: "1px solid var(--line)", paddingTop: "0.8rem", marginBottom: "1.2rem" }}>
-                      <span style={{ fontSize: "0.72rem", fontWeight: 700, color: "var(--gold)", textTransform: "uppercase", letterSpacing: "0.1em", display: "block", marginBottom: "0.5rem" }}>
-                        Inclusions & Highlights:
+                    <div style={{ marginTop: "2px" }}>
+                      <span
+                        style={{
+                          color: "#C5A059",
+                          fontSize: "0.7rem",
+                          fontWeight: 700,
+                          letterSpacing: "0.8px",
+                          marginTop: "4px",
+                          display: "block",
+                          marginBottom: "6px",
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        INCLUDED HIGHLIGHTS:
                       </span>
-                      <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.4rem" }}>
-                        {pkg.inclusions.map((inc, i) => (
-                          <li key={i} style={{ fontSize: "0.82rem", color: "var(--ink)", display: "flex", alignItems: "flex-start", gap: "0.4rem" }}>
-                            <BiCheck style={{ color: "var(--gold)", fontSize: "1.1rem", flexShrink: 0, marginTop: "2px" }} />
+                      <ul
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: "6px",
+                          padding: 0,
+                          margin: 0,
+                          listStyle: "none",
+                        }}
+                      >
+                        {pkg.inclusions.slice(0, 3).map((inc, i) => (
+                          <li
+                            key={i}
+                            style={{
+                              color: "#333333",
+                              fontSize: "0.8rem",
+                              lineHeight: 1.25,
+                              display: "flex",
+                              alignItems: "flex-start",
+                              gap: "8px",
+                            }}
+                          >
+                            <svg
+                              width="12"
+                              height="12"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="#C5A059"
+                              strokeWidth="3.5"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              style={{ flexShrink: 0, marginTop: "2px" }}
+                            >
+                              <polyline points="20 6 9 17 4 12" />
+                            </svg>
                             <span>{inc}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
-                    <div style={{ marginTop: "auto" }}>
-                      <Link href={`/contact?package=${pkg.slug}`} className="btn-gold" style={{ width: "100%", justifyContent: "center", minHeight: "40px", padding: "0.6rem 1.2rem", fontSize: "0.85rem" }}>
-                        Enquire About Package <BiRightArrowAlt style={{ fontSize: "1.1rem" }} />
+                    <div style={{ marginTop: "auto", paddingTop: "6px", display: "flex", flexDirection: "column", gap: "10px" }}>
+                      {pkg.price && (
+                        <div style={{ fontSize: "0.85rem", color: "#666666", display: "flex", alignItems: "baseline", gap: "4px" }}>
+                          <span>From </span>
+                          <span style={{ fontSize: "1.25rem", fontWeight: 700, color: "#1B3626" }}>{pkg.price}</span>
+                          <span> / Person</span>
+                        </div>
+                      )}
+                      <Link
+                        href={`/contact?package=${pkg.slug}`}
+                        style={{
+                          backgroundColor: "#C5A059",
+                          color: "#FFFFFF",
+                          fontWeight: 600,
+                          fontSize: "0.875rem",
+                          padding: "10px 16px",
+                          borderRadius: "8px",
+                          border: "none",
+                          width: "100%",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          gap: "8px",
+                          cursor: "pointer",
+                          textDecoration: "none",
+                        }}
+                        className="package-cta-btn"
+                      >
+                        View Package Details →
                       </Link>
                     </div>
                   </div>

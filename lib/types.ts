@@ -15,6 +15,9 @@ export interface PackageItem {
   duration: string;
   image: string;
   featured?: boolean;
+  badgeTop?: string;
+  badgeTopType?: "gold" | "forest";
+  price?: string;
 }
 
 export interface Destination {

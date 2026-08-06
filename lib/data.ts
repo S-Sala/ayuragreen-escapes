@@ -149,7 +149,10 @@ export const PACKAGES: PackageItem[] = [
     slug: "family-holiday",
     name: "Exclusive Family Tour Package",
     duration: "10 Days / 9 Nights",
-    tagline: "Child-friendly, safe, and engaging island adventures for all ages",
+    tagline: "Child-friendly, safe, and engaging island adventures for all ages.",
+    badgeTop: "★ MOST POPULAR",
+    badgeTopType: "gold",
+    price: "$1,250",
     featured: true,
     inclusions: [
       "Colombo City Tour & Gangaramaya Temple",
@@ -157,9 +160,7 @@ export const PACKAGES: PackageItem[] = [
       "Kandy Temple of the Tooth & Cultural Dance Show",
       "Scenic Ella Train Journey & Nine Arch Bridge",
       "Yala National Park Wildlife Safari",
-      "Mirissa Beach Relaxation & Whale Watching",
-      "Private Air-Conditioned Vehicle with Dedicated Chauffeur Guide",
-      "Daily Breakfast & Selected Dinners"
+      "Mirissa Beach Relaxation & Whale Watching"
     ],
     image: "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=1200&q=80"
   },
@@ -167,15 +168,17 @@ export const PACKAGES: PackageItem[] = [
     slug: "luxury-escape",
     name: "Luxury Escapes Tour Package",
     duration: "12 Days / 11 Nights",
-    tagline: "Uncompromising 5-star elegance, private pool villas, and VIP concierge",
+    tagline: "Uncompromising luxury, elegance, and privacy with unique experiences.",
+    badgeTop: "★ MOST POPULAR",
+    badgeTopType: "gold",
+    price: "$2,450",
     featured: true,
     inclusions: [
-      "5-Star Resort Stays (Ceylon Tea Trails, Cape Weligama, Amangalla)",
-      "Helicopter Transfer Options & Private Catamaran Cruise",
-      "Private Butler Service & Gourmet Dining Experiences",
+      "5-Star Resort Stays (Ceylon Tea Trails, Cape Weligama, Anantaya)",
+      "Helicopter Transfer Options & Private Guided Excursions",
+      "Private Butler Services & Gourmet Dining Experiences",
       "Exclusive Wildlife Safari with Expert Naturalist",
-      "Private Golf Round at Victoria Golf Resort Kandy",
-      "24/7 Dedicated Concierge Support"
+      "Private Golf Round at Victoria Golf Resort Kandy"
     ],
     image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80"
   },
@@ -183,31 +186,32 @@ export const PACKAGES: PackageItem[] = [
     slug: "wellness-retreat",
     name: "Sri Lanka Wellness Retreat Package",
     duration: "7 Days / 6 Nights",
-    tagline: "Certified Ayurveda doctor consultations, daily yoga, and organic detox",
+    tagline: "Curated Ayurveda detox consultations, daily yoga, and organic meals.",
+    price: "$1,180",
     featured: false,
     inclusions: [
-      "Ayurveda Doctor Consultation & Daily Panchakarma Treatments",
+      "Ayurveda Doctor Consultations & Daily Panchakarma Treatments",
       "Daily Morning & Evening Yoga & Mindfulness Meditation",
       "Herbal Bath, Steam, and Organic Detox Diet Plan",
       "Nature Walk & Botanical Forest Therapy",
-      "Eco-Wellness Resort Accommodation",
-      "Herbal Elixirs & Personal Wellness Plan"
+      "Eco-Wellness Resort Accommodation"
     ],
     image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80"
   },
   {
     slug: "golf-holiday",
-    name: "Championship Golf Holiday Package",
-    duration: "8 Days / 7 Nights",
-    tagline: "Guaranteed tee times across Kandy, Nuwara Eliya, and Colombo",
+    name: "Championship Golf Package",
+    duration: "5 Days / 4 Nights",
+    tagline: "Experience the finest golf courses in Kandy, Nuwara Eliya, and Colombo.",
+    badgeTop: "NEW",
+    badgeTopType: "forest",
+    price: "$980",
     featured: true,
     inclusions: [
-      "Round of Golf at Victoria Golf Resort Kandy",
-      "Round of Golf at Nuwara Eliya Golf Club",
-      "Round of Golf at Royal Colombo Golf Club",
-      "Private Buggies & Caddie Services Included",
-      "Luxury Golf Resort Accommodation",
-      "Golf Club Storage & Transport Logistics"
+      "Rounds of Golf at Victoria, Nuwara Eliya & Royal Colombo",
+      "Luxury Club House Transfers & Caddie Services",
+      "5-Star Hotel Accommodation & Fine Dining",
+      "Private Buggies & Caddie Services Included"
     ],
     image: "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1200&q=80"
   },
