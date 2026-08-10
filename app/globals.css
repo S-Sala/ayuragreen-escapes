@@ -201,6 +201,7 @@ button, .btn-gold, .btn-forest, .btn-outline-gold, .btn-outline-white, .social-b
   border: 1px solid var(--line);
   border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0 4px 15px rgba(18, 53, 36, 0.05);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
@@ -209,8 +210,8 @@ button, .btn-gold, .btn-forest, .btn-outline-gold, .btn-outline-white, .social-b
 .destination-card:hover,
 .tailored-card:hover,
 .pillar-card:hover {
-  transform: translateY(-8px) !important;
-  box-shadow: 0 18px 40px rgba(18, 53, 36, 0.16) !important;
+  transform: translateY(-6px) !important;
+  box-shadow: 0 14px 30px rgba(18, 53, 36, 0.12) !important;
 }
 
 /* Task 2: Stats / Experience Counters Block */

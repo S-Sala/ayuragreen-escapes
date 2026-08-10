@@ -55,50 +55,63 @@ export default function DestinationsCarousel() {
     <section
       className="section-padding"
       style={{
-        background: "linear-gradient(135deg, #12241D 0%, #1B2624 50%, #0F1D17 100%)",
-        color: "#FFFFFF",
         position: "relative",
+        color: "#FFFFFF",
         overflow: "hidden",
+        padding: "6rem 0",
       }}
     >
-      {/* Background ambient glow effect */}
-      <div
+      {/* Background Scenic Image */}
+      <Image
+        src="/images/where-will-you-go-bg.jpg"
+        alt="Where Will You Go - Sri Lanka Tea Plantation & Mountain Landscape"
+        fill
+        priority
         style={{
-          position: "absolute",
-          top: "-20%",
-          right: "-10%",
-          width: "600px",
-          height: "600px",
-          background: "radial-gradient(circle, rgba(197, 160, 89, 0.12) 0%, rgba(0, 0, 0, 0) 70%)",
-          pointerEvents: "none",
+          objectFit: "cover",
+          objectPosition: "center",
           zIndex: 0,
         }}
+        sizes="100vw"
       />
+
+      {/* Dark Gradient Overlay to ensure text readability & luxury contrast */}
       <div
         style={{
           position: "absolute",
-          bottom: "-20%",
-          left: "-10%",
-          width: "600px",
-          height: "600px",
-          background: "radial-gradient(circle, rgba(18, 53, 36, 0.25) 0%, rgba(0, 0, 0, 0) 70%)",
-          pointerEvents: "none",
-          zIndex: 0,
+          inset: 0,
+          background: "linear-gradient(180deg, rgba(8, 22, 16, 0.72) 0%, rgba(10, 26, 19, 0.84) 50%, rgba(6, 18, 13, 0.88) 100%)",
+          zIndex: 1,
         }}
       />
 
-      <div className="container-custom" style={{ position: "relative", zIndex: 1 }}>
+      {/* Subtle ambient lighting glows */}
+      <div
+        style={{
+          position: "absolute",
+          top: "-15%",
+          right: "-5%",
+          width: "550px",
+          height: "550px",
+          background: "radial-gradient(circle, rgba(197, 160, 89, 0.15) 0%, rgba(0, 0, 0, 0) 70%)",
+          pointerEvents: "none",
+          zIndex: 2,
+        }}
+      />
+
+      <div className="container-custom" style={{ position: "relative", zIndex: 3 }}>
         
-        {/* Main 2-Column Split Layout Container */}
+        {/* Main 2-Column Split Layout Container - Glassmorphic Transparent Style */}
         <div
           style={{
-            background: "rgba(27, 38, 36, 0.5)",
+            background: "rgba(10, 24, 18, 0.38)",
             backdropFilter: "blur(16px)",
             WebkitBackdropFilter: "blur(16px)",
             borderRadius: "24px",
-            border: "1px solid rgba(197, 160, 89, 0.18)",
+            border: "1px solid rgba(255, 255, 255, 0.14)",
             padding: "clamp(2rem, 4vw, 4rem)",
-            boxShadow: "0 30px 60px rgba(0, 0, 0, 0.45)",
+            boxShadow: "0 20px 50px rgba(0, 0, 0, 0.35)",
+            overflow: "visible", // Allows shadows to display smoothly without clipping
           }}
         >
           <div
@@ -153,10 +166,11 @@ export default function DestinationsCarousel() {
                 key={`desc-${activeIndex}`}
                 className="destination-desc-fade"
                 style={{
-                  color: "#D1D5DB",
+                  color: "#E2E8F0",
                   fontSize: "1.025rem",
                   lineHeight: 1.65,
                   marginBottom: "2.2rem",
+                  textShadow: "0 2px 8px rgba(0,0,0,0.5)",
                 }}
               >
                 {activeDest.description}
@@ -172,7 +186,7 @@ export default function DestinationsCarousel() {
                 </Link>
               </div>
 
-              {/* Navigation Controls & Counter */}
+              {/* Navigation Controls & Circular Pagination Dots */}
               <div
                 style={{
                   display: "flex",
@@ -180,7 +194,7 @@ export default function DestinationsCarousel() {
                   gap: "1.5rem",
                   marginTop: "2.5rem",
                   paddingTop: "1.5rem",
-                  borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+                  borderTop: "1px solid rgba(255, 255, 255, 0.12)",
                 }}
               >
                 {/* Arrow Buttons */}
@@ -201,10 +215,10 @@ export default function DestinationsCarousel() {
                   </button>
                 </div>
 
-                {/* Counter */}
+                {/* Slide Counter */}
                 <span
                   style={{
-                    color: "rgba(255, 255, 255, 0.6)",
+                    color: "rgba(255, 255, 255, 0.7)",
                     fontSize: "0.9rem",
                     fontWeight: 500,
                     letterSpacing: "0.15em",
@@ -216,21 +230,22 @@ export default function DestinationsCarousel() {
                   / {String(total).padStart(2, "0")}
                 </span>
 
-                {/* Dots indicator */}
-                <div style={{ display: "flex", gap: "0.4rem", marginLeft: "auto" }}>
+                {/* 1st Requirement: CIRCLE Pagination Dots */}
+                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginLeft: "auto" }}>
                   {DESTINATIONS.map((_, idx) => (
                     <button
                       key={idx}
                       onClick={() => setActiveIndex(idx)}
                       aria-label={`Go to slide ${idx + 1}`}
                       style={{
-                        width: idx === activeIndex ? "20px" : "8px",
-                        height: "8px",
-                        borderRadius: "4px",
-                        backgroundColor: idx === activeIndex ? "#C5A059" : "rgba(255,255,255,0.2)",
+                        width: idx === activeIndex ? "12px" : "10px",
+                        height: idx === activeIndex ? "12px" : "10px",
+                        borderRadius: "50%",
+                        backgroundColor: idx === activeIndex ? "#C5A059" : "rgba(255, 255, 255, 0.3)",
+                        boxShadow: idx === activeIndex ? "0 0 10px rgba(197, 160, 89, 0.6)" : "none",
                         border: "none",
                         cursor: "pointer",
-                        transition: "all 0.3s ease",
+                        transition: "all 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
                         padding: 0,
                       }}
                     />
@@ -244,12 +259,12 @@ export default function DestinationsCarousel() {
               style={{
                 position: "relative",
                 width: "100%",
-                height: "460px",
+                height: "520px", // Increased height to prevent shadow cutoff at bottom
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                overflow: "hidden",
-                padding: "1rem 0",
+                padding: "2rem 0",
+                overflow: "visible", // Ensures active card drop shadows breathe naturally
               }}
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
@@ -276,7 +291,7 @@ export default function DestinationsCarousel() {
 
                   // Dynamic transformation math for center & overlapping side cards
                   const translateX = offset * 185; // horizontal px spacing offset
-                  const scale = isActive ? 1.05 : 0.88 - (absOffset - 1) * 0.12;
+                  const scale = isActive ? 1.04 : 0.88 - (absOffset - 1) * 0.12;
                   const opacity = isActive ? 1 : 0.65 - (absOffset - 1) * 0.35;
                   const zIndex = 30 - absOffset * 10;
 
@@ -287,7 +302,7 @@ export default function DestinationsCarousel() {
                       style={{
                         position: "absolute",
                         width: "270px",
-                        height: "400px",
+                        height: "410px",
                         borderRadius: "20px",
                         overflow: "hidden",
                         transform: `translateX(${translateX}px) scale(${scale})`,
@@ -295,9 +310,10 @@ export default function DestinationsCarousel() {
                         zIndex: zIndex,
                         cursor: "pointer",
                         transition: "transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease",
+                        // 2nd Requirement: Refined luxury drop shadow without edge clipping
                         boxShadow: isActive
-                          ? "0 25px 50px rgba(0, 0, 0, 0.75), 0 0 30px rgba(197, 160, 89, 0.3)"
-                          : "0 15px 30px rgba(0, 0, 0, 0.5)",
+                          ? "0 18px 40px rgba(0, 0, 0, 0.45), 0 0 22px rgba(197, 160, 89, 0.25)"
+                          : "0 10px 25px rgba(0, 0, 0, 0.35)",
                         border: isActive
                           ? "2px solid rgba(197, 160, 89, 0.85)"
                           : "1px solid rgba(255, 255, 255, 0.15)",
@@ -324,7 +340,7 @@ export default function DestinationsCarousel() {
                           position: "absolute",
                           inset: 0,
                           background: isActive
-                            ? "radial-gradient(circle at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.3) 100%)"
+                            ? "radial-gradient(circle at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.25) 100%)"
                             : "rgba(0, 0, 0, 0.25)",
                           pointerEvents: "none",
                         }}
