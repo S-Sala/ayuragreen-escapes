@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { BiChevronLeft, BiChevronRight, BiSolidStar } from "react-icons/bi";
 import { TESTIMONIALS } from "@/lib/data";
 
@@ -19,6 +20,18 @@ export default function TestimonialSlider() {
   }, [isPaused]);
 
   const current = TESTIMONIALS[activeIdx];
+
+  // Helper to extract initials if image fails or isn't a URL
+  const getInitials = (name: string) => {
+    return name
+      .split(" ")
+      .map((part) => part[0])
+      .join("")
+      .substring(0, 2)
+      .toUpperCase();
+  };
+
+  const isImageUrl = current.avatar && (current.avatar.startsWith("http") || current.avatar.startsWith("/"));
 
   return (
     <section className="section-padding bg-white" style={{ position: "relative" }}>
@@ -71,6 +84,8 @@ export default function TestimonialSlider() {
                 style={{
                   width: "52px",
                   height: "52px",
+                  minWidth: "52px",
+                  minHeight: "52px",
                   borderRadius: "50%",
                   backgroundColor: "var(--forest)",
                   color: "var(--gold)",
@@ -80,9 +95,23 @@ export default function TestimonialSlider() {
                   fontWeight: 700,
                   fontFamily: "var(--font-playfair)",
                   fontSize: "1.1rem",
+                  overflow: "hidden",
+                  position: "relative",
+                  flexShrink: 0,
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
                 }}
               >
-                {current.avatar}
+                {isImageUrl ? (
+                  <Image
+                    src={current.avatar}
+                    alt={current.name}
+                    fill
+                    sizes="52px"
+                    style={{ objectFit: "cover" }}
+                  />
+                ) : (
+                  getInitials(current.name)
+                )}
               </div>
               <div>
                 <h4 style={{ fontSize: "1.1rem", fontFamily: "var(--font-playfair)", marginBottom: "0.1rem" }}>

@@ -10,12 +10,11 @@ export default function PackagesCarousel() {
   const rowRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Filter or take the top 4 luxury travel packages
-  const luxuryPackages = PACKAGES.slice(0, 4);
+  const luxuryPackages = PACKAGES;
 
   const scroll = (direction: "left" | "right") => {
     if (rowRef.current) {
-      const scrollAmount = direction === "left" ? -300 : 300;
+      const scrollAmount = direction === "left" ? -340 : 340;
       rowRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
@@ -23,8 +22,7 @@ export default function PackagesCarousel() {
   const handleScroll = () => {
     if (rowRef.current) {
       const scrollLeft = rowRef.current.scrollLeft;
-      const cardEl = rowRef.current.children[0] as HTMLElement;
-      const cardWidth = cardEl ? cardEl.offsetWidth + 16 : 290;
+      const cardWidth = 340;
       const index = Math.round(scrollLeft / cardWidth);
       setActiveIndex(Math.max(0, Math.min(index, luxuryPackages.length - 1)));
     }
@@ -40,13 +38,7 @@ export default function PackagesCarousel() {
 
   const scrollToCard = (index: number) => {
     if (rowRef.current) {
-      const cardEl = rowRef.current.children[index] as HTMLElement;
-      if (cardEl) {
-        cardEl.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
-      } else {
-        const cardWidth = 290;
-        rowRef.current.scrollTo({ left: index * cardWidth, behavior: "smooth" });
-      }
+      rowRef.current.scrollTo({ left: index * 340, behavior: "smooth" });
       setActiveIndex(index);
     }
   };
@@ -90,10 +82,10 @@ export default function PackagesCarousel() {
               onClick={() => scroll("left")}
               aria-label="Previous deal package"
               style={{
-                width: "38px",
-                height: "38px",
-                minWidth: "38px",
-                minHeight: "38px",
+                width: "44px",
+                height: "44px",
+                minWidth: "44px",
+                minHeight: "44px",
                 borderRadius: "50%",
                 border: "1px solid #EAEAEA",
                 backgroundColor: "#FFFFFF",
@@ -101,10 +93,10 @@ export default function PackagesCarousel() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: "1.3rem",
+                fontSize: "1.4rem",
                 cursor: "pointer",
                 transition: "all 0.2s ease",
-                boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
               }}
               className="slider-nav-btn"
             >
@@ -114,10 +106,10 @@ export default function PackagesCarousel() {
               onClick={() => scroll("right")}
               aria-label="Next deal package"
               style={{
-                width: "38px",
-                height: "38px",
-                minWidth: "38px",
-                minHeight: "38px",
+                width: "44px",
+                height: "44px",
+                minWidth: "44px",
+                minHeight: "44px",
                 borderRadius: "50%",
                 border: "1px solid #EAEAEA",
                 backgroundColor: "#FFFFFF",
@@ -125,10 +117,10 @@ export default function PackagesCarousel() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: "1.3rem",
+                fontSize: "1.4rem",
                 cursor: "pointer",
                 transition: "all 0.2s ease",
-                boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
               }}
               className="slider-nav-btn"
             >
@@ -155,16 +147,19 @@ export default function PackagesCarousel() {
           ref={rowRef}
           className="no-scrollbar luxury-packages-grid"
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(270px, 1fr))",
-            gap: "16px",
-            paddingBottom: "4px",
+            display: "flex",
+            gap: "20px",
+            overflowX: "auto",
+            scrollSnapType: "x mandatory",
+            paddingBottom: "0.75rem",
           }}
         >
           {luxuryPackages.map((pkg) => (
             <article
               key={pkg.slug}
               style={{
+                flex: "0 0 320px",
+                minWidth: "320px",
                 backgroundColor: "#FFFFFF",
                 borderRadius: "16px",
                 border: "1px solid #EAEAEA",
@@ -178,12 +173,12 @@ export default function PackagesCarousel() {
               }}
               className="luxury-package-card"
             >
-              {/* Reduced Image Header (170px) */}
+              {/* Image Header */}
               <div
                 style={{
                   position: "relative",
                   width: "100%",
-                  height: "170px",
+                  height: "180px",
                   overflow: "hidden",
                   borderTopLeftRadius: "16px",
                   borderTopRightRadius: "16px",
@@ -195,7 +190,7 @@ export default function PackagesCarousel() {
                   fill
                   loading="lazy"
                   style={{ objectFit: "cover" }}
-                  sizes="(max-width: 768px) 280px, 320px"
+                  sizes="320px"
                 />
 
                 {/* Top-Right Badge */}
@@ -240,7 +235,7 @@ export default function PackagesCarousel() {
                 </div>
               </div>
 
-              {/* Compact Card Body Content (16px padding, tight vertical gap) */}
+              {/* Card Body Content */}
               <div
                 style={{
                   padding: "16px",
@@ -332,9 +327,8 @@ export default function PackagesCarousel() {
                   </ul>
                 </div>
 
-                {/* Price Tag & CTA Button Wrapper with REDUCED GAP */}
-                <div style={{ marginTop: "auto", paddingTop: "4px", display: "flex", flexDirection: "column", gap: "8px" }}>
-                  {/* Price Tag (Reduced gap to included highlights above) */}
+                {/* Price Tag & CTA Button */}
+                <div style={{ marginTop: "auto", paddingTop: "8px", display: "flex", flexDirection: "column", gap: "8px" }}>
                   {pkg.price && (
                     <div style={{ fontSize: "0.85rem", color: "#666666", display: "flex", alignItems: "baseline", gap: "4px", margin: 0 }}>
                       <span>From </span>
@@ -343,7 +337,6 @@ export default function PackagesCarousel() {
                     </div>
                   )}
 
-                  {/* CTA Button */}
                   <Link
                     href={`/contact?package=${pkg.slug}`}
                     style={{
@@ -373,7 +366,7 @@ export default function PackagesCarousel() {
           ))}
         </div>
 
-        {/* Responsive Active Dots Pagination Indicators (100% Perfect Circles) */}
+        {/* Responsive Active Dots Pagination Indicators */}
         <div
           style={{
             display: "flex",

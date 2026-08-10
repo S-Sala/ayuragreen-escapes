@@ -112,8 +112,27 @@ export default function HomePage() {
       <WhyUsSlider />
 
       {/* 5. EXPERIENCE SPLIT BANNER */}
-      <section className="bg-forest" style={{ padding: "5rem 0" }}>
-        <div className="container-custom">
+      <section style={{ position: "relative", padding: "5.5rem 0", overflow: "hidden" }}>
+        {/* Generated Background Image */}
+        <Image
+          src="/images/four-pillars-bg.jpg"
+          alt="Four Pillars of Luxury Travel - AyuraGreen Escapes Sri Lanka"
+          fill
+          priority
+          style={{ objectFit: "cover", objectPosition: "center", zIndex: 0 }}
+          sizes="100vw"
+        />
+        {/* Gradient Overlay for Optimal Readability */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(180deg, rgba(10, 33, 22, 0.88) 0%, rgba(10, 33, 22, 0.94) 100%)",
+            zIndex: 1,
+          }}
+        />
+
+        <div className="container-custom" style={{ position: "relative", zIndex: 2 }}>
           <div style={{ textAlign: "center", maxWidth: "650px", margin: "0 auto 2.5rem auto" }}>
             <span className="eyebrow" style={{ color: "var(--gold-light)" }}>CURATED PILLARS</span>
             <h2 style={{ fontSize: "clamp(2rem, 3.5vw, 2.8rem)", color: "var(--white)" }}>Four Pillars of Luxury Travel</h2>

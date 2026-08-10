@@ -526,15 +526,15 @@ button, .btn-gold, .btn-forest, .btn-outline-gold, .btn-outline-white, .social-b
 /* Luxury Travel Packages Section & Cards */
 .luxury-packages-grid {
   display: flex !important;
-  gap: 16px !important;
+  gap: 20px !important;
   overflow-x: auto !important;
   scroll-snap-type: x mandatory !important;
   padding-bottom: 0.5rem;
 }
 
 .luxury-package-card {
-  flex: 1 1 calc(25% - 12px);
-  min-width: 260px;
+  flex: 0 0 320px !important;
+  min-width: 320px !important;
   scroll-snap-align: start;
 }
 
@@ -570,13 +570,13 @@ button, .btn-gold, .btn-forest, .btn-outline-gold, .btn-outline-white, .social-b
   border-color: #1B3626 !important;
 }
 
-
 @media (max-width: 1024px) {
   .luxury-packages-grid {
-    gap: 14px !important;
+    gap: 16px !important;
   }
   .luxury-package-card {
-    flex: 0 0 280px !important;
+    flex: 0 0 300px !important;
+    min-width: 300px !important;
   }
 }
 
@@ -585,7 +585,8 @@ button, .btn-gold, .btn-forest, .btn-outline-gold, .btn-outline-white, .social-b
     gap: 12px !important;
   }
   .luxury-package-card {
-    flex: 0 0 82vw !important;
+    flex: 0 0 85vw !important;
+    min-width: 280px !important;
     max-width: 320px !important;
   }
 }
