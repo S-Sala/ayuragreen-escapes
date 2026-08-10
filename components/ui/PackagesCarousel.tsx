@@ -142,7 +142,7 @@ export default function PackagesCarousel() {
           Handpicked experiences designed to showcase the very best of Sri Lanka. From relaxation and adventure to wellness and heritage, we create unforgettable memories.
         </p>
 
-        {/* Responsive Horizontal Slider Container */}
+        {/* Responsive Horizontal Slider Container with Padding for Hover Lift & Shadows */}
         <div
           ref={rowRef}
           className="no-scrollbar luxury-packages-grid"
@@ -151,7 +151,10 @@ export default function PackagesCarousel() {
             gap: "20px",
             overflowX: "auto",
             scrollSnapType: "x mandatory",
-            paddingBottom: "0.75rem",
+            paddingTop: "1.2rem",
+            paddingBottom: "1.8rem",
+            paddingLeft: "8px",
+            paddingRight: "8px",
           }}
         >
           {luxuryPackages.map((pkg) => (

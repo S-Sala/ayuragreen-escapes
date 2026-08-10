@@ -35,18 +35,18 @@ export default function PackagesPage() {
       </section>
 
       {/* Packages Grid */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(270px, 1fr))", gap: "16px" }}>
+      <section className="section-padding bg-white" style={{ overflow: "hidden" }}>
+        <div className="container-custom" style={{ paddingTop: "1rem", paddingBottom: "1.5rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px", paddingTop: "0.5rem", paddingBottom: "1.2rem" }}>
             {PACKAGES.map((pkg, idx) => (
               <RevealOnScroll key={pkg.slug} delay={idx * 50}>
                 <article
                   id={pkg.slug}
+                  className="luxury-package-card"
                   style={{
                     backgroundColor: "#FFFFFF",
                     borderRadius: "16px",
                     border: "1px solid #EAEAEA",
-                    boxShadow: "0 4px 16px rgba(0, 0, 0, 0.06)",
                     overflow: "hidden",
                     display: "flex",
                     flexDirection: "column",
