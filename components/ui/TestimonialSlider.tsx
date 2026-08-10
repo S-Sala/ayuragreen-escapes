@@ -169,20 +169,28 @@ export default function TestimonialSlider() {
           </div>
         </div>
 
-        {/* Dot Pagination */}
-        <div style={{ display: "flex", justifyContent: "center", gap: "0.6rem", marginTop: "2rem" }}>
+        {/* Dot Pagination - 100% Perfect Circles */}
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "0.6rem", marginTop: "2rem" }}>
           {TESTIMONIALS.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setActiveIdx(idx)}
               style={{
-                width: idx === activeIdx ? "28px" : "10px",
-                height: "10px",
-                borderRadius: "5px",
+                width: idx === activeIdx ? "12px" : "10px",
+                height: idx === activeIdx ? "12px" : "10px",
+                minWidth: idx === activeIdx ? "12px" : "10px",
+                minHeight: idx === activeIdx ? "12px" : "10px",
+                aspectRatio: "1 / 1",
+                borderRadius: "50%",
                 backgroundColor: idx === activeIdx ? "var(--gold)" : "var(--line)",
                 border: "none",
                 cursor: "pointer",
                 transition: "all 0.3s ease",
+                padding: 0,
+                margin: 0,
+                outline: "none",
+                transform: idx === activeIdx ? "scale(1.15)" : "scale(1)",
+                boxShadow: idx === activeIdx ? "0 2px 8px rgba(185, 151, 62, 0.4)" : "none",
               }}
               aria-label={`Go to testimonial ${idx + 1}`}
             />

@@ -140,7 +140,7 @@ export default function HomePage() {
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.8rem" }}>
             {/* Tile 1: Golf */}
-            <article style={{ position: "relative", height: "340px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
+            <article className="pillar-card" style={{ position: "relative", height: "340px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
               <Image
                 src="/images/hero/hero-golf-mountain.jpg"
                 alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Golf Tourism Championship Fairway"
@@ -159,7 +159,7 @@ export default function HomePage() {
             </article>
 
             {/* Tile 2: Wellness */}
-            <article style={{ position: "relative", height: "340px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
+            <article className="pillar-card" style={{ position: "relative", height: "340px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
               <Image
                 src="/images/hero/hero-ayurveda-spa.jpg"
                 alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Ayurveda Wellness Retreat"
@@ -178,7 +178,7 @@ export default function HomePage() {
             </article>
 
             {/* Tile 3: Weddings */}
-            <article style={{ position: "relative", height: "340px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
+            <article className="pillar-card" style={{ position: "relative", height: "340px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
               <Image
                 src="/images/hero/hero-beach-wedding.jpg"
                 alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Destination Wedding Ceremony Bentota"
@@ -197,7 +197,7 @@ export default function HomePage() {
             </article>
 
             {/* Tile 4: Corporate / Luxury */}
-            <article style={{ position: "relative", height: "340px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
+            <article className="pillar-card" style={{ position: "relative", height: "340px", borderRadius: "12px", overflow: "hidden", boxShadow: "0 15px 35px rgba(0,0,0,0.3)" }}>
               <Image
                 src="/images/hero/hero-luxury-villa.jpg"
                 alt="Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - Corporate Travel MICE Conference Luxury Villa"

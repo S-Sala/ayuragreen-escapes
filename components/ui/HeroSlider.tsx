@@ -125,6 +125,7 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
 
           {/* Staggered Word-by-Word Headline */}
           <h1
+            className="hero-headline"
             style={{
               fontSize: "clamp(2.5rem, 5.5vw, 4.5rem)",
               color: "var(--white)",
@@ -177,10 +178,10 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
               opacity: 0,
             }}
           >
-            <Link href="/packages" className="btn-gold" style={{ padding: "1.1rem 2.4rem", fontSize: "1rem" }}>
+            <Link href="/packages" className="btn-gold hero-cta-btn">
               Explore Tours
             </Link>
-            <Link href="/contact" className="btn-outline-white" style={{ padding: "1.1rem 2.4rem", fontSize: "1rem" }}>
+            <Link href="/contact" className="btn-outline-white hero-cta-btn">
               Plan My Journey
             </Link>
           </div>

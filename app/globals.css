@@ -191,18 +191,26 @@ button, .btn-gold, .btn-forest, .btn-outline-gold, .btn-outline-white, .social-b
   transform: translateY(-2px);
 }
 
-/* Card Styling */
-.card-clean {
+/* Card Styling & Card Hover Lift Effect */
+.card-clean,
+.luxury-package-card,
+.destination-card,
+.tailored-card,
+.pillar-card {
   background: var(--white);
   border: 1px solid var(--line);
   border-radius: 10px;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-.card-clean:hover {
-  box-shadow: 0 12px 30px rgba(18, 53, 36, 0.08);
-  transform: translateY(-4px);
+.card-clean:hover,
+.luxury-package-card:hover,
+.destination-card:hover,
+.tailored-card:hover,
+.pillar-card:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 18px 40px rgba(18, 53, 36, 0.16) !important;
 }
 
 /* Task 2: Stats / Experience Counters Block */
@@ -427,6 +435,19 @@ button, .btn-gold, .btn-forest, .btn-outline-gold, .btn-outline-white, .social-b
     min-height: 38px !important;
     font-size: 1.7rem !important;
     padding: 0.2rem !important;
+  }
+
+  /* Main Hero Cover Heading & CTA Button Size Reduction on Mobile */
+  .hero-headline {
+    font-size: clamp(1.6rem, 5.5vw, 2.2rem) !important;
+    line-height: 1.25 !important;
+    margin-bottom: 1rem !important;
+  }
+  .hero-cta-btn {
+    padding: 0.55rem 1.2rem !important;
+    font-size: 0.825rem !important;
+    min-height: 38px !important;
+    height: 38px !important;
   }
 
   /* Task 2: Counter Panel Mobile 2-by-2 Grid */
