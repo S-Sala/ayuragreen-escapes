@@ -413,10 +413,10 @@ button, .btn-gold, .btn-forest, .btn-outline-gold, .btn-outline-white, .social-b
 }
 
 .slider-nav-arrow {
-  width: 48px;
-  height: 48px;
-  min-width: 48px;
-  min-height: 48px;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  min-height: 36px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(197, 160, 89, 0.4);
@@ -424,7 +424,7 @@ button, .btn-gold, .btn-forest, .btn-outline-gold, .btn-outline-white, .social-b
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
+  font-size: 1.15rem;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -434,22 +434,60 @@ button, .btn-gold, .btn-forest, .btn-outline-gold, .btn-outline-white, .social-b
   border-color: #C5A059;
   color: #1B2624;
   transform: scale(1.08);
-  box-shadow: 0 6px 20px rgba(197, 160, 89, 0.4);
+  box-shadow: 0 4px 15px rgba(197, 160, 89, 0.4);
 }
 
 .destination-cta-btn {
   border: 1px solid #C5A059;
   color: #FFFFFF;
-  padding: 12px 28px;
+  padding: 10px 24px;
   border-radius: 30px;
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   transition: all 0.3s ease;
   background: transparent;
   text-decoration: none;
+}
+
+/* Mobile Responsiveness for Destinations Section */
+@media (max-width: 768px) {
+  .destinations-section {
+    padding: 2.5rem 0 !important;
+  }
+  .destinations-glass-card {
+    padding: 1.5rem 1.2rem !important;
+    border-radius: 16px !important;
+  }
+  .destination-eyebrow-fade {
+    font-size: 0.95rem !important;
+    margin-bottom: 0.3rem !important;
+  }
+  .destination-title-fade {
+    font-size: clamp(1.35rem, 5vw, 1.75rem) !important;
+    margin-bottom: 0.6rem !important;
+    line-height: 1.25 !important;
+  }
+  .destination-desc-fade {
+    font-size: 0.85rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 1.2rem !important;
+  }
+  .destination-cta-btn {
+    padding: 7px 16px !important;
+    font-size: 0.8rem !important;
+    min-height: 36px !important;
+  }
+  .destinations-slider-wrapper {
+    height: 310px !important;
+  }
+  .destinations-card-item {
+    width: 175px !important;
+    height: 260px !important;
+    border-radius: 14px !important;
+  }
 }
 
 .destination-cta-btn:hover {
