@@ -5,6 +5,7 @@ import DestinationsCarousel from "@/components/ui/DestinationsCarousel";
 import WhyUsSlider from "@/components/ui/WhyUsSlider";
 import PackagesCarousel from "@/components/ui/PackagesCarousel";
 import TestimonialSlider from "@/components/ui/TestimonialSlider";
+import CapturedMomentsSlider from "@/components/ui/CapturedMomentsSlider";
 import FaqAccordion from "@/components/ui/FaqAccordion";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import ContactForm from "@/components/ui/ContactForm";
@@ -224,33 +225,23 @@ export default function HomePage() {
       {/* 7. TESTIMONIAL SLIDER */}
       <TestimonialSlider />
 
-      {/* 8. MASONRY GALLERY PREVIEW */}
-      <section className="section-padding bg-off-white">
+      {/* 8. GALLERY AUTO-PLAY LOOP SLIDER */}
+      <section className="section-padding bg-off-white" style={{ overflow: "hidden" }}>
         <div className="container-custom">
           <div style={{ textAlign: "center", maxWidth: "600px", margin: "0 auto 2.5rem auto" }}>
             <span className="eyebrow">VISUAL JOURNEYS</span>
             <h2 style={{ fontSize: "clamp(2rem, 3.5vw, 2.8rem)", marginBottom: "0.8rem" }}>Captured Moments</h2>
             <p style={{ color: "var(--ink-soft)", fontSize: "0.95rem" }}>A glimpse into guest experiences across championship fairways, tranquil spas, and coastal sanctuaries.</p>
           </div>
+        </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.2rem" }}>
-            {GALLERY_TEASERS.map((g, idx) => (
-              <RevealOnScroll key={idx} delay={idx * 60}>
-                <article style={{ position: "relative", height: "240px", borderRadius: "10px", overflow: "hidden", boxShadow: "0 8px 25px rgba(18,53,36,0.06)" }}>
-                  <Image src={g.src} alt={g.alt} fill loading="lazy" style={{ objectFit: "cover" }} sizes="400px" />
-                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(10,33,22,0.85) 100%)", padding: "1.2rem", display: "flex", alignItems: "flex-end" }}>
-                    <span style={{ color: "var(--white)", fontFamily: "var(--font-playfair)", fontSize: "1.05rem" }}>{g.title}</span>
-                  </div>
-                </article>
-              </RevealOnScroll>
-            ))}
-          </div>
+        {/* Auto-Play Infinite Marquee Loop with Faded Edges */}
+        <CapturedMomentsSlider />
 
-          <div style={{ textAlign: "center", marginTop: "2rem" }}>
-            <Link href="/gallery" className="btn-forest" style={{ minHeight: "44px" }}>
-              View Full Photo Gallery <BiRightArrowAlt style={{ fontSize: "1.3rem" }} />
-            </Link>
-          </div>
+        <div className="container-custom" style={{ textAlign: "center", marginTop: "2rem" }}>
+          <Link href="/gallery" className="btn-forest" style={{ minHeight: "44px" }}>
+            View Full Photo Gallery <BiRightArrowAlt style={{ fontSize: "1.3rem" }} />
+          </Link>
         </div>
       </section>
 

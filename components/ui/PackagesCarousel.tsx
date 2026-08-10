@@ -14,7 +14,8 @@ export default function PackagesCarousel() {
 
   const scroll = (direction: "left" | "right") => {
     if (rowRef.current) {
-      const scrollAmount = direction === "left" ? -340 : 340;
+      const cardWidth = rowRef.current.clientWidth / 3;
+      const scrollAmount = direction === "left" ? -cardWidth : cardWidth;
       rowRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
@@ -22,7 +23,7 @@ export default function PackagesCarousel() {
   const handleScroll = () => {
     if (rowRef.current) {
       const scrollLeft = rowRef.current.scrollLeft;
-      const cardWidth = 340;
+      const cardWidth = rowRef.current.clientWidth / 3 || 320;
       const index = Math.round(scrollLeft / cardWidth);
       setActiveIndex(Math.max(0, Math.min(index, luxuryPackages.length - 1)));
     }
@@ -38,7 +39,8 @@ export default function PackagesCarousel() {
 
   const scrollToCard = (index: number) => {
     if (rowRef.current) {
-      rowRef.current.scrollTo({ left: index * 340, behavior: "smooth" });
+      const cardWidth = rowRef.current.clientWidth / 3 || 320;
+      rowRef.current.scrollTo({ left: index * cardWidth, behavior: "smooth" });
       setActiveIndex(index);
     }
   };
@@ -46,8 +48,8 @@ export default function PackagesCarousel() {
   return (
     <section className="section-padding bg-off-white" id="luxury-packages">
       <div className="container-custom">
-        {/* Section Header with Left/Right Slider Navigation Buttons */}
-        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "1.5rem", gap: "1rem" }}>
+        {/* Section Header with Navigation Buttons */}
+        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "1.2rem", gap: "1rem" }}>
           <div>
             <span
               style={{
@@ -76,16 +78,16 @@ export default function PackagesCarousel() {
             </h2>
           </div>
 
-          {/* Slider Prev / Next Arrow Buttons */}
+          {/* Slider Arrow Buttons */}
           <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
             <button
               onClick={() => scroll("left")}
               aria-label="Previous deal package"
               style={{
-                width: "44px",
-                height: "44px",
-                minWidth: "44px",
-                minHeight: "44px",
+                width: "36px",
+                height: "36px",
+                minWidth: "36px",
+                minHeight: "36px",
                 borderRadius: "50%",
                 border: "1px solid #EAEAEA",
                 backgroundColor: "#FFFFFF",
@@ -93,7 +95,7 @@ export default function PackagesCarousel() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: "1.4rem",
+                fontSize: "1.2rem",
                 cursor: "pointer",
                 transition: "all 0.2s ease",
                 boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
@@ -106,10 +108,10 @@ export default function PackagesCarousel() {
               onClick={() => scroll("right")}
               aria-label="Next deal package"
               style={{
-                width: "44px",
-                height: "44px",
-                minWidth: "44px",
-                minHeight: "44px",
+                width: "36px",
+                height: "36px",
+                minWidth: "36px",
+                minHeight: "36px",
                 borderRadius: "50%",
                 border: "1px solid #EAEAEA",
                 backgroundColor: "#FFFFFF",
@@ -117,7 +119,7 @@ export default function PackagesCarousel() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                fontSize: "1.4rem",
+                fontSize: "1.2rem",
                 cursor: "pointer",
                 transition: "all 0.2s ease",
                 boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
@@ -133,16 +135,16 @@ export default function PackagesCarousel() {
         <p
           style={{
             color: "#555555",
-            fontSize: "0.95rem",
+            fontSize: "0.9rem",
             lineHeight: 1.5,
-            margin: "0 0 1.8rem 0",
+            margin: "0 0 1.5rem 0",
             maxWidth: "650px",
           }}
         >
           Handpicked experiences designed to showcase the very best of Sri Lanka. From relaxation and adventure to wellness and heritage, we create unforgettable memories.
         </p>
 
-        {/* Responsive Horizontal Slider Container with Padding for Hover Lift & Shadows */}
+        {/* 3-Card Carousel Container */}
         <div
           ref={rowRef}
           className="no-scrollbar luxury-packages-grid"
@@ -151,40 +153,40 @@ export default function PackagesCarousel() {
             gap: "20px",
             overflowX: "auto",
             scrollSnapType: "x mandatory",
-            paddingTop: "1.2rem",
-            paddingBottom: "1.8rem",
-            paddingLeft: "8px",
-            paddingRight: "8px",
+            paddingTop: "1rem",
+            paddingBottom: "1.5rem",
+            paddingLeft: "6px",
+            paddingRight: "6px",
           }}
         >
           {luxuryPackages.map((pkg) => (
             <article
               key={pkg.slug}
               style={{
-                flex: "0 0 320px",
-                minWidth: "320px",
+                flex: "0 0 calc(33.333% - 14px)",
+                minWidth: "280px",
                 backgroundColor: "#FFFFFF",
-                borderRadius: "16px",
+                borderRadius: "14px",
                 border: "1px solid #EAEAEA",
-                boxShadow: "0 4px 16px rgba(0, 0, 0, 0.06)",
+                boxShadow: "0 4px 16px rgba(0, 0, 0, 0.05)",
                 overflow: "hidden",
                 display: "flex",
                 flexDirection: "column",
                 position: "relative",
                 scrollSnapAlign: "start",
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                transition: "transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
               }}
               className="luxury-package-card"
             >
-              {/* Image Header */}
+              {/* Compact Image Header (145px Height) */}
               <div
                 style={{
                   position: "relative",
                   width: "100%",
-                  height: "180px",
+                  height: "145px",
                   overflow: "hidden",
-                  borderTopLeftRadius: "16px",
-                  borderTopRightRadius: "16px",
+                  borderTopLeftRadius: "14px",
+                  borderTopRightRadius: "14px",
                 }}
               >
                 <Image
@@ -193,7 +195,7 @@ export default function PackagesCarousel() {
                   fill
                   loading="lazy"
                   style={{ objectFit: "cover" }}
-                  sizes="320px"
+                  sizes="350px"
                 />
 
                 {/* Top-Right Badge */}
@@ -201,16 +203,16 @@ export default function PackagesCarousel() {
                   <div
                     style={{
                       position: "absolute",
-                      top: "10px",
-                      right: "10px",
+                      top: "8px",
+                      right: "8px",
                       zIndex: 2,
                       background: pkg.badgeTopType === "forest" || pkg.badgeTop === "NEW" ? "#1B3626" : "#C5A059",
                       color: "#FFF",
-                      fontSize: "0.7rem",
+                      fontSize: "0.68rem",
                       fontWeight: 600,
-                      padding: "4px 10px",
-                      borderRadius: "12px",
-                      boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+                      padding: "3px 8px",
+                      borderRadius: "10px",
+                      boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
                       letterSpacing: "0.5px",
                     }}
                   >
@@ -222,15 +224,15 @@ export default function PackagesCarousel() {
                 <div
                   style={{
                     position: "absolute",
-                    bottom: "10px",
-                    left: "10px",
+                    bottom: "8px",
+                    left: "8px",
                     zIndex: 2,
                     background: "rgba(27, 54, 38, 0.85)",
                     color: "#FFF",
-                    fontSize: "0.75rem",
+                    fontSize: "0.72rem",
                     fontWeight: 500,
-                    padding: "4px 10px",
-                    borderRadius: "12px",
+                    padding: "3px 8px",
+                    borderRadius: "10px",
                     backdropFilter: "blur(4px)",
                   }}
                 >
@@ -238,13 +240,13 @@ export default function PackagesCarousel() {
                 </div>
               </div>
 
-              {/* Card Body Content */}
+              {/* Reduced Padding Card Body Content */}
               <div
                 style={{
-                  padding: "16px",
+                  padding: "12px 14px",
                   display: "flex",
                   flexDirection: "column",
-                  gap: "8px",
+                  gap: "6px",
                   flex: 1,
                 }}
               >
@@ -252,38 +254,38 @@ export default function PackagesCarousel() {
                 <h3
                   style={{
                     color: "#1B3626",
-                    fontSize: "1.125rem",
+                    fontSize: "1.05rem",
                     fontWeight: 600,
                     margin: 0,
-                    lineHeight: 1.3,
+                    lineHeight: 1.25,
                     fontFamily: "var(--font-playfair), Georgia, serif",
                   }}
                 >
                   {pkg.name}
                 </h3>
 
-                {/* Short Description */}
+                {/* Reduced Tagline / Intro Font Size */}
                 <p
                   style={{
                     color: "#666666",
-                    fontSize: "0.85rem",
-                    lineHeight: 1.35,
+                    fontSize: "0.78rem",
+                    lineHeight: 1.3,
                     margin: 0,
                   }}
                 >
                   {pkg.tagline}
                 </p>
 
-                {/* Included Highlights Header & List */}
+                {/* Reduced Included Highlights Header & Points */}
                 <div style={{ marginTop: "2px" }}>
                   <span
                     style={{
                       color: "#C5A059",
-                      fontSize: "0.7rem",
+                      fontSize: "0.65rem",
                       fontWeight: 700,
                       letterSpacing: "0.8px",
                       display: "block",
-                      marginBottom: "4px",
+                      marginBottom: "3px",
                       textTransform: "uppercase",
                     }}
                   >
@@ -293,7 +295,7 @@ export default function PackagesCarousel() {
                     style={{
                       display: "flex",
                       flexDirection: "column",
-                      gap: "5px",
+                      gap: "4px",
                       padding: 0,
                       margin: 0,
                       listStyle: "none",
@@ -304,24 +306,24 @@ export default function PackagesCarousel() {
                         key={idx}
                         style={{
                           color: "#333333",
-                          fontSize: "0.8rem",
-                          lineHeight: 1.25,
+                          fontSize: "0.75rem",
+                          lineHeight: 1.2,
                           display: "flex",
                           alignItems: "flex-start",
-                          gap: "8px",
+                          gap: "6px",
                         }}
                       >
                         <span
                           style={{
-                            width: "6px",
-                            height: "6px",
-                            minWidth: "6px",
-                            minHeight: "6px",
+                            width: "5px",
+                            height: "5px",
+                            minWidth: "5px",
+                            minHeight: "5px",
                             borderRadius: "50%",
                             backgroundColor: "#C5A059",
                             display: "inline-block",
                             flexShrink: 0,
-                            marginTop: "5px",
+                            marginTop: "4px",
                           }}
                         />
                         <span>{highlight}</span>
@@ -331,11 +333,11 @@ export default function PackagesCarousel() {
                 </div>
 
                 {/* Price Tag & CTA Button */}
-                <div style={{ marginTop: "auto", paddingTop: "8px", display: "flex", flexDirection: "column", gap: "8px" }}>
+                <div style={{ marginTop: "auto", paddingTop: "6px", display: "flex", flexDirection: "column", gap: "6px" }}>
                   {pkg.price && (
-                    <div style={{ fontSize: "0.85rem", color: "#666666", display: "flex", alignItems: "baseline", gap: "4px", margin: 0 }}>
+                    <div style={{ fontSize: "0.8rem", color: "#666666", display: "flex", alignItems: "baseline", gap: "4px", margin: 0 }}>
                       <span>From </span>
-                      <span style={{ fontSize: "1.25rem", fontWeight: 700, color: "#1B3626" }}>{pkg.price}</span>
+                      <span style={{ fontSize: "1.15rem", fontWeight: 700, color: "#1B3626" }}>{pkg.price}</span>
                       <span> / Person</span>
                     </div>
                   )}
@@ -346,15 +348,15 @@ export default function PackagesCarousel() {
                       backgroundColor: "#C5A059",
                       color: "#FFFFFF",
                       fontWeight: 600,
-                      fontSize: "0.875rem",
-                      padding: "10px 16px",
-                      borderRadius: "8px",
+                      fontSize: "0.825rem",
+                      padding: "8px 14px",
+                      borderRadius: "6px",
                       border: "none",
                       width: "100%",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      gap: "8px",
+                      gap: "6px",
                       cursor: "pointer",
                       textDecoration: "none",
                       transition: "background-color 0.2s ease, transform 0.2s ease",
@@ -376,7 +378,7 @@ export default function PackagesCarousel() {
             justifyContent: "center",
             alignItems: "center",
             gap: "8px",
-            marginTop: "20px",
+            marginTop: "16px",
           }}
         >
           {luxuryPackages.map((_, idx) => (

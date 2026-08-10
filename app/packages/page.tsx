@@ -37,7 +37,7 @@ export default function PackagesPage() {
       {/* Packages Grid */}
       <section className="section-padding bg-white" style={{ overflow: "hidden" }}>
         <div className="container-custom" style={{ paddingTop: "1rem", paddingBottom: "1.5rem" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px", paddingTop: "0.5rem", paddingBottom: "1.2rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px", paddingTop: "0.5rem", paddingBottom: "1.2rem" }}>
             {PACKAGES.map((pkg, idx) => (
               <RevealOnScroll key={pkg.slug} delay={idx * 50}>
                 <article
@@ -45,7 +45,7 @@ export default function PackagesPage() {
                   className="luxury-package-card"
                   style={{
                     backgroundColor: "#FFFFFF",
-                    borderRadius: "16px",
+                    borderRadius: "14px",
                     border: "1px solid #EAEAEA",
                     overflow: "hidden",
                     display: "flex",
@@ -55,15 +55,15 @@ export default function PackagesPage() {
                     height: "100%",
                   }}
                 >
-                  {/* Reduced Image Header (170px) */}
+                  {/* Compact Image Header (145px) */}
                   <div
                     style={{
                       position: "relative",
                       width: "100%",
-                      height: "170px",
+                      height: "145px",
                       overflow: "hidden",
-                      borderTopLeftRadius: "16px",
-                      borderTopRightRadius: "16px",
+                      borderTopLeftRadius: "14px",
+                      borderTopRightRadius: "14px",
                     }}
                   >
                     <Image
@@ -80,16 +80,16 @@ export default function PackagesPage() {
                       <div
                         style={{
                           position: "absolute",
-                          top: "10px",
-                          right: "10px",
+                          top: "8px",
+                          right: "8px",
                           zIndex: 2,
                           background: pkg.badgeTopType === "forest" || pkg.badgeTop === "NEW" ? "#1B3626" : "#C5A059",
                           color: "#FFF",
-                          fontSize: "0.7rem",
+                          fontSize: "0.68rem",
                           fontWeight: 600,
-                          padding: "4px 10px",
-                          borderRadius: "12px",
-                          boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+                          padding: "3px 8px",
+                          borderRadius: "10px",
+                          boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
                           letterSpacing: "0.5px",
                         }}
                       >
@@ -101,15 +101,15 @@ export default function PackagesPage() {
                     <div
                       style={{
                         position: "absolute",
-                        bottom: "10px",
-                        left: "10px",
+                        bottom: "8px",
+                        left: "8px",
                         zIndex: 2,
                         background: "rgba(27, 54, 38, 0.85)",
                         color: "#FFF",
-                        fontSize: "0.75rem",
+                        fontSize: "0.72rem",
                         fontWeight: 500,
-                        padding: "4px 10px",
-                        borderRadius: "12px",
+                        padding: "3px 8px",
+                        borderRadius: "10px",
                         backdropFilter: "blur(4px)",
                       }}
                     >
@@ -117,23 +117,23 @@ export default function PackagesPage() {
                     </div>
                   </div>
 
-                  {/* Compact Card Body Content (16px padding, 10px gap) */}
+                  {/* Reduced Padding Card Body Content */}
                   <div
                     style={{
-                      padding: "16px",
+                      padding: "12px 14px",
                       display: "flex",
                       flexDirection: "column",
-                      gap: "10px",
+                      gap: "6px",
                       flex: 1,
                     }}
                   >
                     <h3
                       style={{
                         color: "#1B3626",
-                        fontSize: "1.125rem",
+                        fontSize: "1.05rem",
                         fontWeight: 600,
                         margin: 0,
-                        lineHeight: 1.3,
+                        lineHeight: 1.25,
                         fontFamily: "var(--font-playfair), Georgia, serif",
                       }}
                     >
@@ -142,8 +142,8 @@ export default function PackagesPage() {
                     <p
                       style={{
                         color: "#666666",
-                        fontSize: "0.85rem",
-                        lineHeight: 1.35,
+                        fontSize: "0.78rem",
+                        lineHeight: 1.3,
                         margin: 0,
                       }}
                     >
@@ -154,12 +154,12 @@ export default function PackagesPage() {
                       <span
                         style={{
                           color: "#C5A059",
-                          fontSize: "0.7rem",
+                          fontSize: "0.65rem",
                           fontWeight: 700,
                           letterSpacing: "0.8px",
-                          marginTop: "4px",
+                          marginTop: "2px",
                           display: "block",
-                          marginBottom: "6px",
+                          marginBottom: "4px",
                           textTransform: "uppercase",
                         }}
                       >
@@ -169,7 +169,7 @@ export default function PackagesPage() {
                         style={{
                           display: "flex",
                           flexDirection: "column",
-                          gap: "6px",
+                          gap: "4px",
                           padding: 0,
                           margin: 0,
                           listStyle: "none",
@@ -180,23 +180,23 @@ export default function PackagesPage() {
                             key={i}
                             style={{
                               color: "#333333",
-                              fontSize: "0.8rem",
-                              lineHeight: 1.25,
+                              fontSize: "0.75rem",
+                              lineHeight: 1.2,
                               display: "flex",
                               alignItems: "flex-start",
-                              gap: "8px",
+                              gap: "6px",
                             }}
                           >
                             <svg
-                              width="12"
-                              height="12"
+                              width="10"
+                              height="10"
                               viewBox="0 0 24 24"
                               fill="none"
                               stroke="#C5A059"
                               strokeWidth="3.5"
                               strokeLinecap="round"
                               strokeLinejoin="round"
-                              style={{ flexShrink: 0, marginTop: "2px" }}
+                              style={{ flexShrink: 0, marginTop: "3px" }}
                             >
                               <polyline points="20 6 9 17 4 12" />
                             </svg>
@@ -206,11 +206,11 @@ export default function PackagesPage() {
                       </ul>
                     </div>
 
-                    <div style={{ marginTop: "auto", paddingTop: "6px", display: "flex", flexDirection: "column", gap: "10px" }}>
+                    <div style={{ marginTop: "auto", paddingTop: "6px", display: "flex", flexDirection: "column", gap: "6px" }}>
                       {pkg.price && (
-                        <div style={{ fontSize: "0.85rem", color: "#666666", display: "flex", alignItems: "baseline", gap: "4px" }}>
+                        <div style={{ fontSize: "0.8rem", color: "#666666", display: "flex", alignItems: "baseline", gap: "4px" }}>
                           <span>From </span>
-                          <span style={{ fontSize: "1.25rem", fontWeight: 700, color: "#1B3626" }}>{pkg.price}</span>
+                          <span style={{ fontSize: "1.15rem", fontWeight: 700, color: "#1B3626" }}>{pkg.price}</span>
                           <span> / Person</span>
                         </div>
                       )}
@@ -220,15 +220,15 @@ export default function PackagesPage() {
                           backgroundColor: "#C5A059",
                           color: "#FFFFFF",
                           fontWeight: 600,
-                          fontSize: "0.875rem",
-                          padding: "10px 16px",
-                          borderRadius: "8px",
+                          fontSize: "0.825rem",
+                          padding: "8px 14px",
+                          borderRadius: "6px",
                           border: "none",
                           width: "100%",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
-                          gap: "8px",
+                          gap: "6px",
                           cursor: "pointer",
                           textDecoration: "none",
                         }}

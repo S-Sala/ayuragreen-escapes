@@ -389,6 +389,19 @@ button, .btn-gold, .btn-forest, .btn-outline-gold, .btn-outline-white, .social-b
   50% { opacity: 0.7; transform: scale(0.98); }
 }
 
+@keyframes marqueeLeftToRight {
+  0% {
+    transform: translateX(-33.333%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.captured-moments-track:hover {
+  animation-play-state: paused !important;
+}
+
 @keyframes fadeInText {
   from {
     opacity: 0;
