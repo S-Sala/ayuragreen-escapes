@@ -481,13 +481,17 @@ button, .btn-gold, .btn-forest, .btn-outline-gold, .btn-outline-white, .social-b
     min-height: 36px !important;
   }
   .destinations-slider-wrapper {
-    height: 310px !important;
+    height: 340px !important;
   }
   .destinations-card-item {
     width: 175px !important;
     height: 260px !important;
     border-radius: 14px !important;
   }
+}
+
+.destinations-slider-wrapper {
+  height: 480px;
 }
 
 .destination-cta-btn:hover {

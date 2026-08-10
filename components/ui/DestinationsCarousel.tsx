@@ -51,9 +51,6 @@ export default function DestinationsCarousel() {
     return diff;
   };
 
-  // Map active index (0 to 7) to 3 pagination states (0, 1, 2)
-  const activeDotIndex = Math.min(2, Math.floor((activeIndex / total) * 3));
-
   return (
     <section
       className="section-padding destinations-section"
@@ -100,7 +97,7 @@ export default function DestinationsCarousel() {
             border: "1px solid rgba(255, 255, 255, 0.14)",
             padding: "clamp(2rem, 3.5vw, 3.5rem)",
             boxShadow: "0 20px 50px rgba(0, 0, 0, 0.35)",
-            overflow: "hidden", // Keeps slider images strictly inside the box
+            overflow: "hidden",
           }}
         >
           <div
@@ -175,7 +172,7 @@ export default function DestinationsCarousel() {
                 </Link>
               </div>
 
-              {/* Navigation Controls & Counter (Sleek Small Arrow Buttons) */}
+              {/* Navigation Controls & Counter */}
               <div
                 style={{
                   display: "flex",
@@ -221,26 +218,28 @@ export default function DestinationsCarousel() {
               </div>
             </div>
 
-            {/* RIGHT COLUMN: Interactive Card Slider (Shows ONLY 3 Images Contained inside Box) */}
+            {/* RIGHT COLUMN: Interactive Card Slider & All 8 Circular Dots */}
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                gap: "1.2rem",
+                gap: "1.5rem",
                 width: "100%",
               }}
             >
+              {/* Slider Wrapper with Increased Height for Proper Card Shadow Display */}
               <div
                 className="destinations-slider-wrapper"
                 style={{
                   position: "relative",
                   width: "100%",
-                  height: "430px", // Constrained height inside container
+                  height: "480px", // Increased height so active card shadow renders cleanly without clipping
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  overflow: "hidden", // Restricts image slider strictly inside glass box
+                  padding: "1.5rem 0",
+                  overflow: "hidden",
                 }}
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
@@ -260,7 +259,7 @@ export default function DestinationsCarousel() {
                     const offset = getOffset(idx);
                     const absOffset = Math.abs(offset);
 
-                    // REQUIREMENT: Show ONLY 3 IMAGES max (Active center card, 1 Left card, 1 Right card)
+                    // Show ONLY 3 IMAGES max (Active center card, 1 Left card, 1 Right card)
                     if (absOffset > 1) return null;
 
                     const isActive = offset === 0;
@@ -287,8 +286,9 @@ export default function DestinationsCarousel() {
                           zIndex: zIndex,
                           cursor: "pointer",
                           transition: "transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.45s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.45s ease",
+                          // Full natural luxury shadow with gold ambient glow
                           boxShadow: isActive
-                            ? "0 14px 35px rgba(0, 0, 0, 0.4), 0 0 18px rgba(197, 160, 89, 0.2)"
+                            ? "0 16px 38px rgba(0, 0, 0, 0.48), 0 0 20px rgba(197, 160, 89, 0.25)"
                             : "0 8px 20px rgba(0, 0, 0, 0.3)",
                           border: isActive
                             ? "2px solid rgba(197, 160, 89, 0.85)"
@@ -327,25 +327,24 @@ export default function DestinationsCarousel() {
                 </div>
               </div>
 
-              {/* REQUIREMENT: ONLY 3 CIRCULATION DOTS of EXACT SAME WIDTH & HEIGHT under the image slider */}
+              {/* ALL 8 CIRCULAR DOTS under the image slider */}
               <div
                 style={{
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  gap: "0.6rem",
+                  gap: "0.55rem",
                   marginTop: "0.2rem",
                 }}
               >
-                {[0, 1, 2].map((dotIdx) => {
-                  const isDotActive = activeDotIndex === dotIdx;
-                  const targetSlideIndex = dotIdx === 0 ? 0 : dotIdx === 1 ? 3 : 6;
+                {DESTINATIONS.map((_, idx) => {
+                  const isDotActive = activeIndex === idx;
 
                   return (
                     <button
-                      key={dotIdx}
-                      onClick={() => setActiveIndex(targetSlideIndex)}
-                      aria-label={`Go to section ${dotIdx + 1}`}
+                      key={idx}
+                      onClick={() => setActiveIndex(idx)}
+                      aria-label={`Go to slide ${idx + 1}`}
                       style={{
                         width: "10px",
                         height: "10px",
