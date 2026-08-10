@@ -95,51 +95,51 @@ export const DESTINATIONS: Destination[] = [
   },
   {
     slug: "ella",
-    name: "Ella & Nine Arch Bridge",
-    tagline: "Mountain Paradise & Misty Peaks",
-    description: "Marvel at the world-famous Nine Arch Railway Bridge in Ella and hike through serene tea plantations and waterfalls.",
+    name: "Nine Arch Bridge, Ella",
+    tagline: "Misty Tea Hills & Architectural Marvels",
+    description: "Witness the iconic colonial-era stone railway bridge nestled amidst lush green tea plantations and cloud forests.",
     image: "/images/destinations/ella.jpg"
   },
   {
     slug: "kandy",
-    name: "Temple of the Tooth (Kandy)",
-    tagline: "Cultural Heartland of Sri Lanka",
-    description: "Visit the sacred Temple of the Tooth Relic (Sri Dalada Maligawa) nestled by the tranquil Kandy Lake in the central highlands.",
+    name: "Temple of the Tooth, Kandy",
+    tagline: "Cultural Heartland of Ceylon",
+    description: "Immerse yourself in sacred traditions and imperial Kandyan architecture at Sri Lanka's revered tooth relic shrine.",
     image: "/images/destinations/kandy.jpg"
   },
   {
     slug: "galle-fort",
-    name: "Galle Fort",
-    tagline: "Colonial Charm & Coastal Sophistication",
-    description: "Stroll along 17th-century Dutch ramparts, iconic lighthouse, chic boutiques, and cobblestone seaside alleys.",
+    name: "Galle Dutch Fort",
+    tagline: "Dutch Colonial Charm & Ocean Views",
+    description: "Stroll along 17th-century ramparts, cobblestone alleys, boutique cafes, and historic coastal lighthouses.",
     image: "/images/destinations/galle.jpg"
   },
   {
     slug: "nuwara-eliya",
-    name: "Nuwara Eliya",
-    tagline: "Little England in Tea Country",
-    description: "Experience cool highland breezes, manicured golf links, and historic British colonial tea estates.",
+    name: "Nuwara Eliya Tea Estates",
+    tagline: "Little England in Ceylon Highlands",
+    description: "Experience cool highland breezes, manicured championship golf links, and historic British colonial tea plantations.",
     image: "/images/destinations/nuwara-eliya.jpg"
   },
   {
     slug: "bentota",
-    name: "Bentota",
-    tagline: "Golden Sands & Luxury River Safari",
-    description: "Unwind on golden beaches, private mangrove lagoons, and world-class luxury water sports resorts.",
+    name: "Bentota Coastal Sanctuary",
+    tagline: "Golden Sands & Luxury Water Sports",
+    description: "Unwind on pristine golden beaches, private mangrove lagoons, and world-class luxury water sports resorts.",
     image: "/images/destinations/bentota.jpg"
   },
   {
     slug: "mirissa",
-    name: "Mirissa",
+    name: "Mirissa Ocean Bay",
     tagline: "Whale Watching & Sunset Escapes",
-    description: "Cruise blue waters for majestic blue whale sightings and coconut tree hill ocean views.",
+    description: "Cruise blue waters for majestic blue whale sightings and romantic sunset vistas over palm-fringed headlands.",
     image: "/images/destinations/mirissa.jpg"
   },
   {
     slug: "yala",
     name: "Yala National Park",
-    tagline: "Wild Leopard Safaris",
-    description: "Embark on exciting wildlife safaris home to the world's highest density of wild leopards.",
+    tagline: "Wilderness & Leopard Safaris",
+    description: "Embark on exciting wildlife safaris across coastal dry zones home to the world's highest density of wild leopards.",
     image: "/images/destinations/yala.jpg"
   }
 ];

@@ -1,220 +1,343 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useState, useRef, TouchEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { BiChevronLeft, BiChevronRight, BiRightArrowAlt } from "react-icons/bi";
 import { DESTINATIONS } from "@/lib/data";
 
 export default function DestinationsCarousel() {
-  const rowRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
 
-  const scroll = (direction: "left" | "right") => {
-    if (rowRef.current) {
-      const scrollAmount = direction === "left" ? -360 : 360;
-      rowRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    }
+  const total = DESTINATIONS.length;
+
+  const nextSlide = () => {
+    setActiveIndex((prev) => (prev + 1) % total);
   };
 
-  const handleScroll = () => {
-    if (rowRef.current) {
-      const scrollLeft = rowRef.current.scrollLeft;
-      const cardWidth = 360;
-      const index = Math.round(scrollLeft / cardWidth);
-      setActiveIndex(Math.min(index, DESTINATIONS.length - 1));
-    }
+  const prevSlide = () => {
+    setActiveIndex((prev) => (prev - 1 + total) % total);
   };
 
-  useEffect(() => {
-    const el = rowRef.current;
-    if (el) {
-      el.addEventListener("scroll", handleScroll, { passive: true });
-      return () => el.removeEventListener("scroll", handleScroll);
-    }
-  }, []);
+  const handleTouchStart = (e: TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
 
-  const scrollToCard = (index: number) => {
-    if (rowRef.current) {
-      rowRef.current.scrollTo({ left: index * 360, behavior: "smooth" });
-      setActiveIndex(index);
+  const handleTouchMove = (e: TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const distance = touchStartX.current - touchEndX.current;
+    if (distance > 50) {
+      nextSlide();
+    } else if (distance < -50) {
+      prevSlide();
     }
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  const activeDest = DESTINATIONS[activeIndex];
+
+  // Calculate wrap-around offset distance relative to active index
+  const getOffset = (index: number) => {
+    let diff = index - activeIndex;
+    if (diff > total / 2) diff -= total;
+    if (diff < -total / 2) diff += total;
+    return diff;
   };
 
   return (
-    <section className="section-padding bg-off-white" style={{ position: "relative" }}>
-      <div className="container-custom">
-        {/* Section Header */}
-        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "3rem", gap: "1rem" }}>
-          <div>
-            <span className="eyebrow">POPULAR SRI LANKAN DESTINATIONS</span>
-            <h2 style={{ fontSize: "clamp(2rem, 3.5vw, 2.8rem)" }}>Where Will You Go?</h2>
-          </div>
+    <section
+      className="section-padding"
+      style={{
+        background: "linear-gradient(135deg, #12241D 0%, #1B2624 50%, #0F1D17 100%)",
+        color: "#FFFFFF",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      {/* Background ambient glow effect */}
+      <div
+        style={{
+          position: "absolute",
+          top: "-20%",
+          right: "-10%",
+          width: "600px",
+          height: "600px",
+          background: "radial-gradient(circle, rgba(197, 160, 89, 0.12) 0%, rgba(0, 0, 0, 0) 70%)",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          bottom: "-20%",
+          left: "-10%",
+          width: "600px",
+          height: "600px",
+          background: "radial-gradient(circle, rgba(18, 53, 36, 0.25) 0%, rgba(0, 0, 0, 0) 70%)",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
 
-          {/* Navigation Arrow Buttons */}
-          <div style={{ display: "flex", gap: "0.75rem" }}>
-            <button
-              onClick={() => scroll("left")}
-              aria-label="Previous destination"
-              style={{
-                width: "44px",
-                height: "44px",
-                minWidth: "44px",
-                minHeight: "44px",
-                borderRadius: "50%",
-                border: "1px solid var(--line)",
-                backgroundColor: "var(--white)",
-                color: "var(--forest)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "1.4rem",
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "var(--gold)";
-                e.currentTarget.style.color = "var(--white)";
-                e.currentTarget.style.borderColor = "var(--gold)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "var(--white)";
-                e.currentTarget.style.color = "var(--forest)";
-                e.currentTarget.style.borderColor = "var(--line)";
-              }}
-            >
-              <BiChevronLeft />
-            </button>
-            <button
-              onClick={() => scroll("right")}
-              aria-label="Next destination"
-              style={{
-                width: "44px",
-                height: "44px",
-                minWidth: "44px",
-                minHeight: "44px",
-                borderRadius: "50%",
-                border: "1px solid var(--line)",
-                backgroundColor: "var(--white)",
-                color: "var(--forest)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "1.4rem",
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "var(--gold)";
-                e.currentTarget.style.color = "var(--white)";
-                e.currentTarget.style.borderColor = "var(--gold)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "var(--white)";
-                e.currentTarget.style.color = "var(--forest)";
-                e.currentTarget.style.borderColor = "var(--line)";
-              }}
-            >
-              <BiChevronRight />
-            </button>
-          </div>
-        </div>
-
-        {/* Scroll-Snap Row */}
+      <div className="container-custom" style={{ position: "relative", zIndex: 1 }}>
+        
+        {/* Main 2-Column Split Layout Container */}
         <div
-          ref={rowRef}
-          className="no-scrollbar"
           style={{
-            display: "flex",
-            gap: "1.8rem",
-            overflowX: "auto",
-            scrollSnapType: "x mandatory",
-            paddingBottom: "1.5rem",
-            paddingRight: "1rem",
+            background: "rgba(27, 38, 36, 0.5)",
+            backdropFilter: "blur(16px)",
+            WebkitBackdropFilter: "blur(16px)",
+            borderRadius: "24px",
+            border: "1px solid rgba(197, 160, 89, 0.18)",
+            padding: "clamp(2rem, 4vw, 4rem)",
+            boxShadow: "0 30px 60px rgba(0, 0, 0, 0.45)",
           }}
         >
-          {DESTINATIONS.map((dest) => (
-            <article
-              key={dest.slug}
-              style={{
-                flex: "0 0 340px",
-                scrollSnapAlign: "start",
-                borderRadius: "12px",
-                overflow: "hidden",
-                position: "relative",
-                height: "450px",
-                boxShadow: "0 10px 30px rgba(18, 53, 36, 0.08)",
-                cursor: "pointer",
-              }}
-              className="destination-card"
-            >
-              <Image
-                src={dest.image}
-                alt={`Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - ${dest.name}`}
-                fill
-                loading="lazy"
-                style={{ objectFit: "cover", transition: "transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)" }}
-                sizes="340px"
-              />
-              {/* Gradient Overlay */}
-              <div
+          <div
+            className="destinations-split-grid"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+              gap: "3rem",
+              alignItems: "center",
+            }}
+          >
+            
+            {/* LEFT COLUMN: Dynamic Text Content & Controls (~40%) */}
+            <div style={{ maxWidth: "460px" }}>
+              
+              {/* Eyebrow Subheading */}
+              <span
+                key={`eyebrow-${activeIndex}`}
+                className="destination-eyebrow-fade"
                 style={{
-                  position: "absolute",
-                  inset: 0,
-                  background: "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(10,33,22,0.92) 100%)",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "flex-end",
-                  padding: "1.8rem",
+                  fontFamily: "var(--font-playfair), Georgia, serif",
+                  fontStyle: "italic",
+                  color: "#C5A059",
+                  fontSize: "1.25rem",
+                  fontWeight: 500,
+                  display: "block",
+                  marginBottom: "0.6rem",
+                  letterSpacing: "0.02em",
                 }}
               >
-                <span style={{ color: "var(--gold-light)", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.15em", fontWeight: 600, marginBottom: "0.3rem" }}>
-                  {dest.tagline}
-                </span>
-                <h3 style={{ color: "var(--white)", fontSize: "1.45rem", fontFamily: "var(--font-playfair)", marginBottom: "0.5rem" }}>
-                  {dest.name}
-                </h3>
-                <p style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.88rem", lineHeight: "1.4" }}>
-                  {dest.description}
-                </p>
+                {activeDest.tagline}
+              </span>
+
+              {/* Main Heading */}
+              <h2
+                key={`title-${activeIndex}`}
+                className="destination-title-fade"
+                style={{
+                  fontFamily: "var(--font-playfair), Georgia, serif",
+                  fontSize: "clamp(2rem, 3.8vw, 3rem)",
+                  fontWeight: 700,
+                  color: "#FFFFFF",
+                  lineHeight: 1.18,
+                  marginBottom: "1rem",
+                }}
+              >
+                {activeDest.name}
+              </h2>
+
+              {/* Description Paragraph */}
+              <p
+                key={`desc-${activeIndex}`}
+                className="destination-desc-fade"
+                style={{
+                  color: "#D1D5DB",
+                  fontSize: "1.025rem",
+                  lineHeight: 1.65,
+                  marginBottom: "2.2rem",
+                }}
+              >
+                {activeDest.description}
+              </p>
+
+              {/* Primary CTA Button */}
+              <div>
+                <Link
+                  href="/gallery"
+                  className="destination-cta-btn"
+                >
+                  Explore Destination <BiRightArrowAlt style={{ fontSize: "1.25rem" }} />
+                </Link>
               </div>
-            </article>
-          ))}
-        </div>
 
-        {/* Visible Pagination Dots for Touch Devices */}
-        <div style={{ display: "flex", justifyContent: "center", gap: "0.5rem", marginTop: "1rem", marginBottom: "1.5rem" }}>
-          {DESTINATIONS.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => scrollToCard(idx)}
+              {/* Navigation Controls & Counter */}
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "1.5rem",
+                  marginTop: "2.5rem",
+                  paddingTop: "1.5rem",
+                  borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+                }}
+              >
+                {/* Arrow Buttons */}
+                <div style={{ display: "flex", gap: "0.85rem" }}>
+                  <button
+                    onClick={prevSlide}
+                    aria-label="Previous destination"
+                    className="slider-nav-arrow"
+                  >
+                    <BiChevronLeft />
+                  </button>
+                  <button
+                    onClick={nextSlide}
+                    aria-label="Next destination"
+                    className="slider-nav-arrow"
+                  >
+                    <BiChevronRight />
+                  </button>
+                </div>
+
+                {/* Counter */}
+                <span
+                  style={{
+                    color: "rgba(255, 255, 255, 0.6)",
+                    fontSize: "0.9rem",
+                    fontWeight: 500,
+                    letterSpacing: "0.15em",
+                  }}
+                >
+                  <strong style={{ color: "#C5A059", fontSize: "1.15rem" }}>
+                    {String(activeIndex + 1).padStart(2, "0")}
+                  </strong>{" "}
+                  / {String(total).padStart(2, "0")}
+                </span>
+
+                {/* Dots indicator */}
+                <div style={{ display: "flex", gap: "0.4rem", marginLeft: "auto" }}>
+                  {DESTINATIONS.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveIndex(idx)}
+                      aria-label={`Go to slide ${idx + 1}`}
+                      style={{
+                        width: idx === activeIndex ? "20px" : "8px",
+                        height: "8px",
+                        borderRadius: "4px",
+                        backgroundColor: idx === activeIndex ? "#C5A059" : "rgba(255,255,255,0.2)",
+                        border: "none",
+                        cursor: "pointer",
+                        transition: "all 0.3s ease",
+                        padding: 0,
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* RIGHT COLUMN: Interactive 3D Card Slider (~60%) */}
+            <div
               style={{
-                width: idx === activeIndex ? "24px" : "12px",
-                height: "12px",
-                minWidth: "12px",
-                minHeight: "12px",
-                borderRadius: "6px",
-                backgroundColor: idx === activeIndex ? "var(--gold)" : "var(--line)",
-                border: "none",
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-                padding: 0,
+                position: "relative",
+                width: "100%",
+                height: "460px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                overflow: "hidden",
+                padding: "1rem 0",
               }}
-              aria-label={`Scroll to destination ${idx + 1}`}
-            />
-          ))}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
+              <div
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                {DESTINATIONS.map((dest, idx) => {
+                  const offset = getOffset(idx);
+                  const absOffset = Math.abs(offset);
+
+                  // Only display active card and cards within 2 steps of distance
+                  if (absOffset > 2) return null;
+
+                  const isActive = offset === 0;
+
+                  // Dynamic transformation math for center & overlapping side cards
+                  const translateX = offset * 185; // horizontal px spacing offset
+                  const scale = isActive ? 1.05 : 0.88 - (absOffset - 1) * 0.12;
+                  const opacity = isActive ? 1 : 0.65 - (absOffset - 1) * 0.35;
+                  const zIndex = 30 - absOffset * 10;
+
+                  return (
+                    <div
+                      key={dest.slug}
+                      onClick={() => setActiveIndex(idx)}
+                      style={{
+                        position: "absolute",
+                        width: "270px",
+                        height: "400px",
+                        borderRadius: "20px",
+                        overflow: "hidden",
+                        transform: `translateX(${translateX}px) scale(${scale})`,
+                        opacity: opacity,
+                        zIndex: zIndex,
+                        cursor: "pointer",
+                        transition: "transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease",
+                        boxShadow: isActive
+                          ? "0 25px 50px rgba(0, 0, 0, 0.75), 0 0 30px rgba(197, 160, 89, 0.3)"
+                          : "0 15px 30px rgba(0, 0, 0, 0.5)",
+                        border: isActive
+                          ? "2px solid rgba(197, 160, 89, 0.85)"
+                          : "1px solid rgba(255, 255, 255, 0.15)",
+                        userSelect: "none",
+                      }}
+                    >
+                      {/* Clean Image without text overlay */}
+                      <Image
+                        src={dest.image}
+                        alt={`Ayuragreen Escapes Luxury Golf and Wellness Tour Sri Lanka - ${dest.name}`}
+                        fill
+                        priority={idx === 0}
+                        style={{
+                          objectFit: "cover",
+                          filter: isActive ? "brightness(1.02)" : "brightness(0.75)",
+                          transition: "filter 0.5s ease",
+                        }}
+                        sizes="300px"
+                      />
+
+                      {/* Subtle Vignette for visual depth */}
+                      <div
+                        style={{
+                          position: "absolute",
+                          inset: 0,
+                          background: isActive
+                            ? "radial-gradient(circle at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.3) 100%)"
+                            : "rgba(0, 0, 0, 0.25)",
+                          pointerEvents: "none",
+                        }}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+          </div>
         </div>
 
-        {/* Explore All Bottom CTA Link */}
-        <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
-          <Link
-            href="/gallery"
-            className="btn-outline-gold"
-            style={{ minHeight: "44px", minWidth: "44px" }}
-          >
-            Explore All Destinations <BiRightArrowAlt style={{ fontSize: "1.3rem" }} />
-          </Link>
-        </div>
       </div>
     </section>
   );
