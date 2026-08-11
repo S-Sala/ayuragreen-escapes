@@ -343,7 +343,7 @@ export default function PackagesCarousel() {
                   )}
 
                   <Link
-                    href={`/contact?package=${pkg.slug}`}
+                    href={`/enquire?package=${pkg.slug}`}
                     style={{
                       backgroundColor: "#C5A059",
                       color: "#FFFFFF",

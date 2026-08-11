@@ -215,7 +215,7 @@ export default function PackagesPage() {
                         </div>
                       )}
                       <Link
-                        href={`/contact?package=${pkg.slug}`}
+                        href={`/enquire?package=${pkg.slug}`}
                         style={{
                           backgroundColor: "#C5A059",
                           color: "#FFFFFF",
@@ -254,7 +254,7 @@ export default function PackagesPage() {
           <p style={{ color: "rgba(255,255,255,0.85)", fontSize: "1.05rem", marginBottom: "1.8rem" }}>
             Our travel designers customize every detail to match your schedule, group size, and travel style.
           </p>
-          <Link href="/contact?package=tailor-made-tours" className="btn-gold" style={{ padding: "0.8rem 2.2rem", fontSize: "0.95rem", minHeight: "44px" }}>
+          <Link href="/enquire?package=tailor-made-tours" className="btn-gold" style={{ padding: "0.8rem 2.2rem", fontSize: "0.95rem", minHeight: "44px" }}>
             Design My Journey
           </Link>
         </div>

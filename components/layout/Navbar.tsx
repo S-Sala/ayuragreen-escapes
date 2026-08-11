@@ -174,8 +174,8 @@ export default function Navbar() {
               {COMPANY_FACTS.phone}
             </a>
 
-            <Link href="/contact" className="btn-gold nav-cta-btn" style={{ padding: "0.65rem 1.4rem", fontSize: "0.85rem", minHeight: "44px", flexShrink: 0 }}>
-              Plan My Journey
+            <Link href="/enquire" className="btn-gold nav-cta-btn" style={{ padding: "0.65rem 1.4rem", fontSize: "0.85rem", minHeight: "44px", flexShrink: 0 }}>
+              Send Enquiry
             </Link>
 
             {/* Mobile Hamburger Toggle */}
