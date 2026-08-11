@@ -9,7 +9,6 @@ import {
   BiCheck,
   BiCalendar,
   BiMoon,
-  BiSearch,
   BiPlus,
   BiMinus,
   BiCheckCircle,
@@ -50,7 +49,7 @@ function EnquiryFormInner() {
     contactNumber: "",
     departureAirport: "London Airports (LON)",
     travelDate: "2026-08-01",
-    tripDuration: initialPkg.duration || "12 Night(s)",
+    tripDuration: initialPkg.duration || "10 Days / 9 Nights",
     communicationMode: "A Callback",
     bestTimeToCall: "Any Time",
     comments: "",
@@ -61,7 +60,7 @@ function EnquiryFormInner() {
     message?: string;
   }>({ type: "idle" });
 
-  // Update selected package when query param changes
+  // Sync state when package parameter changes in URL
   useEffect(() => {
     if (packageParam) {
       const found = PACKAGES.find((p) => p.slug === packageParam);
@@ -69,7 +68,7 @@ function EnquiryFormInner() {
         setSelectedPackage(found);
         setFormData((prev) => ({
           ...prev,
-          tripDuration: found.duration || "12 Night(s)",
+          tripDuration: found.duration,
         }));
       }
     }
@@ -81,7 +80,7 @@ function EnquiryFormInner() {
       setSelectedPackage(found);
       setFormData((prev) => ({
         ...prev,
-        tripDuration: found.duration || "12 Night(s)",
+        tripDuration: found.duration,
       }));
       router.push(`/enquire?package=${slug}`, { scroll: false });
     }
@@ -123,9 +122,9 @@ function EnquiryFormInner() {
         setStatus({
           type: "success",
           message:
-            "Your enquiry for " +
+            "Thank you! Your enquiry for " +
             selectedPackage.name +
-            " has been sent! Our travel team will contact you within 12 hours.",
+            " has been submitted. Our DMC desk will reach out to you within 12 hours.",
         });
         setFormData({
           name: "",
@@ -133,7 +132,7 @@ function EnquiryFormInner() {
           contactNumber: "",
           departureAirport: "London Airports (LON)",
           travelDate: "2026-08-01",
-          tripDuration: selectedPackage.duration || "12 Night(s)",
+          tripDuration: selectedPackage.duration,
           communicationMode: "A Callback",
           bestTimeToCall: "Any Time",
           comments: "",
@@ -151,7 +150,7 @@ function EnquiryFormInner() {
       setStatus({
         type: "error",
         message:
-          "Network connection error. Please try again or contact us via WhatsApp.",
+          "Network error. Please try again or contact us directly via WhatsApp.",
       });
     }
   };
@@ -162,24 +161,24 @@ function EnquiryFormInner() {
         maxWidth: "1140px",
         margin: "0 auto",
         backgroundColor: "#FFFFFF",
-        borderRadius: "20px",
-        boxShadow: "0 20px 60px rgba(0, 0, 0, 0.12)",
+        borderRadius: "16px",
+        boxShadow: "0 15px 50px rgba(27, 54, 38, 0.1)",
         overflow: "hidden",
-        border: "1px solid #EAEAEA",
+        border: "1px solid var(--line, #EAEAEA)",
       }}
     >
       <div
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
-          minHeight: "680px",
+          minHeight: "640px",
         }}
       >
         {/* LEFT SIDE: SELECTED PACKAGE DETAILS CARD */}
         <div
           style={{
             position: "relative",
-            padding: "2.2rem 2rem",
+            padding: "2.5rem 2.2rem",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
@@ -188,7 +187,7 @@ function EnquiryFormInner() {
             overflow: "hidden",
           }}
         >
-          {/* Package Background Image */}
+          {/* Background Image of Selected Package */}
           <Image
             src={selectedPackage.image}
             alt={selectedPackage.name}
@@ -198,13 +197,13 @@ function EnquiryFormInner() {
             sizes="(max-width: 768px) 100vw, 50vw"
           />
 
-          {/* Dark Overlay Gradient */}
+          {/* Dark Forest Gradient Overlay */}
           <div
             style={{
               position: "absolute",
               inset: 0,
               background:
-                "linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(10, 25, 18, 0.92) 100%)",
+                "linear-gradient(180deg, rgba(10, 33, 22, 0.75) 0%, rgba(10, 33, 22, 0.94) 100%)",
               zIndex: 1,
             }}
           />
@@ -219,32 +218,32 @@ function EnquiryFormInner() {
               height: "100%",
             }}
           >
-            {/* Top Package Switcher Dropdown (for convenience) */}
-            <div style={{ marginBottom: "1.2rem" }}>
+            {/* Top Package Switcher Dropdown */}
+            <div style={{ marginBottom: "1.5rem" }}>
               <label
                 style={{
                   fontSize: "0.68rem",
-                  color: "#D0D0D0",
+                  color: "var(--gold-light, #E2C980)",
                   textTransform: "uppercase",
-                  letterSpacing: "1px",
-                  fontWeight: 600,
+                  letterSpacing: "1.5px",
+                  fontWeight: 700,
                   display: "block",
-                  marginBottom: "4px",
+                  marginBottom: "6px",
                 }}
               >
-                Selected Package:
+                SELECT TOUR PACKAGE:
               </label>
               <select
                 value={selectedPackage.slug}
                 onChange={(e) => handlePackageChange(e.target.value)}
                 style={{
                   width: "100%",
-                  backgroundColor: "rgba(255, 255, 255, 0.15)",
+                  backgroundColor: "rgba(255, 255, 255, 0.12)",
                   color: "#FFFFFF",
-                  border: "1px solid rgba(255, 255, 255, 0.3)",
+                  border: "1px solid rgba(197, 160, 89, 0.5)",
                   borderRadius: "6px",
-                  padding: "6px 10px",
-                  fontSize: "0.82rem",
+                  padding: "8px 12px",
+                  fontSize: "0.85rem",
                   fontWeight: 600,
                   outline: "none",
                   backdropFilter: "blur(8px)",
@@ -263,74 +262,89 @@ function EnquiryFormInner() {
               </select>
             </div>
 
-            {/* Top Magenta / Crimson Banner Badge (Matching Screenshot) */}
-            <div
-              style={{
-                backgroundColor: "#D61C59",
-                color: "#FFFFFF",
-                padding: "1rem 1.2rem",
-                borderRadius: "4px",
-                textAlign: "center",
-                fontWeight: 800,
-                fontSize: "1.05rem",
-                letterSpacing: "0.5px",
-                lineHeight: 1.3,
-                textTransform: "uppercase",
-                boxShadow: "0 6px 20px rgba(214, 28, 89, 0.4)",
-                marginBottom: "1.5rem",
-              }}
-            >
-              {selectedPackage.name}
-            </div>
+            {/* Top Badge (if available) */}
+            {selectedPackage.badgeTop && (
+              <div style={{ marginBottom: "0.6rem" }}>
+                <span
+                  style={{
+                    backgroundColor:
+                      selectedPackage.badgeTopType === "forest"
+                        ? "#1B3626"
+                        : "#C5A059",
+                    color: "#FFFFFF",
+                    fontSize: "0.7rem",
+                    fontWeight: 700,
+                    padding: "4px 10px",
+                    borderRadius: "12px",
+                    letterSpacing: "0.5px",
+                    textTransform: "uppercase",
+                    display: "inline-block",
+                  }}
+                >
+                  {selectedPackage.badgeTop}
+                </span>
+              </div>
+            )}
 
-            {/* Price Header Section */}
-            <div style={{ textAlign: "center", marginBottom: "1.2rem" }}>
-              <span
-                style={{
-                  color: "#E0E0E0",
-                  fontSize: "1rem",
-                  display: "block",
-                  marginBottom: "2px",
-                  letterSpacing: "0.5px",
-                }}
-              >
-                Price
-              </span>
+            {/* Dynamic Package Title & Tagline */}
+            <div style={{ marginBottom: "1.2rem" }}>
               <h2
                 style={{
-                  fontSize: "2.2rem",
-                  fontWeight: 800,
-                  margin: "0 0 2px 0",
                   color: "#FFFFFF",
+                  fontSize: "1.85rem",
                   fontFamily: "var(--font-playfair), Georgia, serif",
-                  lineHeight: 1.1,
+                  fontWeight: 700,
+                  lineHeight: 1.25,
+                  margin: "0 0 0.5rem 0",
                 }}
               >
-                {selectedPackage.price ? selectedPackage.price : "On Request"}
+                {selectedPackage.name}
               </h2>
               <p
                 style={{
-                  fontSize: "1.05rem",
-                  fontWeight: 600,
-                  color: "#FFFFFF",
+                  color: "rgba(255, 255, 255, 0.85)",
+                  fontSize: "0.92rem",
+                  lineHeight: 1.4,
                   margin: 0,
                 }}
               >
-                Per Person - {selectedPackage.duration}
-              </p>
-              <p
-                style={{
-                  fontSize: "0.8rem",
-                  color: "#CCCCCC",
-                  margin: "2px 0 0 0",
-                }}
-              >
-                Departure - {formData.departureAirport.split(" ")[0] || "London"}
+                {selectedPackage.tagline}
               </p>
             </div>
 
-            {/* Included Highlights List */}
-            <div style={{ margin: "1rem 0 auto 0" }}>
+            {/* Duration Pill */}
+            <div style={{ marginBottom: "1.5rem" }}>
+              <span
+                style={{
+                  backgroundColor: "rgba(197, 160, 89, 0.2)",
+                  border: "1px solid rgba(197, 160, 89, 0.5)",
+                  color: "#F3E5AB",
+                  fontSize: "0.82rem",
+                  fontWeight: 600,
+                  padding: "4px 12px",
+                  borderRadius: "20px",
+                  display: "inline-block",
+                }}
+              >
+                ⏱️ {selectedPackage.duration}
+              </span>
+            </div>
+
+            {/* INCLUDED HIGHLIGHTS SECTION */}
+            <div style={{ margin: "0 0 auto 0" }}>
+              <span
+                style={{
+                  color: "#C5A059",
+                  fontSize: "0.75rem",
+                  fontWeight: 700,
+                  letterSpacing: "1.2px",
+                  textTransform: "uppercase",
+                  display: "block",
+                  marginBottom: "0.8rem",
+                }}
+              >
+                INCLUDED HIGHLIGHTS:
+              </span>
               <ul
                 style={{
                   listStyle: "none",
@@ -338,70 +352,27 @@ function EnquiryFormInner() {
                   margin: 0,
                   display: "flex",
                   flexDirection: "column",
-                  gap: "0.6rem",
+                  gap: "0.65rem",
                 }}
               >
-                <li
-                  style={{
-                    fontSize: "0.92rem",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "8px",
-                  }}
-                >
-                  <span style={{ fontSize: "1.1rem", color: "#FFFFFF" }}>•</span>
-                  <span>Flights</span>
-                </li>
-                <li
-                  style={{
-                    fontSize: "0.92rem",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "8px",
-                  }}
-                >
-                  <span style={{ fontSize: "1.1rem", color: "#FFFFFF" }}>•</span>
-                  <span>Accommodations</span>
-                </li>
-                <li
-                  style={{
-                    fontSize: "0.92rem",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "8px",
-                  }}
-                >
-                  <span style={{ fontSize: "1.1rem", color: "#FFFFFF" }}>•</span>
-                  <span>Transfers</span>
-                </li>
-                <li
-                  style={{
-                    fontSize: "0.92rem",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "8px",
-                  }}
-                >
-                  <span style={{ fontSize: "1.1rem", color: "#FFFFFF" }}>•</span>
-                  <span>Tours And Excursions</span>
-                </li>
-                {selectedPackage.inclusions.slice(0, 3).map((inc, i) => (
+                {selectedPackage.inclusions.map((inc, i) => (
                   <li
                     key={i}
                     style={{
-                      fontSize: "0.85rem",
+                      fontSize: "0.88rem",
+                      color: "#F8FAFC",
+                      lineHeight: 1.35,
                       display: "flex",
                       alignItems: "flex-start",
                       gap: "8px",
-                      color: "#E2E8F0",
                     }}
                   >
                     <BiCheck
                       style={{
                         color: "#C5A059",
-                        fontSize: "1.1rem",
+                        fontSize: "1.2rem",
                         flexShrink: 0,
-                        marginTop: "2px",
+                        marginTop: "1px",
                       }}
                     />
                     <span>{inc}</span>
@@ -410,85 +381,62 @@ function EnquiryFormInner() {
               </ul>
             </div>
 
-            {/* Bottom Trust Badges (ABTA, IATA, ATOL) */}
+            {/* Dynamic Price Display */}
             <div
               style={{
                 marginTop: "2rem",
+                paddingTop: "1rem",
+                borderTop: "1px solid rgba(255, 255, 255, 0.15)",
                 display: "flex",
                 flexDirection: "column",
-                alignItems: "center",
-                gap: "0.8rem",
+                gap: "2px",
               }}
             >
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "1.5rem",
-                  opacity: 0.9,
-                }}
-              >
-                {/* ABTA Badge */}
+              {selectedPackage.price ? (
                 <div
                   style={{
+                    fontSize: "1rem",
+                    color: "rgba(255, 255, 255, 0.9)",
                     display: "flex",
-                    alignItems: "center",
-                    gap: "4px",
-                    border: "1px solid rgba(255, 255, 255, 0.4)",
-                    borderRadius: "4px",
-                    padding: "3px 8px",
-                    fontSize: "0.72rem",
-                    fontWeight: 700,
+                    alignItems: "baseline",
+                    gap: "6px",
                   }}
                 >
-                  <span>🛡️ ABTA</span>
+                  <span>From</span>
+                  <span
+                    style={{
+                      fontSize: "1.75rem",
+                      fontWeight: 800,
+                      color: "#C5A059",
+                      fontFamily: "var(--font-playfair), Georgia, serif",
+                    }}
+                  >
+                    {selectedPackage.price}
+                  </span>
+                  <span>/ Person</span>
                 </div>
-
-                {/* IATA Badge */}
+              ) : (
                 <div
                   style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "4px",
-                    border: "1px solid rgba(255, 255, 255, 0.4)",
-                    borderRadius: "4px",
-                    padding: "3px 8px",
-                    fontSize: "0.72rem",
+                    fontSize: "1.3rem",
                     fontWeight: 700,
+                    color: "#C5A059",
+                    fontFamily: "var(--font-playfair), Georgia, serif",
                   }}
                 >
-                  <span>✈️ IATA</span>
+                  Price: On Request
                 </div>
+              )}
 
-                {/* ATOL Protected Badge */}
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "4px",
-                    border: "1px solid rgba(255, 255, 255, 0.4)",
-                    borderRadius: "4px",
-                    padding: "3px 8px",
-                    fontSize: "0.72rem",
-                    fontWeight: 700,
-                  }}
-                >
-                  <span>🔒 ATOL</span>
-                </div>
-              </div>
-
-              {/* Disclaimer */}
               <p
                 style={{
                   fontSize: "0.72rem",
-                  color: "rgba(255, 255, 255, 0.75)",
-                  textAlign: "center",
-                  margin: 0,
+                  color: "rgba(255, 255, 255, 0.65)",
+                  margin: "6px 0 0 0",
                   fontStyle: "italic",
                 }}
               >
-                * Quote is based on lead dates. Prices are subject to change.
+                * Quote is based on lead dates. Prices are subject to change based on seasonality.
               </p>
             </div>
           </div>
@@ -504,12 +452,12 @@ function EnquiryFormInner() {
             justifyContent: "center",
           }}
         >
-          {/* Header Title with Pink Underline */}
+          {/* Header Title with Brand Gold Underline */}
           <div style={{ textAlign: "center", marginBottom: "1.8rem" }}>
             <h2
               style={{
                 fontSize: "1.75rem",
-                color: "#0F4C81",
+                color: "#1B3626",
                 fontFamily: "var(--font-playfair), Georgia, serif",
                 fontWeight: 700,
                 margin: "0 0 0.5rem 0",
@@ -521,7 +469,7 @@ function EnquiryFormInner() {
               style={{
                 width: "45px",
                 height: "3px",
-                backgroundColor: "#D61C59",
+                backgroundColor: "#C5A059",
                 margin: "0 auto",
                 borderRadius: "2px",
               }}
@@ -531,7 +479,7 @@ function EnquiryFormInner() {
           {/* Form */}
           <form
             onSubmit={handleSubmit}
-            style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+            style={{ display: "flex", flexDirection: "column", gap: "1.1rem" }}
           >
             {/* Status Messages */}
             {status.type === "success" && (
@@ -582,45 +530,71 @@ function EnquiryFormInner() {
                 gap: "1rem",
               }}
             >
-              <input
-                type="text"
-                required
-                placeholder="Name"
-                value={formData.name}
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
-                style={{
-                  width: "100%",
-                  padding: "0.75rem 0.9rem",
-                  borderRadius: "6px",
-                  border: "1px solid #E2E8F0",
-                  backgroundColor: "#F8FAFC",
-                  outline: "none",
-                  fontSize: "0.88rem",
-                  color: "#1E293B",
-                }}
-              />
+              <div>
+                <label
+                  style={{
+                    fontSize: "0.72rem",
+                    fontWeight: 600,
+                    color: "#1B3626",
+                    display: "block",
+                    marginBottom: "3px",
+                  }}
+                >
+                  Full Name *
+                </label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Name"
+                  value={formData.name}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
+                  style={{
+                    width: "100%",
+                    padding: "0.75rem 0.9rem",
+                    borderRadius: "6px",
+                    border: "1px solid #E2E8F0",
+                    backgroundColor: "#F8FAFC",
+                    outline: "none",
+                    fontSize: "0.88rem",
+                    color: "#1B3626",
+                  }}
+                />
+              </div>
 
-              <input
-                type="email"
-                required
-                placeholder="Email"
-                value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
-                style={{
-                  width: "100%",
-                  padding: "0.75rem 0.9rem",
-                  borderRadius: "6px",
-                  border: "1px solid #E2E8F0",
-                  backgroundColor: "#F8FAFC",
-                  outline: "none",
-                  fontSize: "0.88rem",
-                  color: "#1E293B",
-                }}
-              />
+              <div>
+                <label
+                  style={{
+                    fontSize: "0.72rem",
+                    fontWeight: 600,
+                    color: "#1B3626",
+                    display: "block",
+                    marginBottom: "3px",
+                  }}
+                >
+                  Email Address *
+                </label>
+                <input
+                  type="email"
+                  required
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                  style={{
+                    width: "100%",
+                    padding: "0.75rem 0.9rem",
+                    borderRadius: "6px",
+                    border: "1px solid #E2E8F0",
+                    backgroundColor: "#F8FAFC",
+                    outline: "none",
+                    fontSize: "0.88rem",
+                    color: "#1B3626",
+                  }}
+                />
+              </div>
             </div>
 
             {/* Row 2: Contact Number (with Country Code) & Guests Counter */}
@@ -632,174 +606,195 @@ function EnquiryFormInner() {
               }}
             >
               {/* Contact Number Input */}
-              <div
-                style={{
-                  display: "flex",
-                  borderRadius: "6px",
-                  border: "1px solid #E2E8F0",
-                  backgroundColor: "#F8FAFC",
-                  overflow: "hidden",
-                }}
-              >
-                <select
-                  value={countryCode}
-                  onChange={(e) => setCountryCode(e.target.value)}
+              <div>
+                <label
                   style={{
-                    backgroundColor: "#F1F5F9",
-                    border: "none",
-                    borderRight: "1px solid #E2E8F0",
-                    padding: "0.75rem 0.5rem",
-                    fontSize: "0.82rem",
+                    fontSize: "0.72rem",
                     fontWeight: 600,
-                    outline: "none",
-                    cursor: "pointer",
+                    color: "#1B3626",
+                    display: "block",
+                    marginBottom: "3px",
                   }}
                 >
-                  {COUNTRY_CODES.map((c) => (
-                    <option key={c.code} value={c.code}>
-                      {c.flag} {c.code}
-                    </option>
-                  ))}
-                </select>
-                <input
-                  type="tel"
-                  required
-                  placeholder="Contact Number"
-                  value={formData.contactNumber}
-                  onChange={(e) =>
-                    setFormData({ ...formData, contactNumber: e.target.value })
-                  }
+                  Contact Number *
+                </label>
+                <div
                   style={{
-                    width: "100%",
-                    padding: "0.75rem 0.8rem",
-                    border: "none",
-                    backgroundColor: "transparent",
-                    outline: "none",
-                    fontSize: "0.88rem",
-                    color: "#1E293B",
+                    display: "flex",
+                    borderRadius: "6px",
+                    border: "1px solid #E2E8F0",
+                    backgroundColor: "#F8FAFC",
+                    overflow: "hidden",
                   }}
-                />
+                >
+                  <select
+                    value={countryCode}
+                    onChange={(e) => setCountryCode(e.target.value)}
+                    style={{
+                      backgroundColor: "#F1F5F9",
+                      border: "none",
+                      borderRight: "1px solid #E2E8F0",
+                      padding: "0.75rem 0.5rem",
+                      fontSize: "0.82rem",
+                      fontWeight: 600,
+                      color: "#1B3626",
+                      outline: "none",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {COUNTRY_CODES.map((c) => (
+                      <option key={c.code} value={c.code}>
+                        {c.flag} {c.code}
+                      </option>
+                    ))}
+                  </select>
+                  <input
+                    type="tel"
+                    required
+                    placeholder="Contact Number"
+                    value={formData.contactNumber}
+                    onChange={(e) =>
+                      setFormData({ ...formData, contactNumber: e.target.value })
+                    }
+                    style={{
+                      width: "100%",
+                      padding: "0.75rem 0.8rem",
+                      border: "none",
+                      backgroundColor: "transparent",
+                      outline: "none",
+                      fontSize: "0.88rem",
+                      color: "#1B3626",
+                    }}
+                  />
+                </div>
               </div>
 
               {/* Guests Selection */}
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  backgroundColor: "#F8FAFC",
-                  border: "1px solid #E2E8F0",
-                  borderRadius: "6px",
-                  padding: "0.4rem 0.8rem",
-                }}
-              >
-                <div>
-                  <span
-                    style={{
-                      fontSize: "0.68rem",
-                      color: "#64748B",
-                      display: "block",
-                      lineHeight: 1,
-                    }}
-                  >
-                    Guests
-                  </span>
+              <div>
+                <label
+                  style={{
+                    fontSize: "0.72rem",
+                    fontWeight: 600,
+                    color: "#1B3626",
+                    display: "block",
+                    marginBottom: "3px",
+                  }}
+                >
+                  Guests
+                </label>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    backgroundColor: "#F8FAFC",
+                    border: "1px solid #E2E8F0",
+                    borderRadius: "6px",
+                    padding: "0.45rem 0.8rem",
+                    height: "42px",
+                  }}
+                >
                   <span
                     style={{
                       fontSize: "0.88rem",
                       fontWeight: 600,
-                      color: "#1E293B",
+                      color: "#1B3626",
                     }}
                   >
                     {guestsCount} Traveller(s)
                   </span>
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
-                  <button
-                    type="button"
-                    onClick={() => handleGuestChange(-1)}
-                    style={{
-                      width: "28px",
-                      height: "28px",
-                      borderRadius: "4px",
-                      border: "none",
-                      backgroundColor: "#0F4C81",
-                      color: "#FFFFFF",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      cursor: "pointer",
-                    }}
-                    aria-label="Decrease guests"
-                  >
-                    <BiMinus style={{ fontSize: "1rem" }} />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleGuestChange(1)}
-                    style={{
-                      width: "28px",
-                      height: "28px",
-                      borderRadius: "4px",
-                      border: "none",
-                      backgroundColor: "#0F4C81",
-                      color: "#FFFFFF",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      cursor: "pointer",
-                    }}
-                    aria-label="Increase guests"
-                  >
-                    <BiPlus style={{ fontSize: "1rem" }} />
-                  </button>
+                  <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+                    <button
+                      type="button"
+                      onClick={() => handleGuestChange(-1)}
+                      style={{
+                        width: "26px",
+                        height: "26px",
+                        borderRadius: "4px",
+                        border: "none",
+                        backgroundColor: "#1B3626",
+                        color: "#FFFFFF",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        cursor: "pointer",
+                      }}
+                      aria-label="Decrease guests"
+                    >
+                      <BiMinus style={{ fontSize: "0.9rem" }} />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleGuestChange(1)}
+                      style={{
+                        width: "26px",
+                        height: "26px",
+                        borderRadius: "4px",
+                        border: "none",
+                        backgroundColor: "#1B3626",
+                        color: "#FFFFFF",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        cursor: "pointer",
+                      }}
+                      aria-label="Increase guests"
+                    >
+                      <BiPlus style={{ fontSize: "0.9rem" }} />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Row 3: Departure Airport */}
-            <div
-              style={{
-                position: "relative",
-                display: "flex",
-                alignItems: "center",
-              }}
-            >
-              <FaPlane
+            {/* Row 3: Departure Airport (Clean Input - Search bar removed) */}
+            <div>
+              <label
                 style={{
-                  position: "absolute",
-                  left: "12px",
-                  color: "#64748B",
-                  fontSize: "0.9rem",
+                  fontSize: "0.72rem",
+                  fontWeight: 600,
+                  color: "#1B3626",
+                  display: "block",
+                  marginBottom: "3px",
                 }}
-              />
-              <input
-                type="text"
-                required
-                placeholder="London Airports (LON)"
-                value={formData.departureAirport}
-                onChange={(e) =>
-                  setFormData({ ...formData, departureAirport: e.target.value })
-                }
+              >
+                Departure Airport / City
+              </label>
+              <div
                 style={{
-                  width: "100%",
-                  padding: "0.75rem 2.2rem 0.75rem 2.4rem",
-                  borderRadius: "6px",
-                  border: "1px solid #E2E8F0",
-                  backgroundColor: "#F8FAFC",
-                  outline: "none",
-                  fontSize: "0.88rem",
-                  color: "#1E293B",
+                  position: "relative",
+                  display: "flex",
+                  alignItems: "center",
                 }}
-              />
-              <BiSearch
-                style={{
-                  position: "absolute",
-                  right: "12px",
-                  color: "#64748B",
-                  fontSize: "1.1rem",
-                }}
-              />
+              >
+                <FaPlane
+                  style={{
+                    position: "absolute",
+                    left: "12px",
+                    color: "#C5A059",
+                    fontSize: "0.85rem",
+                  }}
+                />
+                <input
+                  type="text"
+                  required
+                  placeholder="Departure Airport (e.g. London Airports - LON)"
+                  value={formData.departureAirport}
+                  onChange={(e) =>
+                    setFormData({ ...formData, departureAirport: e.target.value })
+                  }
+                  style={{
+                    width: "100%",
+                    padding: "0.75rem 0.9rem 0.75rem 2.3rem",
+                    borderRadius: "6px",
+                    border: "1px solid #E2E8F0",
+                    backgroundColor: "#F8FAFC",
+                    outline: "none",
+                    fontSize: "0.88rem",
+                    color: "#1B3626",
+                  }}
+                />
+              </div>
             </div>
 
             {/* Row 4: Travel Date & Trip Duration */}
@@ -811,76 +806,91 @@ function EnquiryFormInner() {
               }}
             >
               {/* Travel Date */}
-              <div
-                style={{
-                  position: "relative",
-                  display: "flex",
-                  alignItems: "center",
-                }}
-              >
-                <input
-                  type="date"
-                  required
-                  value={formData.travelDate}
-                  onChange={(e) =>
-                    setFormData({ ...formData, travelDate: e.target.value })
-                  }
+              <div>
+                <label
                   style={{
-                    width: "100%",
-                    padding: "0.75rem 2.2rem 0.75rem 0.9rem",
-                    borderRadius: "6px",
-                    border: "1px solid #E2E8F0",
-                    backgroundColor: "#F8FAFC",
-                    outline: "none",
-                    fontSize: "0.88rem",
-                    color: "#1E293B",
+                    fontSize: "0.72rem",
+                    fontWeight: 600,
+                    color: "#1B3626",
+                    display: "block",
+                    marginBottom: "3px",
                   }}
-                />
-                <BiCalendar
+                >
+                  Estimated Travel Date
+                </label>
+                <div
                   style={{
-                    position: "absolute",
-                    right: "12px",
-                    color: "#64748B",
-                    fontSize: "1.2rem",
-                    pointerEvents: "none",
+                    position: "relative",
+                    display: "flex",
+                    alignItems: "center",
                   }}
-                />
+                >
+                  <input
+                    type="date"
+                    required
+                    value={formData.travelDate}
+                    onChange={(e) =>
+                      setFormData({ ...formData, travelDate: e.target.value })
+                    }
+                    style={{
+                      width: "100%",
+                      padding: "0.75rem 2.2rem 0.75rem 0.9rem",
+                      borderRadius: "6px",
+                      border: "1px solid #E2E8F0",
+                      backgroundColor: "#F8FAFC",
+                      outline: "none",
+                      fontSize: "0.88rem",
+                      color: "#1B3626",
+                    }}
+                  />
+                  <BiCalendar
+                    style={{
+                      position: "absolute",
+                      right: "12px",
+                      color: "#C5A059",
+                      fontSize: "1.1rem",
+                      pointerEvents: "none",
+                    }}
+                  />
+                </div>
               </div>
 
               {/* Trip Duration */}
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  backgroundColor: "#F8FAFC",
-                  border: "1px solid #E2E8F0",
-                  borderRadius: "6px",
-                  padding: "0.4rem 0.8rem",
-                }}
-              >
-                <div>
-                  <span
-                    style={{
-                      fontSize: "0.68rem",
-                      color: "#64748B",
-                      display: "block",
-                      lineHeight: 1,
-                    }}
-                  >
-                    Trip duration in nights
-                  </span>
+              <div>
+                <label
+                  style={{
+                    fontSize: "0.72rem",
+                    fontWeight: 600,
+                    color: "#1B3626",
+                    display: "block",
+                    marginBottom: "3px",
+                  }}
+                >
+                  Trip duration in nights
+                </label>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    backgroundColor: "#F8FAFC",
+                    border: "1px solid #E2E8F0",
+                    borderRadius: "6px",
+                    padding: "0.45rem 0.8rem",
+                    height: "42px",
+                  }}
+                >
                   <span
                     style={{
                       fontSize: "0.88rem",
                       fontWeight: 600,
-                      color: "#1E293B",
+                      color: "#1B3626",
                     }}
                   >
                     {formData.tripDuration}
                   </span>
+                  <BiMoon style={{ color: "#C5A059", fontSize: "1.1rem" }} />
                 </div>
-                <BiMoon style={{ color: "#64748B", fontSize: "1.2rem" }} />
               </div>
             </div>
 
@@ -895,10 +905,11 @@ function EnquiryFormInner() {
               <div>
                 <label
                   style={{
-                    fontSize: "0.7rem",
-                    color: "#64748B",
+                    fontSize: "0.72rem",
+                    fontWeight: 600,
+                    color: "#1B3626",
                     display: "block",
-                    marginBottom: "2px",
+                    marginBottom: "3px",
                   }}
                 >
                   Communication Mode
@@ -913,13 +924,13 @@ function EnquiryFormInner() {
                   }
                   style={{
                     width: "100%",
-                    padding: "0.65rem 0.8rem",
+                    padding: "0.75rem 0.8rem",
                     borderRadius: "6px",
                     border: "1px solid #E2E8F0",
                     backgroundColor: "#F8FAFC",
                     outline: "none",
                     fontSize: "0.88rem",
-                    color: "#1E293B",
+                    color: "#1B3626",
                     cursor: "pointer",
                   }}
                 >
@@ -933,10 +944,11 @@ function EnquiryFormInner() {
               <div>
                 <label
                   style={{
-                    fontSize: "0.7rem",
-                    color: "#64748B",
+                    fontSize: "0.72rem",
+                    fontWeight: 600,
+                    color: "#1B3626",
                     display: "block",
-                    marginBottom: "2px",
+                    marginBottom: "3px",
                   }}
                 >
                   Best Time To Call
@@ -948,29 +960,40 @@ function EnquiryFormInner() {
                   }
                   style={{
                     width: "100%",
-                    padding: "0.65rem 0.8rem",
+                    padding: "0.75rem 0.8rem",
                     borderRadius: "6px",
                     border: "1px solid #E2E8F0",
                     backgroundColor: "#F8FAFC",
                     outline: "none",
                     fontSize: "0.88rem",
-                    color: "#1E293B",
+                    color: "#1B3626",
                     cursor: "pointer",
                   }}
                 >
                   <option value="Any Time">Any Time</option>
-                  <option value="Morning">Morning (09:00 - 12:00)</option>
-                  <option value="Afternoon">Afternoon (12:00 - 17:00)</option>
-                  <option value="Evening">Evening (17:00 - 20:00)</option>
+                  <option value="Morning">Morning (09:00 - 12:00 IST)</option>
+                  <option value="Afternoon">Afternoon (12:00 - 17:00 IST)</option>
+                  <option value="Evening">Evening (17:00 - 20:00 IST)</option>
                 </select>
               </div>
             </div>
 
             {/* Row 6: Comments (Optional) */}
             <div>
+              <label
+                style={{
+                  fontSize: "0.72rem",
+                  fontWeight: 600,
+                  color: "#1B3626",
+                  display: "block",
+                  marginBottom: "3px",
+                }}
+              >
+                Comments (Optional)
+              </label>
               <textarea
                 rows={3}
-                placeholder="Comments (Optional)"
+                placeholder="Share any special preferences, hotel tier desires, or golf/wellness requests..."
                 value={formData.comments}
                 onChange={(e) =>
                   setFormData({ ...formData, comments: e.target.value })
@@ -983,18 +1006,18 @@ function EnquiryFormInner() {
                   backgroundColor: "#F8FAFC",
                   outline: "none",
                   fontSize: "0.88rem",
-                  color: "#1E293B",
-                  resize: "none",
+                  color: "#1B3626",
+                  resize: "vertical",
                 }}
               />
             </div>
 
-            {/* Row 7: Terms Checkbox */}
+            {/* Row 7: Terms Checkbox (Matched to Forest Green brand color) */}
             <div
               style={{
                 display: "flex",
                 alignItems: "flex-start",
-                gap: "8px",
+                gap: "10px",
                 marginTop: "4px",
               }}
             >
@@ -1006,30 +1029,33 @@ function EnquiryFormInner() {
                 style={{
                   marginTop: "3px",
                   cursor: "pointer",
-                  accentColor: "#0F4C81",
+                  width: "16px",
+                  height: "16px",
+                  accentColor: "#1B3626",
                 }}
               />
               <label
                 htmlFor="terms"
                 style={{
-                  fontSize: "0.75rem",
-                  color: "#64748B",
-                  lineHeight: 1.35,
+                  fontSize: "0.78rem",
+                  color: "#555555",
+                  lineHeight: 1.4,
                   cursor: "pointer",
                 }}
               >
                 By ticking this box, you agree to all the terms and conditions
-                set forth by Ayuragreen Escapes.
+                set forth by AyuraGreen Escapes.
               </label>
             </div>
 
-            {/* Row 8: SUBMIT Button */}
+            {/* Row 8: SUBMIT Button (Gold brand color matching site theme) */}
             <button
               type="submit"
               disabled={status.type === "loading"}
+              className="btn-gold"
               style={{
                 width: "100%",
-                backgroundColor: "#0F4C81",
+                backgroundColor: "#C5A059",
                 color: "#FFFFFF",
                 fontWeight: 700,
                 fontSize: "1rem",
@@ -1038,13 +1064,13 @@ function EnquiryFormInner() {
                 borderRadius: "6px",
                 border: "none",
                 cursor: status.type === "loading" ? "not-allowed" : "pointer",
-                transition: "background-color 0.2s ease",
+                transition: "all 0.25s ease",
                 marginTop: "6px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 gap: "8px",
-                boxShadow: "0 4px 12px rgba(15, 76, 129, 0.25)",
+                boxShadow: "0 4px 15px rgba(197, 160, 89, 0.3)",
               }}
             >
               {status.type === "loading" ? (
